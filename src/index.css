@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  body {
+    background-color: #0E0204;
+    color: #F8EFE4;
+    overflow-x: hidden;
+  }
+  
+  /* Custom Royal Gold Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #140205;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #D4AF37, #8A6812);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 240, 186, 0.2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #F5CE62;
+  }
+}
+
+/* Royal Maharaja Gold Metallic Utilities */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFF6D1 0%, #F5CE62 30%, #D4AF37 70%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-bright {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF0BA 25%, #F9D874 60%, #E5A93C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #FFF0BA 0%, #F5CE62 35%, #D4AF37 70%, #9B7817 100%);
+}
+
+.bg-gold-gradient:hover {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFE29F 35%, #E5B842 70%, #B8860B 100%);
+}
+
+.border-gold-glow {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15), inset 0 0 10px rgba(212, 175, 55, 0.05);
+}
+
+.border-gold-active {
+  border: 1px solid rgba(249, 216, 116, 0.85);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.glass-maharaja {
+  background: rgba(30, 4, 8, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.glass-maharaja-card {
+  background: linear-gradient(165deg, rgba(55, 8, 16, 0.7) 0%, rgba(18, 3, 6, 0.85) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-maharaja-card:hover {
+  border-color: rgba(249, 216, 116, 0.65);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.22);
+  transform: translateY(-4px);
+}
+
+/* Royal Pattern Vignette */
+.royal-vignette {
+  background: radial-gradient(circle at 50% 50%, rgba(110, 17, 32, 0.18) 0%, rgba(14, 2, 4, 0.95) 80%);
+}
+
+/* Shimmer animation on buttons and badges */
+@keyframes shimmerGold {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 240, 186, 0.25) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmerGold 3s infinite linear;
+}
