@@ -292,32 +292,34 @@ import snapshotProducts from '../data/wixProductsSnapshot.json';
  * Fetches all products from Wix Stores with local caching & dev proxy
  */
 export async function fetchWixProducts() {
-  // 1. Try local Vite dev proxy endpoint
-  try {
-    const res = await fetch('/api/wix-products');
-    if (res.ok) {
-      const data = await res.json();
-      if (data.items && data.items.length > 0) {
-        const formatted = data.items.map(transformWixProduct);
-        return {
-          products: formatted,
-          total: data.totalCount || formatted.length,
-          fromLiveWix: true,
-        };
+  // 1. In local development, use Vite dev proxy if available
+  if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+    try {
+      const res = await fetch('/api/wix-products');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.items && data.items.length > 0) {
+          const formatted = data.items.map(transformWixProduct);
+          return {
+            products: formatted,
+            total: data.totalCount || formatted.length,
+            fromLiveWix: true,
+          };
+        }
+        if (data.transformedItems && data.transformedItems.length > 0) {
+          return {
+            products: data.transformedItems,
+            total: data.transformedItems.length,
+            fromLiveWix: true,
+          };
+        }
       }
-      if (data.transformedItems && data.transformedItems.length > 0) {
-        return {
-          products: data.transformedItems,
-          total: data.transformedItems.length,
-          fromLiveWix: true,
-        };
-      }
+    } catch {
+      // Vite proxy unavailable, proceed to snapshot
     }
-  } catch (err) {
-    // Vite proxy not available (e.g. production build)
   }
 
-  // 2. Use live Drango snapshot (19 active products)
+  // 2. Use live Drango snapshot (instant 0ms loading, no 404 network errors in production)
   if (snapshotProducts && snapshotProducts.length > 0) {
     return {
       products: snapshotProducts,

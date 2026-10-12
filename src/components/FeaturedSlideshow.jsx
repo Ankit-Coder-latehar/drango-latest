@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import {
   ChevronLeft,
   ChevronRight,
-  Sparkles,
   ShoppingBag,
   Check,
   Star,
@@ -22,6 +21,8 @@ export const FeaturedSlideshow = ({
   const [isPaused, setIsPaused] = useState(false);
   const [addedItemMap, setAddedItemMap] = useState({});
   const [slidesToShow, setSlidesToShow] = useState(3);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
   // Responsive visible slides count
   useEffect(() => {
@@ -65,9 +66,6 @@ export const FeaturedSlideshow = ({
   if (total === 0) {
     return null;
   }
-
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
