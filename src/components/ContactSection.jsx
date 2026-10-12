@@ -24,19 +24,19 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-maharaja-950 relative border-t border-gold/20">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-maharaja-950 relative border-t border-gold/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-gold/40 bg-maharaja-900/80 text-gold text-xs font-bold tracking-widest uppercase mb-3">
+        <div className="text-center mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1 rounded-full border border-gold/40 bg-maharaja-900/80 text-gold text-xs font-bold tracking-widest uppercase mb-3">
             <Sparkles className="w-3.5 h-3.5 text-gold-bright" />
             <span>BESPOKE APPOINTMENT & CONSULTATION</span>
           </div>
-          <h2 className="font-royal text-3xl sm:text-5xl font-black text-gold-bright tracking-tight mb-4 capitalize">
+          <h2 className="font-royal text-2xl sm:text-4xl md:text-5xl font-black text-gold-bright tracking-tight mb-3 sm:mb-4 capitalize">
             contact for custom build
           </h2>
-          <p className="text-amber-200/80 text-sm sm:text-base max-w-2xl mx-auto font-light">
+          <p className="text-amber-200/80 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-light">
             Book a one-on-one consultation with our Master Automotive Stylists at our Jaipur Haveli or Delhi NCR Studios.
           </p>
         </div>
@@ -55,7 +55,7 @@ export const ContactSection = () => {
                 <div>
                   <span className="text-[10px] text-gold font-bold tracking-widest uppercase">Factory Location</span>
                   <h4 className="font-royal text-lg font-bold text-amber-50 mb-1">
-                    Chadigarh
+                    Chandigarh
                   </h4>
                   <p className="text-xs text-amber-200/70 leading-relaxed">
                     Sector 21 , Chandigarh
@@ -108,7 +108,7 @@ export const ContactSection = () => {
 
           {/* Booking Form Column */}
           <div className="lg:col-span-7">
-            <div className="glass-maharaja p-8 sm:p-10 rounded-3xl border-2 border-gold/40 shadow-royal relative">
+            <div className="glass-maharaja p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border-2 border-gold/40 shadow-royal relative">
 
               {submitted ? (
                 <div className="text-center py-12 animate-fadeIn">

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { ShieldCheck, Award, Wrench, Sparkles, Volume2, VolumeX, Play, Pause, ChevronDown, Phone, Truck, Headphones } from 'lucide-react';
+import { ShieldCheck, Award, Wrench, Volume2, VolumeX, Play, Pause, ChevronDown, Phone, Truck, Headphones } from 'lucide-react';
 
 export const Hero = ({ onNavigateProducts }) => {
   const heroRef = useRef(null);
@@ -18,17 +18,12 @@ export const Hero = ({ onNavigateProducts }) => {
       ctx = gsap.context(() => {
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-        tl.from('.hero-badge', {
-          y: -30,
-          opacity: 0,
-          duration: 0.9,
-          delay: 0.2
-        })
-        .from(titleRef.current, {
+        tl.from(titleRef.current, {
           x: -40,
           opacity: 0,
           duration: 1.1,
-        }, '-=0.5')
+          delay: 0.2
+        })
         .from(ctaRef.current, {
           y: 20,
           opacity: 0,
@@ -130,30 +125,22 @@ export const Hero = ({ onNavigateProducts }) => {
       {/* Hero Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left flex flex-col items-start w-full">
         
-        {/* Maharaja Badge */}
-        <div className="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/50 bg-maharaja-900/80 backdrop-blur-md shadow-gold-sm mb-6">
-          <Sparkles className="w-4 h-4 text-gold-bright animate-spin" style={{ animationDuration: '6s' }} />
-          <span className="text-xs sm:text-sm font-semibold tracking-widest text-gold uppercase">
-            Maharaja Edition • Royal Automotive Craft
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
-        </div>
 
         {/* Exact Requested Heading - Left Aligned */}
         <h1
           ref={titleRef}
-          className="font-royal text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.1] mb-10 text-left drop-shadow-2xl"
+          className="font-royal text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.1] mb-8 sm:mb-10 text-left drop-shadow-2xl"
         >
           <span className="block text-gold-bright uppercase tracking-wider">
             Drango :
           </span>
-          <span className="block text-gold-gradient font-serif italic text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-3 tracking-normal capitalize font-bold">
+          <span className="block text-gold-gradient font-serif italic text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-2 sm:mt-3 tracking-normal capitalize font-bold">
             The ultimate modification of the cars
           </span>
         </h1>
 
         {/* CTA Buttons - Left Aligned */}
-        <div ref={ctaRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 w-full sm:w-auto mb-16">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 w-full sm:w-auto mb-10 sm:mb-16">
           <a
             href="#products"
             onClick={(e) => {
@@ -162,7 +149,7 @@ export const Hero = ({ onNavigateProducts }) => {
                 onNavigateProducts();
               }
             }}
-            className="px-8 py-4 rounded-full bg-gold-gradient text-maharaja-950 font-bold text-sm sm:text-base tracking-widest uppercase hover:shadow-gold-glow transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 group"
+            className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-gold-gradient text-maharaja-950 font-bold text-xs sm:text-sm md:text-base tracking-widest uppercase hover:shadow-gold-glow transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 group shadow-gold-sm"
           >
             <span>Our Products</span>
             <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
@@ -170,7 +157,7 @@ export const Hero = ({ onNavigateProducts }) => {
 
           <a
             href="#contact"
-            className="px-8 py-4 rounded-full border border-gold/70 bg-maharaja-900/70 hover:bg-maharaja-800 text-gold-bright font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 transform hover:-translate-y-1 backdrop-blur flex items-center justify-center gap-2"
+            className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-full border border-gold/70 bg-maharaja-900/70 hover:bg-maharaja-800 text-gold-bright font-bold text-xs sm:text-sm md:text-base tracking-wider uppercase transition-all duration-300 transform hover:-translate-y-1 backdrop-blur flex items-center justify-center gap-2"
           >
             <span>Contact Us</span>
             <Phone className="w-4 h-4 text-gold-bright" />
@@ -178,7 +165,7 @@ export const Hero = ({ onNavigateProducts }) => {
         </div>
 
         {/* Trust Badges / Stats Bar */}
-        <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
+        <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
           
           <div className="hero-stat-card glass-maharaja p-3 sm:p-4 rounded-2xl flex items-center gap-3 text-left">
             <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/40 flex items-center justify-center text-gold-bright shrink-0">

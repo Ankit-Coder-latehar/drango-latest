@@ -143,6 +143,70 @@ function detectCategory(name, description) {
   return 'external';
 }
 
+function parseOptions(p) {
+  const rawOptions = (p.productOptions || []).map((opt) => ({
+    name: opt.name,
+    optionType: opt.optionType,
+    choices: (opt.choices || []).map((c) => ({
+      value: c.value,
+      description: c.description || c.value,
+      inStock: c.inStock !== false,
+      visible: c.visible !== false,
+      media: c.media?.mainMedia?.image?.url || null,
+    })),
+  }));
+
+  const colorOpt = rawOptions.find(
+    (o) => o.optionType === 'color' || o.name?.toLowerCase().includes('colo')
+  );
+
+  let colors = [];
+  if (colorOpt && colorOpt.choices.length > 0) {
+    colors = colorOpt.choices.map((c) => {
+      let hex = c.value;
+      const lowerDesc = (c.description || c.value).toLowerCase();
+      if (!hex.startsWith('#')) {
+        if (lowerDesc.includes('gold')) hex = '#D4AF37';
+        else if (lowerDesc.includes('silver') || lowerDesc.includes('chrome')) hex = '#C0C0C0';
+        else if (lowerDesc.includes('black')) hex = '#1A1A1A';
+        else if (lowerDesc.includes('brown')) hex = '#654321';
+        else if (lowerDesc.includes('beige')) hex = '#EED9C4';
+        else hex = '#D4AF37';
+      }
+      return {
+        name: c.description || c.value,
+        hex: hex,
+        image: c.media,
+      };
+    });
+  } else {
+    colors = [
+      { name: 'Maharaja Gold', hex: '#D4AF37' },
+      { name: 'Glossy Black', hex: '#111111' },
+      { name: 'Silver Chrome', hex: '#C0C0C0' },
+    ];
+  }
+
+  const versionOpt = rawOptions.find(
+    (o) => o.name?.toLowerCase().includes('version') || o.name?.toLowerCase().includes('design')
+  );
+  const versions = versionOpt
+    ? versionOpt.choices.map((c) => ({
+        name: c.description || c.value,
+        image: c.media,
+      }))
+    : [];
+
+  const carTypeOpt = rawOptions.find(
+    (o) => o.name?.toLowerCase().includes('car') || o.name?.toLowerCase().includes('type')
+  );
+  const carTypes = carTypeOpt
+    ? carTypeOpt.choices.map((c) => c.description || c.value)
+    : [];
+
+  return { rawOptions, colors, versions, carTypes };
+}
+
 /**
  * Transforms a raw Wix product entity into the application format
  */
@@ -189,6 +253,8 @@ export function transformWixProduct(p) {
     compatibilityText = 'Mahindra Thar';
   }
 
+  const { rawOptions, colors, versions, carTypes } = parseOptions(p);
+
   return {
     id: p._id,
     wixId: p._id,
@@ -213,6 +279,10 @@ export function transformWixProduct(p) {
     wixProductUrl: p.productPageUrl?.base
       ? `${p.productPageUrl.base}${p.productPageUrl.path}`
       : null,
+    options: rawOptions,
+    colors: colors,
+    versions: versions,
+    carTypes: carTypes,
   };
 }
 

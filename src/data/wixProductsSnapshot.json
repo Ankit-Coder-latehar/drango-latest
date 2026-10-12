@@ -28,7 +28,24 @@
       "High-Grade Custom Finish"
     ],
     "description": "Crafted with royal standards by Drango Customs for peak performance and aesthetics.",
-    "wixProductUrl": "https://www.drango.in/product-page/drango-dashboard-accessories"
+    "wixProductUrl": "https://www.drango.in/product-page/drango-dashboard-accessories",
+    "options": [],
+    "colors": [
+      {
+        "name": "Maharaja Gold",
+        "hex": "#D4AF37"
+      },
+      {
+        "name": "Glossy Black",
+        "hex": "#111111"
+      },
+      {
+        "name": "Silver Chrome",
+        "hex": "#C0C0C0"
+      }
+    ],
+    "versions": [],
+    "carTypes": []
   },
   {
     "id": "e0ecf966-58ee-4729-8077-59efca21609b",
@@ -58,7 +75,78 @@
       "Official Drango Custom Accessory"
     ],
     "description": "Rear View Mirror Cover Set of 2 – Design Accent Upgrade Upgrade your vehicle’s look with our Rear View Mirror Cover Set (Pack of 2) , designed to add a distinct and eye-catching detail to your side mirrors. Featuring intricate engraved patterns with a deep textured finish , these covers bring a bold design element that stands out clearly and adds character to your exterior. They are easy to install and sit neatly over the stock mirrors without affecting functionality. You can also choose from multiple design options or go for a custom design as per your preference. Only on drango.in — made for those who want their vehicle to stand out in the details.",
-    "wixProductUrl": "https://www.drango.in/product-page/punjab-rare-view-mirror-cover-set-of-2-for-thar-thar-roxx"
+    "wixProductUrl": "https://www.drango.in/product-page/punjab-rare-view-mirror-cover-set-of-2-for-thar-thar-roxx",
+    "options": [
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#020202",
+            "description": "glossy black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "3Door Thar",
+            "description": "3Door Thar",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      },
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      },
+      {
+        "name": "glossy black",
+        "hex": "#020202",
+        "image": null
+      }
+    ],
+    "versions": [],
+    "carTypes": [
+      "Thar Roxx",
+      "3Door Thar"
+    ]
   },
   {
     "id": "540afa61-0f88-1771-d004-0050b66d443f",
@@ -95,7 +183,140 @@
       "Official Drango Custom Accessory"
     ],
     "description": "Enhance your vehicle's exterior with the Emblem Antenna Cover , designed to add a premium and distinctive touch to your ride. Featuring a meticulously crafted 3D emblem with an elegant metallic finish, this accessory transforms the factory antenna into a bold styling element. Manufactured from high-quality, durable material, it is built to withstand everyday driving conditions while maintaining its refined appearance. Designed for a precise fit, the cover integrates seamlessly with the vehicle's exterior, delivering a sophisticated custom look without compromising functionality.",
-    "wixProductUrl": "https://www.drango.in/product-page/emblem-enteena-cover-for-thar-roxx-3-door-thar"
+    "wixProductUrl": "https://www.drango.in/product-page/emblem-enteena-cover-for-thar-roxx-3-door-thar",
+    "options": [
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "3Door Thar",
+            "description": "3Door Thar",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Lion",
+            "description": "Lion",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_15bc2bea2bc94709a9edc83d6edb4b38~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          },
+          {
+            "value": "Tiger",
+            "description": "Tiger",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "Wolf",
+            "description": "Wolf",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_38f26b3eb3914dd5913393faf03bd8d0~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          },
+          {
+            "value": "Bear",
+            "description": "Bear",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_e229e83fdc0246f1b1000afdcc3e41fc~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          },
+          {
+            "value": "Bull",
+            "description": "Bull",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_344ebff804bc477082b2ba91276a646a~mv2.jpg/v1/fit/w_1123,h_1123,q_90/file.jpg"
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      },
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "Lion",
+        "image": "https://static.wixstatic.com/media/b56cc6_15bc2bea2bc94709a9edc83d6edb4b38~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      },
+      {
+        "name": "Tiger",
+        "image": null
+      },
+      {
+        "name": "Wolf",
+        "image": "https://static.wixstatic.com/media/b56cc6_38f26b3eb3914dd5913393faf03bd8d0~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      },
+      {
+        "name": "Bear",
+        "image": "https://static.wixstatic.com/media/b56cc6_e229e83fdc0246f1b1000afdcc3e41fc~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      },
+      {
+        "name": "Bull",
+        "image": "https://static.wixstatic.com/media/b56cc6_344ebff804bc477082b2ba91276a646a~mv2.jpg/v1/fit/w_1123,h_1123,q_90/file.jpg"
+      }
+    ],
+    "carTypes": [
+      "Thar Roxx",
+      "3Door Thar"
+    ]
   },
   {
     "id": "9c85655d-6861-c545-1604-f76cb3b0cadd",
@@ -130,7 +351,99 @@
       "Official Drango Custom Accessory"
     ],
     "description": "Upgrade your vehicle's interior with the Center Console Trim Panel , designed to add a premium and refined appearance to the center console. Featuring a precision-crafted engraved finish, this trim panel enhances the cabin with a bold, luxury-inspired look while maintaining a seamless fit. Manufactured from high-quality, durable material, it is built to withstand daily use and complements the vehicle's original interior styling.",
-    "wixProductUrl": "https://www.drango.in/product-page/center-console-trim-panel"
+    "wixProductUrl": "https://www.drango.in/product-page/center-console-trim-panel",
+    "options": [
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Lion",
+            "description": "Lion",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_619a3659a7aa4f5b8d9c290479edde22~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          },
+          {
+            "value": "Tiger",
+            "description": "Tiger",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_b30f7ea2ab5f422cbc357579d39a927b~mv2.jpg/v1/fit/w_1696,h_1696,q_90/file.jpg"
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      },
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "Lion",
+        "image": "https://static.wixstatic.com/media/b56cc6_619a3659a7aa4f5b8d9c290479edde22~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      },
+      {
+        "name": "Tiger",
+        "image": "https://static.wixstatic.com/media/b56cc6_b30f7ea2ab5f422cbc357579d39a927b~mv2.jpg/v1/fit/w_1696,h_1696,q_90/file.jpg"
+      }
+    ],
+    "carTypes": [
+      "Thar Roxx"
+    ]
   },
   {
     "id": "3e05163d-7c03-843e-ad69-fba110b500c1",
@@ -166,7 +479,70 @@
       "Official Drango Custom Accessory"
     ],
     "description": "Enhance the look of your Thar Roxx interior with the Gear Console Trim Cover . Designed to fit perfectly around the gear selector, this premium trim adds a bold and refined touch to your center console while protecting the original surface from scratches and everyday wear. Featuring a high-gloss engraved finish, the trim blends seamlessly with the cabin and gives your interior a distinctive, premium appearance. Precision-crafted for an accurate fit, it installs easily without any permanent modifications.",
-    "wixProductUrl": "https://www.drango.in/product-page/gear-console-trim-cover-for-thar-roxx"
+    "wixProductUrl": "https://www.drango.in/product-page/gear-console-trim-cover-for-thar-roxx",
+    "options": [
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      },
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      }
+    ],
+    "versions": [],
+    "carTypes": [
+      "Thar Roxx"
+    ]
   },
   {
     "id": "b14d2eec-2785-3caf-0e39-5caa6b87a0a6",
@@ -205,7 +581,86 @@
       "Official Drango Custom Accessory"
     ],
     "description": "Give your Thar Roxx a bold, rugged appearance with the Wheel Arch Cladding Extension Set . Designed specifically for the Thar Roxx, these extensions enhance the vehicle's stance while adding extra coverage around the wheel arches. Manufactured from durable, high-quality material with a textured matte finish, the claddings blend seamlessly with the vehicle's exterior. Their precision fit complements the factory body lines, giving your SUV a premium off-road-inspired look. Ideal for enthusiasts looking to upgrade both style and protection, this set is built to withstand daily driving and adventure-ready conditions.",
-    "wixProductUrl": "https://www.drango.in/product-page/wheel-arch-cladding-extension-set-4-pcs-for-thar-roxx"
+    "wixProductUrl": "https://www.drango.in/product-page/wheel-arch-cladding-extension-set-4-pcs-for-thar-roxx",
+    "options": [
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "Matte Black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "2inch",
+            "description": "2inch",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_c4018c3d708f48dea9e485985b0a459a~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          },
+          {
+            "value": "3inch",
+            "description": "3inch",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "4inch",
+            "description": "4inch",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_233788b82b14439abfcbf00687b0a354~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "Matte Black",
+        "hex": "#000000",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "2inch",
+        "image": "https://static.wixstatic.com/media/b56cc6_c4018c3d708f48dea9e485985b0a459a~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      },
+      {
+        "name": "3inch",
+        "image": null
+      },
+      {
+        "name": "4inch",
+        "image": "https://static.wixstatic.com/media/b56cc6_233788b82b14439abfcbf00687b0a354~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      }
+    ],
+    "carTypes": [
+      "Thar Roxx"
+    ]
   },
   {
     "id": "1068f4b7-b50b-e41b-b624-a3d2976cd23e",
@@ -241,7 +696,78 @@
       "Exclusively available on drango.in — designed for everyday comfort."
     ],
     "description": "Console Side Comfort Cushion Set of 2 – Premium Comfort Upgrade Upgrade your driving comfort with our Console Side Comfort Cushion Set , specially designed for Thar Roxx interiors . Crafted with a high-quality perforated leather finish , these cushions provide soft knee support while reducing fatigue during long drives. The ergonomic shape fits neatly along the center console, protecting your knees from hard edges and enhancing the cabin’s overall look. Perfect for both city driving and off-road use , this accessory adds a balance of comfort and refined styling to your interior. Exclusively available on drango.in — designed for everyday comfort.",
-    "wixProductUrl": "https://www.drango.in/product-page/console-side-comfort-cushion-set-of-2"
+    "wixProductUrl": "https://www.drango.in/product-page/console-side-comfort-cushion-set-of-2",
+    "options": [
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_a34f301761904a1f82cf00ce9f14836a~mv2.jpeg/v1/fit/w_936,h_1247,q_90/file.jpg"
+          },
+          {
+            "value": "#884242",
+            "description": "brown",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_80644f670aa14c6aaf4df7ffbc5c6c35~mv2.jpeg/v1/fit/w_1086,h_1448,q_90/file.jpg"
+          },
+          {
+            "value": "#f5f5dc",
+            "description": "beige",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_6b5be5b1a3004026819e18980d4a629e~mv2.jpeg/v1/fit/w_1086,h_1448,q_90/file.jpg"
+          }
+        ]
+      },
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "3Door FaceLift",
+            "description": "3Door FaceLift",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": "https://static.wixstatic.com/media/b56cc6_a34f301761904a1f82cf00ce9f14836a~mv2.jpeg/v1/fit/w_936,h_1247,q_90/file.jpg"
+      },
+      {
+        "name": "brown",
+        "hex": "#884242",
+        "image": "https://static.wixstatic.com/media/b56cc6_80644f670aa14c6aaf4df7ffbc5c6c35~mv2.jpeg/v1/fit/w_1086,h_1448,q_90/file.jpg"
+      },
+      {
+        "name": "beige",
+        "hex": "#f5f5dc",
+        "image": "https://static.wixstatic.com/media/b56cc6_6b5be5b1a3004026819e18980d4a629e~mv2.jpeg/v1/fit/w_1086,h_1448,q_90/file.jpg"
+      }
+    ],
+    "versions": [],
+    "carTypes": [
+      "Thar Roxx",
+      "3Door FaceLift"
+    ]
   },
   {
     "id": "455969f7-deff-dd8c-afe7-54ed44d3a9b6",
@@ -272,7 +798,24 @@
       "High-Grade Custom Finish"
     ],
     "description": "Crafted with royal standards by Drango Customs for peak performance and aesthetics.",
-    "wixProductUrl": "https://www.drango.in/product-page/drango-seat-belt-alarm-stopper"
+    "wixProductUrl": "https://www.drango.in/product-page/drango-seat-belt-alarm-stopper",
+    "options": [],
+    "colors": [
+      {
+        "name": "Maharaja Gold",
+        "hex": "#D4AF37"
+      },
+      {
+        "name": "Glossy Black",
+        "hex": "#111111"
+      },
+      {
+        "name": "Silver Chrome",
+        "hex": "#C0C0C0"
+      }
+    ],
+    "versions": [],
+    "carTypes": []
   },
   {
     "id": "a8eb969b-dcb5-845f-09b3-002806cddd55",
@@ -306,7 +849,58 @@
       "Only on drango.in — built for those who notice the finer details."
     ],
     "description": "Door Window Control Panel Set of 4 – Refined Interior Upgrade for Thar Roxx Upgrade your cabin experience with our Door Window Control Panel Set (Pack of 4) , crafted to bring a more finished and premium look to your door interiors. Featuring a rich engraved texture with flowing patterns , these panels add a distinct visual layer around your controls, making them feel more detailed and refined every time you use them. The design blends naturally with the interior while still standing out as a custom upgrade , giving your cabin a more complete and premium appearance. They are easy to install and fit neatly over the existing panel without affecting any functions. You can also customize the design as per your preference . Only on drango.in — built for those who notice the finer details.",
-    "wixProductUrl": "https://www.drango.in/product-page/door-window-control-panel"
+    "wixProductUrl": "https://www.drango.in/product-page/door-window-control-panel",
+    "options": [
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      }
+    ],
+    "versions": [],
+    "carTypes": [
+      "Thar Roxx"
+    ]
   },
   {
     "id": "7d588f74-67ee-9d9f-7e9d-b943d67ebff8",
@@ -338,7 +932,58 @@
       "Choose from multiple design options to match your style"
     ],
     "description": "Overhead Console Panel – Premium Custom Design for Thar Roxx Enhance your vehicle’s interior with our custom-designed Overhead Console Panel , crafted for Thar Roxx enthusiasts who want a bold and premium cabin upgrade. Featuring intricate engraved detailing with a rich textured finish , this panel transforms your stock console into a high-end statement piece while maintaining full functionality. Designed for a clean fit , it is easy to install and integrates seamlessly with the existing console layout. Choose from multiple design options to match your style. Exclusively available on drango.in — a unique design you won’t find anywhere else.",
-    "wixProductUrl": "https://www.drango.in/product-page/overhead-console-panel"
+    "wixProductUrl": "https://www.drango.in/product-page/overhead-console-panel",
+    "options": [
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      }
+    ],
+    "versions": [],
+    "carTypes": [
+      "Thar Roxx"
+    ]
   },
   {
     "id": "f6af6532-6b1e-3208-e604-5b4ac7a161bc",
@@ -376,7 +1021,129 @@
       "Official Drango Custom Accessory"
     ],
     "description": "Rear View Mirror Cover Set of 2 – Design Accent Upgrade Upgrade your vehicle’s look with our Rear View Mirror Cover Set (Pack of 2) , designed to add a distinct and eye-catching detail to your side mirrors. Featuring intricate engraved patterns with a deep textured finish , these covers bring a bold design element that stands out clearly and adds character to your exterior. They are easy to install and sit neatly over the stock mirrors without affecting functionality. You can also choose from multiple design options or go for a custom design as per your preference. Only on drango.in — made for those who want their vehicle to stand out in the details.",
-    "wixProductUrl": "https://www.drango.in/product-page/copy-of-front-pieces-for-the-bonnet-fender-set-of-2"
+    "wixProductUrl": "https://www.drango.in/product-page/copy-of-front-pieces-for-the-bonnet-fender-set-of-2",
+    "options": [
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#020202",
+            "description": "glossy black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "3Door Thar",
+            "description": "3Door Thar",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "lux",
+            "description": "lux",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_a7c4cfdb5e4a4bd9a2dabe76708dd8e9~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          },
+          {
+            "value": "Majestic Engraved",
+            "description": "Majestic Engraved",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_4cef3a997d5743bdb35708d214887c2b~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          },
+          {
+            "value": "custom design with design consultation",
+            "description": "custom design with design consultation",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "Punjab",
+            "description": "Punjab",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_7dd21fd6b79d47118b035512f72b8cde~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      },
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      },
+      {
+        "name": "glossy black",
+        "hex": "#020202",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "lux",
+        "image": "https://static.wixstatic.com/media/b56cc6_a7c4cfdb5e4a4bd9a2dabe76708dd8e9~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      },
+      {
+        "name": "Majestic Engraved",
+        "image": "https://static.wixstatic.com/media/b56cc6_4cef3a997d5743bdb35708d214887c2b~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      },
+      {
+        "name": "custom design with design consultation",
+        "image": null
+      },
+      {
+        "name": "Punjab",
+        "image": "https://static.wixstatic.com/media/b56cc6_7dd21fd6b79d47118b035512f72b8cde~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      }
+    ],
+    "carTypes": [
+      "Thar Roxx",
+      "3Door Thar"
+    ]
   },
   {
     "id": "50ebad9d-f58b-2616-cf13-30956482f059",
@@ -409,7 +1176,95 @@
       "Exclusively available on drango.in — made for those who notice every detail."
     ],
     "description": "Thar Roxx Trunk Hinge Cover Set of 2 Add a refined touch to the rear of your vehicle with our Trunk Hinge Cover Set (Pack of 2) , designed specifically for Thar Roxx . Featuring intricate engraved patterns with a rich textured finish , these covers turn a basic hinge area into a premium design element . The detailing adds depth and character, making even the rear view stand out. They are easy to install and sit cleanly without affecting functionality. You can also get them custom-made as per your design preference for a truly unique look. Exclusively available on drango.in — made for those who notice every detail.",
-    "wixProductUrl": "https://www.drango.in/product-page/thar-roxx-set-of-2-trunk-hinge-cover"
+    "wixProductUrl": "https://www.drango.in/product-page/thar-roxx-set-of-2-trunk-hinge-cover",
+    "options": [
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Shadow Core",
+            "description": "Shadow Core",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_ee7ce3dba40649a09043836a736b7d26~mv2.jpg/v1/fit/w_2494,h_1922,q_90/file.jpg"
+          },
+          {
+            "value": "Sun & Moon",
+            "description": "Sun & Moon",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_3cf2238161194e109491bcd8405a8454~mv2.png/v1/fit/w_2911,h_2910,q_90/file.png"
+          },
+          {
+            "value": "Majestic Engraved",
+            "description": "Majestic Engraved",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_7aab7eb314f54b7c88d928e3c7e465c8~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      },
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "Shadow Core",
+        "image": "https://static.wixstatic.com/media/b56cc6_ee7ce3dba40649a09043836a736b7d26~mv2.jpg/v1/fit/w_2494,h_1922,q_90/file.jpg"
+      },
+      {
+        "name": "Sun & Moon",
+        "image": "https://static.wixstatic.com/media/b56cc6_3cf2238161194e109491bcd8405a8454~mv2.png/v1/fit/w_2911,h_2910,q_90/file.png"
+      },
+      {
+        "name": "Majestic Engraved",
+        "image": "https://static.wixstatic.com/media/b56cc6_7aab7eb314f54b7c88d928e3c7e465c8~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      }
+    ],
+    "carTypes": []
   },
   {
     "id": "6003aa10-7798-533e-cf93-dee544c77a5a",
@@ -440,7 +1295,74 @@
       "Only on drango.in — made for those who prefer a tougher presence on the road."
     ],
     "description": "heel Arch Cladding for Thar and Thar Roxx – Tough Exterior Upgrade Upgrade the side profile of your vehicle with our Wheel Arch Cladding , built to give your Thar and Thar Roxx a more filled, rugged and off-road ready look . The design adds a chunkier and more defined edge around the wheel arches , making the vehicle appear wider and more planted. It not only enhances the overall stance but also helps handle dust, stones, and daily wear with ease. Designed to sit cleanly along the body lines, these claddings are easy to install and blend naturally with the vehicle’s exterior. You can also customize the design as per your preference . Only on drango.in — made for those who prefer a tougher presence on the road.",
-    "wixProductUrl": "https://www.drango.in/product-page/wheel-arch-cladding-for-thar-and-thar-roxx"
+    "wixProductUrl": "https://www.drango.in/product-page/wheel-arch-cladding-for-thar-and-thar-roxx",
+    "options": [
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_449e65fd8d3642d9b4fc9fbc2e8daecf~mv2.jpeg/v1/fit/w_932,h_1148,q_90/file.jpg"
+          },
+          {
+            "value": "3Door Thar",
+            "description": "3Door Thar",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "Add-on",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "custom design",
+            "description": "custom design",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "standard",
+            "description": "standard",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "Maharaja Gold",
+        "hex": "#D4AF37"
+      },
+      {
+        "name": "Glossy Black",
+        "hex": "#111111"
+      },
+      {
+        "name": "Silver Chrome",
+        "hex": "#C0C0C0"
+      }
+    ],
+    "versions": [
+      {
+        "name": "Thar Roxx",
+        "image": "https://static.wixstatic.com/media/b56cc6_449e65fd8d3642d9b4fc9fbc2e8daecf~mv2.jpeg/v1/fit/w_932,h_1148,q_90/file.jpg"
+      },
+      {
+        "name": "3Door Thar",
+        "image": null
+      }
+    ],
+    "carTypes": []
   },
   {
     "id": "9b5e5050-2fe4-4af3-3f28-d0fd4e422b51",
@@ -474,7 +1396,105 @@
       "Exclusively available on drango.in — built for those who like bold detailing."
     ],
     "description": "3 Door Thar Trunk Hinge Cover Set of 2 – Bold Rear Accent Upgrade the rear look of your 3 Door Thar with our Trunk Hinge Cover Set (Pack of 2) , designed to add a sharp and distinctive detail . Featuring a bold engraved pattern with a sleek gloss finish , these covers give your rear section a more defined and customized appearance . The design stands out clearly, adding a strong visual element without overdoing it. They are easy to install and sit cleanly while maintaining everyday usability. You can also get them custom-made as per your design preference . Exclusively available on drango.in — built for those who like bold detailing.",
-    "wixProductUrl": "https://www.drango.in/product-page/3-door-thar-trunk-hinge-cover"
+    "wixProductUrl": "https://www.drango.in/product-page/3-door-thar-trunk-hinge-cover",
+    "options": [
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Transform",
+            "description": "Transform",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_14866697017f43c39376f00f5d58eea3~mv2.jpg/v1/fit/w_1465,h_1465,q_90/file.jpg"
+          },
+          {
+            "value": "lux",
+            "description": "lux",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_572b7a2697e34259a89ec9e94d51b613~mv2.jpg/v1/fit/w_1371,h_1371,q_90/file.jpg"
+          },
+          {
+            "value": "Adventure",
+            "description": "Adventure",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_fd7d806270504fe39fedcae3edcfbe9c~mv2.jpg/v1/fit/w_1726,h_1726,q_90/file.jpg"
+          },
+          {
+            "value": "Shadow Sigil",
+            "description": "Shadow Sigil",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_7a51d32a93a94994b2e606495f2a667d~mv2.jpg/v1/fit/w_1600,h_1600,q_90/file.jpg"
+          },
+          {
+            "value": "custom design with design consultation",
+            "description": "custom design with design consultation",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "Transform",
+        "image": "https://static.wixstatic.com/media/b56cc6_14866697017f43c39376f00f5d58eea3~mv2.jpg/v1/fit/w_1465,h_1465,q_90/file.jpg"
+      },
+      {
+        "name": "lux",
+        "image": "https://static.wixstatic.com/media/b56cc6_572b7a2697e34259a89ec9e94d51b613~mv2.jpg/v1/fit/w_1371,h_1371,q_90/file.jpg"
+      },
+      {
+        "name": "Adventure",
+        "image": "https://static.wixstatic.com/media/b56cc6_fd7d806270504fe39fedcae3edcfbe9c~mv2.jpg/v1/fit/w_1726,h_1726,q_90/file.jpg"
+      },
+      {
+        "name": "Shadow Sigil",
+        "image": "https://static.wixstatic.com/media/b56cc6_7a51d32a93a94994b2e606495f2a667d~mv2.jpg/v1/fit/w_1600,h_1600,q_90/file.jpg"
+      },
+      {
+        "name": "custom design with design consultation",
+        "image": null
+      }
+    ],
+    "carTypes": []
   },
   {
     "id": "0781615e-712d-a489-776d-e9aff9448152",
@@ -508,7 +1528,94 @@
       "Exclusively available on drango.in — choose a design that matches your style."
     ],
     "description": "Thar and Thar Roxx Antenna Cover – Statement Design Accent Add a bold finishing touch to your vehicle with our Antenna Cover , designed for Thar and Thar Roxx to stand out in the smallest details. Featuring intricate engraved designs including lion, tribal, and combat-inspired patterns , this cover brings a strong, artistic and rugged character to your exterior. The deep textured detailing ensures the design is clearly visible and eye-catching from every angle. Compact yet impactful, it turns a simple antenna base into a unique design highlight . They are easy to install and fit cleanly without affecting functionality. Exclusively available on drango.in — choose a design that matches your style.",
-    "wixProductUrl": "https://www.drango.in/product-page/thar-and-thar-roxx-antenna-cover"
+    "wixProductUrl": "https://www.drango.in/product-page/thar-and-thar-roxx-antenna-cover",
+    "options": [
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "lion",
+            "description": "lion",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_48f4719169ec46729827b582a8125bf2~mv2.jpeg/v1/fit/w_750,h_777,q_90/file.jpg"
+          },
+          {
+            "value": "tribel",
+            "description": "tribel",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_844d4841d2f94201ae27aad69193c2c3~mv2.jpeg/v1/fit/w_707,h_750,q_90/file.jpg"
+          },
+          {
+            "value": "call of duty",
+            "description": "call of duty",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_01bdc17cd5dd428e9bcaf572db21b424~mv2.jpeg/v1/fit/w_754,h_762,q_90/file.jpg"
+          },
+          {
+            "value": "call of duty 2",
+            "description": "call of duty 2",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_742804ff0ee94365afbdeebb682ba9a3~mv2.jpeg/v1/fit/w_754,h_762,q_90/file.jpg"
+          }
+        ]
+      },
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "lion",
+        "image": "https://static.wixstatic.com/media/b56cc6_48f4719169ec46729827b582a8125bf2~mv2.jpeg/v1/fit/w_750,h_777,q_90/file.jpg"
+      },
+      {
+        "name": "tribel",
+        "image": "https://static.wixstatic.com/media/b56cc6_844d4841d2f94201ae27aad69193c2c3~mv2.jpeg/v1/fit/w_707,h_750,q_90/file.jpg"
+      },
+      {
+        "name": "call of duty",
+        "image": "https://static.wixstatic.com/media/b56cc6_01bdc17cd5dd428e9bcaf572db21b424~mv2.jpeg/v1/fit/w_754,h_762,q_90/file.jpg"
+      },
+      {
+        "name": "call of duty 2",
+        "image": "https://static.wixstatic.com/media/b56cc6_742804ff0ee94365afbdeebb682ba9a3~mv2.jpeg/v1/fit/w_754,h_762,q_90/file.jpg"
+      }
+    ],
+    "carTypes": []
   },
   {
     "id": "7ad6aa96-c9ca-29bc-7190-3d03f136798a",
@@ -550,7 +1657,226 @@
       "Only on drango.in — designed for a clean, finished look"
     ],
     "description": "AC Vents Rings Set of 4 for Thar and Thar Roxx – Clean Interior Accent Give your dashboard a subtle upgrade with our AC Vent Rings Set (Pack of 4) , designed to add a clean and refined edge to your cabin. With a detailed engraved surface and smooth finish , these rings create a distinct outline around your vents , enhancing the overall interior without overpowering the design. They are easy to install and sit neatly in place while maintaining full airflow and usability. Choose from 12 unique design options , or get your own custom design and name created by Drango for a truly personalized touch. Only on drango.in — designed for a clean, finished look. Exclusively available on drango.in — made for those who appreciate the finer details.",
-    "wixProductUrl": "https://www.drango.in/product-page/ac-vents-rings"
+    "wixProductUrl": "https://www.drango.in/product-page/ac-vents-rings",
+    "options": [
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Royal gothis crest",
+            "description": "Royal gothis crest",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_d07dd6dde9a14b9eb49ee33135832968~mv2.png/v1/fit/w_1110,h_1111,q_90/file.png"
+          },
+          {
+            "value": "Tribal edge",
+            "description": "Tribal edge",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_87526e04f5314f1a92daf1a3818901a1~mv2.png/v1/fit/w_1122,h_1123,q_90/file.png"
+          },
+          {
+            "value": "Eclipse vine",
+            "description": "Eclipse vine",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_9850ba103b00447a98722fe4963335ef~mv2.png/v1/fit/w_1068,h_1067,q_90/file.png"
+          },
+          {
+            "value": "Titan hex",
+            "description": "Titan hex",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_b8ee8ea7f1f94cb8b7e72e588d86e391~mv2.png/v1/fit/w_1240,h_1240,q_90/file.png"
+          },
+          {
+            "value": "Iron link",
+            "description": "Iron link",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_35044e5729954a46a06592206d3825d2~mv2.png/v1/fit/w_2304,h_2316,q_90/file.png"
+          },
+          {
+            "value": "Eternal blossom",
+            "description": "Eternal blossom",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_649bcd9c4b31453ebd392eba5ddb974b~mv2.png/v1/fit/w_1084,h_1084,q_90/file.png"
+          },
+          {
+            "value": "Twist flow",
+            "description": "Twist flow",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_58b6d73938874f25b99d0e2c065ca9e2~mv2.png/v1/fit/w_1278,h_1278,q_90/file.png"
+          },
+          {
+            "value": "Endless knot",
+            "description": "Endless knot",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_377d470aab94470eb0552f74ebb2c195~mv2.png/v1/fit/w_2325,h_2325,q_90/file.png"
+          },
+          {
+            "value": "Mythic code",
+            "description": "Mythic code",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_b350937f7ea0408ca460384ad58c778f~mv2.png/v1/fit/w_2298,h_2298,q_90/file.png"
+          },
+          {
+            "value": "Urban tribe",
+            "description": "Urban tribe",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_2185ebc3921a4772ab4d98fa7f0adba8~mv2.png/v1/fit/w_2325,h_2325,q_90/file.png"
+          },
+          {
+            "value": "Versace",
+            "description": "Versace",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_a4d139fd43ec4d33bd017ff5e678e9cd~mv2.jpg/v1/fit/w_1604,h_1604,q_90/file.jpg"
+          }
+        ]
+      },
+      {
+        "name": "custom name",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "text",
+            "description": "text",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "nil",
+            "description": "nil",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "3Door Thar",
+            "description": "3Door Thar",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      },
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "Royal gothis crest",
+        "image": "https://static.wixstatic.com/media/b56cc6_d07dd6dde9a14b9eb49ee33135832968~mv2.png/v1/fit/w_1110,h_1111,q_90/file.png"
+      },
+      {
+        "name": "Tribal edge",
+        "image": "https://static.wixstatic.com/media/b56cc6_87526e04f5314f1a92daf1a3818901a1~mv2.png/v1/fit/w_1122,h_1123,q_90/file.png"
+      },
+      {
+        "name": "Eclipse vine",
+        "image": "https://static.wixstatic.com/media/b56cc6_9850ba103b00447a98722fe4963335ef~mv2.png/v1/fit/w_1068,h_1067,q_90/file.png"
+      },
+      {
+        "name": "Titan hex",
+        "image": "https://static.wixstatic.com/media/b56cc6_b8ee8ea7f1f94cb8b7e72e588d86e391~mv2.png/v1/fit/w_1240,h_1240,q_90/file.png"
+      },
+      {
+        "name": "Iron link",
+        "image": "https://static.wixstatic.com/media/b56cc6_35044e5729954a46a06592206d3825d2~mv2.png/v1/fit/w_2304,h_2316,q_90/file.png"
+      },
+      {
+        "name": "Eternal blossom",
+        "image": "https://static.wixstatic.com/media/b56cc6_649bcd9c4b31453ebd392eba5ddb974b~mv2.png/v1/fit/w_1084,h_1084,q_90/file.png"
+      },
+      {
+        "name": "Twist flow",
+        "image": "https://static.wixstatic.com/media/b56cc6_58b6d73938874f25b99d0e2c065ca9e2~mv2.png/v1/fit/w_1278,h_1278,q_90/file.png"
+      },
+      {
+        "name": "Endless knot",
+        "image": "https://static.wixstatic.com/media/b56cc6_377d470aab94470eb0552f74ebb2c195~mv2.png/v1/fit/w_2325,h_2325,q_90/file.png"
+      },
+      {
+        "name": "Mythic code",
+        "image": "https://static.wixstatic.com/media/b56cc6_b350937f7ea0408ca460384ad58c778f~mv2.png/v1/fit/w_2298,h_2298,q_90/file.png"
+      },
+      {
+        "name": "Urban tribe",
+        "image": "https://static.wixstatic.com/media/b56cc6_2185ebc3921a4772ab4d98fa7f0adba8~mv2.png/v1/fit/w_2325,h_2325,q_90/file.png"
+      },
+      {
+        "name": "Versace",
+        "image": "https://static.wixstatic.com/media/b56cc6_a4d139fd43ec4d33bd017ff5e678e9cd~mv2.jpg/v1/fit/w_1604,h_1604,q_90/file.jpg"
+      }
+    ],
+    "carTypes": [
+      "3Door Thar",
+      "Thar Roxx"
+    ]
   },
   {
     "id": "0ae7e1e2-c5f7-adba-9403-8bc7fc32538e",
@@ -588,7 +1914,151 @@
       "You can also get them custom-made as per your design preference"
     ],
     "description": "Front Bonnet Fender Pieces Set of 2 – Premium Design Accent Enhance the front profile of your vehicle with our Front Bonnet Fender Pieces (Set of 2) , designed to add a sharp and premium visual detail . Featuring intricate engraved patterns with a rich textured finish , these pieces create a clean flow from the bonnet to the fender, giving your vehicle a more defined and customized look . They are easy to install and fit seamlessly over the stock body without affecting functionality. You can also get them custom-made as per your design preference . Exclusively available on drango.in — made for those who value design and detail.",
-    "wixProductUrl": "https://www.drango.in/product-page/front-pieces-for-the-bonnet-fender"
+    "wixProductUrl": "https://www.drango.in/product-page/front-pieces-for-the-bonnet-fender",
+    "options": [
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Virtu",
+            "description": "Virtu",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_5a05b66f09da45878b69f3c4d5cc347f~mv2.png/v1/fit/w_1886,h_1886,q_90/file.png"
+          },
+          {
+            "value": "Drangon",
+            "description": "Drangon",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_9b3ec0cab13f46b0bdc69741cc1b1545~mv2.png/v1/fit/w_2060,h_2060,q_90/file.png"
+          },
+          {
+            "value": "Stealth Spine",
+            "description": "Stealth Spine",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_7911cec2ed824e3ba2b5e0898a8e7860~mv2.png/v1/fit/w_2158,h_2158,q_90/file.png"
+          },
+          {
+            "value": "Snake",
+            "description": "Snake",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_35f6ea9bb506487599df306939d8b57b~mv2.jpg/v1/fit/w_941,h_1254,q_90/file.jpg"
+          },
+          {
+            "value": "Majestic Engraved",
+            "description": "Majestic Engraved",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_f0b1a6b095494b07bdf22ae3fabd462e~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          },
+          {
+            "value": "custom design with design consultation",
+            "description": "custom design with design consultation",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "3Door Thar",
+            "description": "3Door Thar",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      },
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "Virtu",
+        "image": "https://static.wixstatic.com/media/b56cc6_5a05b66f09da45878b69f3c4d5cc347f~mv2.png/v1/fit/w_1886,h_1886,q_90/file.png"
+      },
+      {
+        "name": "Drangon",
+        "image": "https://static.wixstatic.com/media/b56cc6_9b3ec0cab13f46b0bdc69741cc1b1545~mv2.png/v1/fit/w_2060,h_2060,q_90/file.png"
+      },
+      {
+        "name": "Stealth Spine",
+        "image": "https://static.wixstatic.com/media/b56cc6_7911cec2ed824e3ba2b5e0898a8e7860~mv2.png/v1/fit/w_2158,h_2158,q_90/file.png"
+      },
+      {
+        "name": "Snake",
+        "image": "https://static.wixstatic.com/media/b56cc6_35f6ea9bb506487599df306939d8b57b~mv2.jpg/v1/fit/w_941,h_1254,q_90/file.jpg"
+      },
+      {
+        "name": "Majestic Engraved",
+        "image": "https://static.wixstatic.com/media/b56cc6_f0b1a6b095494b07bdf22ae3fabd462e~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      },
+      {
+        "name": "custom design with design consultation",
+        "image": null
+      }
+    ],
+    "carTypes": [
+      "3Door Thar",
+      "Thar Roxx"
+    ]
   },
   {
     "id": "db3f0dd5-7a58-965a-2d12-d6748c901d72",
@@ -624,7 +2094,151 @@
       "Exclusively available on drango.in — built for those who value unique design."
     ],
     "description": "Hinge Cover Set for Thar and Thar Roxx – Custom Design Detail Upgrade your vehicle with our Hinge Cover Set , designed to turn standard hinges into a distinct design feature . Featuring intricate engraved patterns with deep textured detailing , these covers add a premium and artistic touch that stands out from every angle. Choose from multiple design options including Sun & Moon, Lux, Tribal, and Shin , or go for a fully custom design with consultation to match your style. They are easy to install and sit cleanly without affecting functionality. Exclusively available on drango.in — built for those who value unique design.",
-    "wixProductUrl": "https://www.drango.in/product-page/hinge-cover-thar-roxx-set-of-10"
+    "wixProductUrl": "https://www.drango.in/product-page/hinge-cover-thar-roxx-set-of-10",
+    "options": [
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "3Door Thar",
+            "description": "3Door Thar",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "sun and moon",
+            "description": "sun and moon",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/90d562_2c188bbbc7cb42f38435623768d6cad2~mv2.jpg/v1/fit/w_902,h_770,q_90/file.jpg"
+          },
+          {
+            "value": "lux",
+            "description": "lux",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/90d562_0ce0fd1412fe461dbbe74b2b47e535db~mv2.jpg/v1/fit/w_902,h_770,q_90/file.jpg"
+          },
+          {
+            "value": "trib",
+            "description": "trib",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/90d562_96f22ee8717c47c09eab87a488186a86~mv2.jpg/v1/fit/w_902,h_770,q_90/file.jpg"
+          },
+          {
+            "value": "shin",
+            "description": "shin",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/90d562_95e4b7f1123448e6bbf5faf3145b81ff~mv2.jpg/v1/fit/w_902,h_770,q_90/file.jpg"
+          },
+          {
+            "value": "Majestic Engraved",
+            "description": "Majestic Engraved",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_e3c8a35f07bd4446b2de57ff4cbe2ab1~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          },
+          {
+            "value": "custom design with design consultation",
+            "description": "custom design with design consultation",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      },
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "sun and moon",
+        "image": "https://static.wixstatic.com/media/90d562_2c188bbbc7cb42f38435623768d6cad2~mv2.jpg/v1/fit/w_902,h_770,q_90/file.jpg"
+      },
+      {
+        "name": "lux",
+        "image": "https://static.wixstatic.com/media/90d562_0ce0fd1412fe461dbbe74b2b47e535db~mv2.jpg/v1/fit/w_902,h_770,q_90/file.jpg"
+      },
+      {
+        "name": "trib",
+        "image": "https://static.wixstatic.com/media/90d562_96f22ee8717c47c09eab87a488186a86~mv2.jpg/v1/fit/w_902,h_770,q_90/file.jpg"
+      },
+      {
+        "name": "shin",
+        "image": "https://static.wixstatic.com/media/90d562_95e4b7f1123448e6bbf5faf3145b81ff~mv2.jpg/v1/fit/w_902,h_770,q_90/file.jpg"
+      },
+      {
+        "name": "Majestic Engraved",
+        "image": "https://static.wixstatic.com/media/b56cc6_e3c8a35f07bd4446b2de57ff4cbe2ab1~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      },
+      {
+        "name": "custom design with design consultation",
+        "image": null
+      }
+    ],
+    "carTypes": [
+      "3Door Thar",
+      "Thar Roxx"
+    ]
   },
   {
     "id": "f2acf87d-5b05-427a-338b-2bdf7b65bf17",
@@ -662,6 +2276,137 @@
       "NOTE : Does not work with the new keyless entry door handle"
     ],
     "description": "Door Handle Trims for Thar Roxx – Premium Detail Upgrade Upgrade your vehicle’s exterior with our Door Handle Trims , designed for Thar Roxx to add a refined and eye-catching touch to your doors. Featuring intricate engraved patterns with a textured finish , these trims enhance the look of your door handles with a premium custom design that stands out in everyday use. They are easy to install and fit cleanly over the stock handles, maintaining full functionality while elevating the overall appearance. You can also get them custom-made as per your design preference . Exclusively available on drango.in — made for those who notice the details. NOTE : Does not work with the new keyless entry door handle",
-    "wixProductUrl": "https://www.drango.in/product-page/door-handle-trims-thar-roxx"
+    "wixProductUrl": "https://www.drango.in/product-page/door-handle-trims-thar-roxx",
+    "options": [
+      {
+        "name": "colour",
+        "optionType": "color",
+        "choices": [
+          {
+            "value": "#000000",
+            "description": "black",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#c0c0c0",
+            "description": "silver chrome",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "#efbf04",
+            "description": "gold",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "car type",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "3Door Thar",
+            "description": "3Door Thar",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "Thar Roxx",
+            "description": "Thar Roxx",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      },
+      {
+        "name": "version",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Mandala Engraved",
+            "description": "Mandala Engraved",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_0c0913d0882b43879a2df1edf41ad69a~mv2.png/v1/fit/w_2420,h_1728,q_90/file.png"
+          },
+          {
+            "value": "Ornate Geometric",
+            "description": "Ornate Geometric",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_d3f8c00476eb4e05b97d27aa929591be~mv2.png/v1/fit/w_2911,h_2910,q_90/file.png"
+          },
+          {
+            "value": "Majestic Engraved",
+            "description": "Majestic Engraved",
+            "inStock": true,
+            "visible": true,
+            "media": "https://static.wixstatic.com/media/b56cc6_c983a558195d412db7e1475e86b47a8d~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+          }
+        ]
+      },
+      {
+        "name": "coverage",
+        "optionType": "drop_down",
+        "choices": [
+          {
+            "value": "Half",
+            "description": "Half",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          },
+          {
+            "value": "Full",
+            "description": "Full",
+            "inStock": true,
+            "visible": true,
+            "media": null
+          }
+        ]
+      }
+    ],
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "image": null
+      },
+      {
+        "name": "silver chrome",
+        "hex": "#c0c0c0",
+        "image": null
+      },
+      {
+        "name": "gold",
+        "hex": "#efbf04",
+        "image": null
+      }
+    ],
+    "versions": [
+      {
+        "name": "Mandala Engraved",
+        "image": "https://static.wixstatic.com/media/b56cc6_0c0913d0882b43879a2df1edf41ad69a~mv2.png/v1/fit/w_2420,h_1728,q_90/file.png"
+      },
+      {
+        "name": "Ornate Geometric",
+        "image": "https://static.wixstatic.com/media/b56cc6_d3f8c00476eb4e05b97d27aa929591be~mv2.png/v1/fit/w_2911,h_2910,q_90/file.png"
+      },
+      {
+        "name": "Majestic Engraved",
+        "image": "https://static.wixstatic.com/media/b56cc6_c983a558195d412db7e1475e86b47a8d~mv2.jpg/v1/fit/w_1086,h_1086,q_90/file.jpg"
+      }
+    ],
+    "carTypes": [
+      "3Door Thar",
+      "Thar Roxx"
+    ]
   }
 ]

@@ -3,25 +3,28 @@ import { CARS_DATA } from '../data/mockData';
 import { CheckCircle2 } from 'lucide-react';
 
 export const CategorySection = ({ selectedCarId, onSelectCar }) => {
+  // Show only 6 cars as requested
+  const displayedCars = CARS_DATA.slice(0, 6);
+
   return (
-    <section id="categories" className="py-8 sm:py-12 bg-gradient-to-b from-maharaja-950 via-maharaja-900/90 to-maharaja-950 relative overflow-hidden">
+    <section id="categories" className="py-10 sm:py-16 bg-gradient-to-b from-maharaja-950 via-maharaja-900/90 to-maharaja-950 relative overflow-hidden">
       
       {/* Subtle Royal Ambient Background Lights */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold/5 blur-[120px] pointer-events-none rounded-full"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(110,17,32,0.2)_0%,transparent_70%)] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gold/5 blur-[140px] pointer-events-none rounded-full"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(110,17,32,0.18)_0%,transparent_70%)] pointer-events-none"></div>
 
       {/* Section Title */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-5 sm:mb-8 text-center relative z-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-8 sm:mb-12 text-center relative z-10">
         <h2 className="font-royal text-2xl sm:text-3xl md:text-4xl font-extrabold text-gold-bright tracking-wider uppercase drop-shadow-md">
           Choose Category
         </h2>
-        <div className="w-12 sm:w-16 h-0.5 bg-gold-gradient mx-auto mt-2 rounded-full shadow-gold-sm"></div>
+        <div className="w-16 sm:w-20 h-0.5 bg-gold-gradient mx-auto mt-3 rounded-full shadow-gold-sm"></div>
       </div>
 
-      {/* 3D Cars Grid (3x3 matching user reference) - Smaller, Compact & Elegant */}
-      <div className="max-w-3xl sm:max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
-          {CARS_DATA.map((car) => {
+      {/* 3D Cars Grid: Exactly 6 Cars, 3 Columns on desktop, 2 on mobile, ZERO BORDERS */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 md:gap-10">
+          {displayedCars.map((car) => {
             const isSelected = selectedCarId === car.id;
             return (
               <div
@@ -33,36 +36,60 @@ export const CategorySection = ({ selectedCarId, onSelectCar }) => {
                     productsEl.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className={`group cursor-pointer rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 relative aspect-[16/11] flex items-center justify-center p-1 sm:p-1.5 ${
-                  isSelected
-                    ? 'border-2 border-gold-bright shadow-gold-glow bg-maharaja-800/80 -translate-y-1 ring-2 ring-gold/40'
-                    : 'glass-maharaja-card border border-gold/20 hover:border-gold/70 hover:shadow-gold-sm hover:-translate-y-1'
-                }`}
+                className="group cursor-pointer flex flex-col items-center justify-center transition-all duration-300 relative select-none"
                 title={car.name}
               >
-                {/* Active Indicator Seal */}
-                {isSelected && (
-                  <div className="absolute top-2 right-2 z-30 flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold-gradient text-maharaja-950 font-black text-[10px] shadow-md animate-fadeIn tracking-wider">
-                    <CheckCircle2 className="w-3 h-3 fill-current" />
-                    <span>SELECTED</span>
-                  </div>
-                )}
+                {/* 3D Car Visual Container - Strictly NO borders */}
+                <div className="relative w-full aspect-[4/3] flex items-center justify-center overflow-visible">
+                  
+                  {/* Subtle Background Glow behind car on hover / selected */}
+                  <div
+                    className={`absolute inset-0 pointer-events-none rounded-full transition-all duration-500 blur-2xl ${
+                      isSelected
+                        ? 'bg-gold/25 scale-100 opacity-100'
+                        : 'bg-gold/10 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-105'
+                    }`}
+                  ></div>
 
-                {/* Artistic Golden Splash Aura Behind 3D Vehicle */}
-                <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-                  <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-tr from-gold/15 via-maharaja-600/25 to-amber-400/15 blur-xl group-hover:scale-115 transition-transform duration-500"></div>
+                  {/* Active Selected Pill Badge */}
+                  {isSelected && (
+                    <div className="absolute top-1 right-1 sm:top-2 sm:right-2 z-30 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gold-gradient text-maharaja-950 font-black text-[10px] sm:text-xs shadow-gold-sm animate-fadeIn tracking-wider">
+                      <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
+                      <span>SELECTED</span>
+                    </div>
+                  )}
+
+                  {/* 3D Car Image with radial edge feathering (Zero box borders or edges) */}
+                  <img
+                    src={car.image}
+                    alt={car.name}
+                    className="w-full h-full object-contain object-center transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-105 relative z-10 [mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_98%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_98%)]"
+                    loading="lazy"
+                  />
                 </div>
 
-                {/* 3D Car Image - Compact & Crisp */}
-                <img
-                  src={car.image}
-                  alt={car.name}
-                  className="w-full h-full object-cover object-center rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500 ease-out relative z-10"
-                  loading="lazy"
-                />
+                {/* Car Title Underneath Matching Reference Image */}
+                <div className="mt-2 sm:mt-3 text-center">
+                  <h3
+                    className={`font-royal font-bold text-sm sm:text-base md:text-lg tracking-wide transition-colors duration-300 ${
+                      isSelected
+                        ? 'text-gold-bright drop-shadow-sm font-extrabold'
+                        : 'text-gray-200 group-hover:text-gold-bright'
+                    }`}
+                  >
+                    {car.name}
+                  </h3>
+                  
+                  {/* Active Gold Indicator Dash */}
+                  <div
+                    className={`h-0.5 mx-auto mt-1.5 rounded-full transition-all duration-300 ${
+                      isSelected
+                        ? 'w-10 bg-gold-gradient shadow-gold-sm opacity-100'
+                        : 'w-0 bg-gold-bright/60 opacity-0 group-hover:w-6 group-hover:opacity-75'
+                    }`}
+                  ></div>
+                </div>
 
-                {/* Subtle Inner Border */}
-                <div className="absolute inset-0 rounded-xl sm:rounded-2xl pointer-events-none ring-1 ring-inset ring-gold/15 group-hover:ring-gold/30 transition-all z-20"></div>
               </div>
             );
           })}
@@ -72,3 +99,4 @@ export const CategorySection = ({ selectedCarId, onSelectCar }) => {
     </section>
   );
 };
+

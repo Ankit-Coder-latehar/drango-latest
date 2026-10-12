@@ -28,14 +28,14 @@ export const TestimonialsSection = () => {
 
       {/* Testimonials Cards Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {TESTIMONIALS_DATA.map((item) => {
             const isLiked = likes[item.id];
 
             return (
               <div
                 key={item.id}
-                className="glass-maharaja-card rounded-2xl p-7 flex flex-col justify-between relative group hover:border-gold/70 transition-all duration-300"
+                className="glass-maharaja-card rounded-2xl p-5 sm:p-7 flex flex-col justify-between relative group hover:border-gold/70 transition-all duration-300"
               >
                 {/* Royal Quote Icon in Background */}
                 <Quote className="w-16 h-16 text-gold/10 absolute top-4 right-4 pointer-events-none group-hover:text-gold/20 transition-colors" />

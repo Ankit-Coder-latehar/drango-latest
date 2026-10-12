@@ -66,12 +66,34 @@ export const FeaturedSlideshow = ({
     return null;
   }
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
   const handleNext = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 45) {
+      handleNext();
+    } else if (distance < -45) {
+      handlePrev();
+    }
   };
 
   const handleAddToCart = (product, e) => {
@@ -94,7 +116,7 @@ export const FeaturedSlideshow = ({
   return (
     <section
       id="featured"
-      className="py-16 sm:py-20 bg-gradient-to-b from-maharaja-950 via-maharaja-900 to-maharaja-950 relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-maharaja-950 via-maharaja-900 to-maharaja-950 relative overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -102,15 +124,11 @@ export const FeaturedSlideshow = ({
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(110,17,32,0.3)_0%,rgba(14,2,4,0.95)_100%)] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gold/40 bg-maharaja-850/80 text-gold text-xs font-bold tracking-widest uppercase mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-gold-bright" />
-              <span>NEW ARRIVALS • CURATED</span>
-            </div>
-            <h2 className="font-royal text-2xl sm:text-4xl font-black text-gold-bright tracking-tight">
+            <h2 className="font-royal text-2xl sm:text-3xl md:text-4xl font-black text-gold-bright tracking-tight">
               Our Latest Products
             </h2>
             <p className="text-amber-200/80 text-xs sm:text-sm mt-1 max-w-xl font-light">
@@ -119,26 +137,31 @@ export const FeaturedSlideshow = ({
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-2 self-start md:self-auto">
+          <div className="flex items-center gap-2 self-start sm:self-auto">
             <button
               onClick={handlePrev}
-              className="p-2.5 rounded-xl border border-gold/40 glass-maharaja text-gold-bright hover:bg-gold-gradient hover:text-maharaja-950 transition-all duration-300 shadow-sm"
+              className="p-2 sm:p-2.5 rounded-xl border border-gold/40 glass-maharaja text-gold-bright hover:bg-gold-gradient hover:text-maharaja-950 transition-all duration-300 shadow-sm"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={handleNext}
-              className="p-2.5 rounded-xl border border-gold/40 glass-maharaja text-gold-bright hover:bg-gold-gradient hover:text-maharaja-950 transition-all duration-300 shadow-sm"
+              className="p-2 sm:p-2.5 rounded-xl border border-gold/40 glass-maharaja text-gold-bright hover:bg-gold-gradient hover:text-maharaja-950 transition-all duration-300 shadow-sm"
               aria-label="Next slide"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
 
-        {/* Carousel Window */}
-        <div className="overflow-hidden -mx-3">
+        {/* Carousel Window with Touch Swipe for Mobile & Tablet */}
+        <div
+          className="overflow-hidden -mx-2 sm:-mx-3 touch-pan-y"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           <div
             className="flex transition-transform duration-700 ease-out"
             style={{
@@ -166,7 +189,7 @@ export const FeaturedSlideshow = ({
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-maharaja-950/80 via-transparent to-transparent"></div>
-                      
+
                       {/* Floating New Badge */}
                       <div className="absolute top-3 left-3 z-10">
                         <span className="text-[10px] font-black tracking-wider uppercase px-2.5 py-1 rounded bg-maharaja-900/90 text-gold-bright border border-gold/40 shadow">
@@ -226,11 +249,10 @@ export const FeaturedSlideshow = ({
 
                         <button
                           onClick={(e) => handleAddToCart(product, e)}
-                          className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 shadow-sm ${
-                            isAdded
+                          className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 shadow-sm ${isAdded
                               ? 'bg-emerald-600 text-white'
                               : 'bg-gold-gradient text-maharaja-950 hover:shadow-gold-sm hover:brightness-110'
-                          }`}
+                            }`}
                         >
                           {isAdded ? (
                             <>
@@ -260,11 +282,10 @@ export const FeaturedSlideshow = ({
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  currentIndex === idx
+                className={`h-2 rounded-full transition-all duration-300 ${currentIndex === idx
                     ? 'w-7 bg-gold-gradient shadow-gold-sm'
                     : 'w-2 bg-amber-100/30 hover:bg-amber-100/60'
-                }`}
+                  }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}

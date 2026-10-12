@@ -28,11 +28,13 @@ export const CartDrawer = ({
 
     let message = '👑 *NEW ORDER COMMISSION - DRANGO CUSTOMS*%0A%0A';
     items.forEach((item, index) => {
-      message += `${index + 1}. *${item.product.name}*%0A   Qty: ${item.quantity} | Price: ${formatPrice(item.product.price * item.quantity)}%0A`;
+      const colorText = item.product.selectedColor ? ` | Color: ${item.product.selectedColor}` : '';
+      const versionText = item.product.selectedVersion ? ` | Design: ${item.product.selectedVersion}` : '';
+      message += `${index + 1}. *${item.product.name}*${colorText}${versionText}%0A   Qty: ${item.quantity} | Price: ${formatPrice(item.product.price * item.quantity)}%0A`;
     });
-    message += `%0A*TOTAL AMOUNT:* ${formatPrice(subtotal)}%0A%0APlease confirm fitment compatibility and delivery timeline for my Thar ROXX.`;
+    message += `%0A*TOTAL AMOUNT:* ${formatPrice(subtotal)}%0A%0APlease confirm fitment compatibility and delivery timeline.`;
 
-    const whatsappUrl = `https://wa.me/919876543210?text=${message}`;
+    const whatsappUrl = `https://wa.me/919779443821?text=${message}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -44,8 +46,8 @@ export const CartDrawer = ({
         onClick={onClose}
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md glass-maharaja border-l border-gold/40 shadow-royal flex flex-col justify-between">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-8 md:pl-10">
+        <div className="w-screen max-w-full sm:max-w-md glass-maharaja border-l border-gold/40 shadow-royal flex flex-col justify-between">
           
           {/* Header */}
           <div className="p-6 border-b border-gold/20 flex items-center justify-between">
@@ -105,6 +107,20 @@ export const CartDrawer = ({
                     <h4 className="font-royal text-xs font-bold text-amber-50 truncate">
                       {product.name}
                     </h4>
+                    {(product.selectedColor || product.selectedVersion) && (
+                      <div className="flex items-center gap-1.5 mt-0.5 mb-1 flex-wrap">
+                        {product.selectedColor && (
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-maharaja-800 text-gold-bright border border-gold/20">
+                            {product.selectedColor}
+                          </span>
+                        )}
+                        {product.selectedVersion && (
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-maharaja-800 text-amber-200 border border-gold/20">
+                            {product.selectedVersion}
+                          </span>
+                        )}
+                      </div>
+                    )}
                     <p className="text-xs font-black text-gold-gradient my-1">
                       {formatPrice(product.price)}
                     </p>

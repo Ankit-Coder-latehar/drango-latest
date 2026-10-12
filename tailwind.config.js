@@ -28,9 +28,10 @@ export default {
         }
       },
       fontFamily: {
-        royal: ['"Cinzel"', 'serif'],
-        display: ['"Cinzel Decorative"', '"Cinzel"', 'serif'],
-        sans: ['"Outfit"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        poppins: ['"Poppins"', 'sans-serif'],
+        royal: ['"Poppins"', 'sans-serif'],
+        display: ['"Poppins"', 'sans-serif'],
+        sans: ['"Poppins"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'royal': '0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15)',
