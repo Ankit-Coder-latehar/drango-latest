@@ -164,7 +164,7 @@ export const PRODUCTS_DATA = [
     rating: 4.8,
     reviewsCount: 64,
     image: '/images/roofrack_roxx_gold.jpg',
-    badge: 'EXPEDITION GRADE',
+    badge: 'NEW',
     isFeatured: true,
     compatibility: 'Thar ROXX 5-Door',
     specs: [
@@ -474,6 +474,7 @@ export const INSTAGRAM_REELS = [
   {
     id: 'reel-1',
     shortcode: 'Dd8frmRTOm0',
+    videoUrl: '/videos/reels/Dd8frmRTOm0.mp4',
     url: 'https://www.instagram.com/reel/Dd8frmRTOm0/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
     embedUrl: 'https://www.instagram.com/reel/Dd8frmRTOm0/embed',
     title: 'Drango Reel 1',
@@ -482,6 +483,7 @@ export const INSTAGRAM_REELS = [
   {
     id: 'reel-2',
     shortcode: 'DWg6UPODLrB',
+    videoUrl: '/videos/reels/DWg6UPODLrB.mp4',
     url: 'https://www.instagram.com/reel/DWg6UPODLrB/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
     embedUrl: 'https://www.instagram.com/reel/DWg6UPODLrB/embed',
     title: 'Drango Reel 2',
@@ -490,6 +492,7 @@ export const INSTAGRAM_REELS = [
   {
     id: 'reel-3',
     shortcode: 'DeONH_Szilz',
+    videoUrl: '/videos/reels/DeONH_Szilz.mp4',
     url: 'https://www.instagram.com/reel/DeONH_Szilz/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
     embedUrl: 'https://www.instagram.com/reel/DeONH_Szilz/embed',
     title: 'Drango Reel 3',
@@ -498,6 +501,7 @@ export const INSTAGRAM_REELS = [
   {
     id: 'reel-4',
     shortcode: 'DdymfOxTgfb',
+    videoUrl: '/videos/reels/DdymfOxTgfb.mp4',
     url: 'https://www.instagram.com/reel/DdymfOxTgfb/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==',
     embedUrl: 'https://www.instagram.com/reel/DdymfOxTgfb/embed',
     title: 'Drango Reel 4',

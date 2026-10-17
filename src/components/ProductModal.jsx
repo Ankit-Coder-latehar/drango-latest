@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
-import { X, Star, ShieldCheck, Check, ShoppingBag, Phone, Sparkles } from 'lucide-react';
+import { X, Star, ShieldCheck, Check, ShoppingBag, Phone, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
   const [isAdded, setIsAdded] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [activeImage, setActiveImage] = useState(product?.image);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  const galleryImages = product?.images && product.images.length > 0 ? product.images : (product?.image ? [product.image] : []);
 
   React.useEffect(() => {
     if (product) {
-      setActiveImage(product.image);
+      setActiveImageIndex(0);
       setQuantity(1);
     }
   }, [product]);
+
+  const handlePrevImage = (e) => {
+    if (e) e.stopPropagation();
+    if (galleryImages.length === 0) return;
+    setActiveImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = (e) => {
+    if (e) e.stopPropagation();
+    if (galleryImages.length === 0) return;
+    setActiveImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  };
 
   if (!isOpen || !product) return null;
 
@@ -31,8 +45,6 @@ export const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
     }).format(val);
   };
 
-  const galleryImages = product.images && product.images.length > 0 ? product.images : [product.image];
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
       <div
@@ -50,32 +62,86 @@ export const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
         <div className="overflow-y-auto p-6 sm:p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            {/* Visual Column with Gallery */}
+            {/* Visual Column with Carousel */}
             <div className="flex flex-col gap-3">
-              <div className="relative rounded-2xl overflow-hidden bg-maharaja-950 border border-gold/30 h-72 min-h-[260px] flex items-center justify-center">
-                <img
-                  src={activeImage || product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover object-center"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className="px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow">
-                    {product.badge}
-                  </span>
+              <div className="relative rounded-2xl overflow-hidden bg-maharaja-950 border border-gold/30 h-72 min-h-[260px] flex items-center justify-center select-none shadow-xl">
+                {/* Horizontal Sliding Track */}
+                <div 
+                  className="flex w-full h-full transition-transform duration-500 ease-out will-change-transform"
+                  style={{ transform: `translateX(-${activeImageIndex * 100}%)` }}
+                >
+                  {galleryImages.map((imgUrl, idx) => (
+                    <div 
+                      key={idx} 
+                      className="min-w-full w-full h-full shrink-0 relative flex items-center justify-center bg-maharaja-950"
+                    >
+                      <img
+                        src={imgUrl}
+                        alt={`${product.name} slide ${idx + 1}`}
+                        className="w-full h-full object-cover object-center select-none"
+                      />
+                    </div>
+                  ))}
                 </div>
+
+                {/* Left Carousel Arrow */}
+                {galleryImages.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={handlePrevImage}
+                    aria-label="Previous image"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full glass-maharaja border border-gold/40 text-gold hover:text-maharaja-950 hover:bg-gold-gradient flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95 cursor-pointer"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                )}
+
+                {/* Right Carousel Arrow */}
+                {galleryImages.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={handleNextImage}
+                    aria-label="Next image"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full glass-maharaja border border-gold/40 text-gold hover:text-maharaja-950 hover:bg-gold-gradient flex items-center justify-center shadow-lg transition-all hover:scale-110 active:scale-95 cursor-pointer"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                )}
+
+                <div className="absolute top-3 left-3 pointer-events-none">
+                  {product.badge && product.badge.toLowerCase().includes('new') ? (
+                    <span className="px-3 py-1 rounded-full bg-green-500 text-black font-black text-xs uppercase shadow">
+                      {product.badge}
+                    </span>
+                  ) : (
+                    <span className="px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow">
+                      {product.badge}
+                    </span>
+                  )}
+                </div>
+
+                {galleryImages.length > 1 && (
+                  <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full glass-maharaja border border-gold/30 text-[10px] font-mono text-amber-200 shadow">
+                    {activeImageIndex + 1} / {galleryImages.length}
+                  </div>
+                )}
               </div>
 
-              {/* Thumbnails row if multiple images exist */}
+              {/* Thumbnails Row */}
               {galleryImages.length > 1 && (
-                <div className="flex items-center gap-2 overflow-x-auto pb-1">
+                <div 
+                  className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none justify-center"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
                   {galleryImages.map((imgUrl, idx) => (
                     <button
                       key={idx}
-                      onClick={() => setActiveImage(imgUrl)}
-                      className={`w-14 h-14 rounded-lg overflow-hidden border shrink-0 transition-all ${
-                        activeImage === imgUrl
-                          ? 'border-gold-bright ring-2 ring-gold/50 scale-105'
-                          : 'border-gold/20 hover:border-gold/60 opacity-70 hover:opacity-100'
+                      type="button"
+                      onClick={() => setActiveImageIndex(idx)}
+                      className={`w-12 h-12 rounded-lg overflow-hidden border shrink-0 transition-all cursor-pointer ${
+                        activeImageIndex === idx
+                          ? 'border-gold-bright ring-2 ring-gold/50 scale-105 opacity-100'
+                          : 'border-gold/20 hover:border-gold/60 opacity-60 hover:opacity-100'
                       }`}
                     >
                       <img src={imgUrl} alt="" className="w-full h-full object-cover" />
@@ -109,10 +175,10 @@ export const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
 
                 {/* Price */}
                 <div className="flex items-baseline gap-3 mb-4">
-                  <span className="font-royal text-3xl font-black text-gold-gradient">
+                  <span className="font-royal text-xl sm:text-2xl font-light text-gold-gradient opacity-75">
                     {formatPrice(product.price)}
                   </span>
-                  <span className="text-sm text-amber-200/40 line-through">
+                  <span className="text-sm text-amber-200/40 line-through font-light">
                     {formatPrice(product.originalPrice)}
                   </span>
                 </div>
@@ -183,7 +249,7 @@ export const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
                   </button>
 
                   <a
-                    href={`https://wa.me/919876543210?text=Hello%20Drango!%20I%20want%20to%20order%20${quantity}x%20${encodeURIComponent(product.name)}%20(${formatPrice(product.price * quantity)})`}
+                    href={`https://wa.me/919779443821?text=Hello%20Drango!%20I%20want%20to%20order%20${quantity}x%20${encodeURIComponent(product.name)}%20(${formatPrice(product.price * quantity)})`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider border border-gold text-gold-bright hover:bg-maharaja-800 transition-all flex items-center justify-center gap-1.5"

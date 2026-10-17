@@ -199,18 +199,6 @@ export const FeaturedSlideshow = ({
                     {/* Product Details */}
                     <div className="p-5 flex-1 flex flex-col justify-between">
                       <div>
-                        {/* Rating & Compatibility */}
-                        <div className="flex items-center justify-between text-xs mb-2">
-                          <div className="flex items-center gap-1 text-gold-bright font-semibold">
-                            <Star className="w-3.5 h-3.5 fill-current text-gold" />
-                            <span>{product.rating}</span>
-                            <span className="text-amber-200/50">({product.reviewsCount})</span>
-                          </div>
-                          <span className="text-[10px] text-amber-200/60 truncate max-w-[140px]">
-                            {product.compatibility}
-                          </span>
-                        </div>
-
                         {/* Title */}
                         <h4
                           onClick={() => onOpenQuickView && onOpenQuickView(product)}
@@ -235,11 +223,11 @@ export const FeaturedSlideshow = ({
                       {/* Price & Add to Cart Button */}
                       <div>
                         <div className="flex items-baseline gap-2 mb-3">
-                          <span className="font-royal text-lg font-black text-gold-gradient">
+                          <span className="font-royal text-base sm:text-lg font-light text-gold-gradient opacity-80">
                             {formatPrice(product.price)}
                           </span>
                           {product.originalPrice && product.originalPrice > product.price && (
-                            <span className="text-xs text-amber-200/40 line-through">
+                            <span className="text-xs text-amber-200/40 line-through font-light">
                               {formatPrice(product.originalPrice)}
                             </span>
                           )}

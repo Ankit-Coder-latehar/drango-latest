@@ -5,7 +5,6 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { CategorySection } from './components/CategorySection';
 import { ProductFilterSection } from './components/ProductFilterSection';
-import { FeaturedSlideshow } from './components/FeaturedSlideshow';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { InstagramSection } from './components/InstagramSection';
 import { ContactSection } from './components/ContactSection';
@@ -127,6 +126,22 @@ export function App() {
     });
   };
 
+  const handleBuyNow = (product, qty = 1) => {
+    const itemKey = getItemKey(product);
+    setCartItems((prevItems) => {
+      const existing = prevItems.find((item) => getItemKey(item.product) === itemKey);
+      if (existing) {
+        return prevItems.map((item) =>
+          getItemKey(item.product) === itemKey
+            ? { ...item, quantity: item.quantity + qty }
+            : item
+        );
+      }
+      return [...prevItems, { product, quantity: qty, key: itemKey }];
+    });
+    setIsCartOpen(true);
+  };
+
   const handleUpdateQuantity = (productId, newQuantity) => {
     if (newQuantity <= 0) {
       handleRemoveItem(productId);
@@ -189,20 +204,13 @@ export function App() {
               onSelectCar={handleSelectCar}
             />
 
-            {/* 3. Product Filters (External, Internal, All...) & Dynamic Products */}
+            {/* 3. Product Filters (All Products, Our Limited Products) & Dynamic Products */}
             <ProductFilterSection
               selectedCarId={selectedCarId}
               onAddToCart={handleAddToCart}
               onOpenQuickView={handleOpenProductDetail}
               productsList={productsList}
               isWixLoading={isWixLoading}
-            />
-
-            {/* 4. Featured Products Slideshow / Scrolling Showcase */}
-            <FeaturedSlideshow
-              onAddToCart={handleAddToCart}
-              onOpenQuickView={handleOpenProductDetail}
-              productsList={productsList}
             />
 
             {/* 5. Testimonials & Client Reviews */}
@@ -231,6 +239,7 @@ export function App() {
             product={activeProduct || productsList[0]}
             productsList={productsList}
             onAddToCart={handleAddToCart}
+            onBuyNow={handleBuyNow}
             onSelectProduct={handleOpenProductDetail}
             onBackToProducts={handleNavigateProducts}
             onBackToHome={handleNavigateHome}

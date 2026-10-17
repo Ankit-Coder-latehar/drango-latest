@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TESTIMONIALS_DATA } from '../data/mockData';
-import { Star, ShieldCheck, Quote, Sparkles, ThumbsUp, CheckCircle2 } from 'lucide-react';
+import { Star, ShieldCheck, Quote, ThumbsUp, CheckCircle2 } from 'lucide-react';
 
 export const TestimonialsSection = () => {
   const [likes, setLikes] = useState({});
@@ -14,10 +14,6 @@ export const TestimonialsSection = () => {
       
       {/* Decorative Gold Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-gold/40 bg-maharaja-900/80 text-gold text-xs font-bold tracking-widest uppercase mb-3">
-          <Sparkles className="w-3.5 h-3.5 text-gold-bright" />
-          <span>REAL OWNER FEEDBACK</span>
-        </div>
         <h2 className="font-royal text-3xl sm:text-5xl font-black text-gold-bright tracking-tight mb-4">
           Reviews Section
         </h2>
@@ -116,31 +112,6 @@ export const TestimonialsSection = () => {
           })}
         </div>
 
-        {/* Maharaja Assurance Bar */}
-        <div className="mt-14 p-6 rounded-2xl glass-maharaja border-gold-glow flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gold-gradient text-maharaja-950 flex items-center justify-center font-bold text-2xl shadow-gold-sm shrink-0">
-              👑
-            </div>
-            <div>
-              <h4 className="font-royal text-lg font-bold text-amber-50">
-                100% Satisfaction & Royal Fitment Assurance
-              </h4>
-              <p className="text-xs text-amber-200/70">
-                Every component is road-tested under extreme conditions before handover.
-              </p>
-            </div>
-          </div>
-
-          <a
-            href="https://wa.me/919876543210?text=Hello%20Drango!%20I%20want%20to%20consult%20for%20my%20vehicle%20modifications."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-2.5 rounded-full bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase tracking-wider hover:shadow-gold-sm transition-all whitespace-nowrap"
-          >
-            Speak to Chief Mod Specialist
-          </a>
-        </div>
 
       </div>
     </section>

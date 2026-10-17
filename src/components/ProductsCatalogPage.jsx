@@ -36,7 +36,14 @@ export const ProductsCatalogPage = ({
       .filter((p) => {
         // Category filter
         const matchCategory =
-          activeCategory === 'all' || p.category === activeCategory;
+          activeCategory === 'all' ||
+          (activeCategory === 'thar-roxx'
+            ? p.carId === 'thar-roxx' ||
+              p.carId === 'all' ||
+              p.compatibility?.toLowerCase().includes('roxx') ||
+              p.name?.toLowerCase().includes('roxx') ||
+              p.slug?.toLowerCase().includes('roxx')
+            : p.category === activeCategory);
 
         // Vehicle filter
         const matchVehicle =
@@ -120,10 +127,6 @@ export const ProductsCatalogPage = ({
 
         {/* Page Hero Banner */}
         <div className="text-center mb-10 pt-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-gold/40 bg-maharaja-900/80 text-gold text-xs font-bold tracking-widest uppercase mb-3 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-gold-bright" />
-            <span>BESPOKE MAHARAJA ACCESSORIES</span>
-          </div>
           <h1 className="font-royal text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gold-bright tracking-tight mb-3">
             Drango Royal Collection
           </h1>
@@ -206,27 +209,15 @@ export const ProductsCatalogPage = ({
               </button>
 
               <button
-                onClick={() => setActiveCategory('external')}
+                onClick={() => setActiveCategory('thar-roxx')}
                 className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 shrink-0 ${
-                  activeCategory === 'external'
+                  activeCategory === 'thar-roxx'
                     ? 'bg-gold-gradient text-maharaja-950 shadow-gold-sm font-black'
                     : 'glass-maharaja text-amber-100/70 hover:text-gold-bright hover:border-gold/40'
                 }`}
               >
                 <Shield className="w-3.5 h-3.5" />
-                <span>External & Armour</span>
-              </button>
-
-              <button
-                onClick={() => setActiveCategory('internal')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 shrink-0 ${
-                  activeCategory === 'internal'
-                    ? 'bg-gold-gradient text-maharaja-950 shadow-gold-sm font-black'
-                    : 'glass-maharaja text-amber-100/70 hover:text-gold-bright hover:border-gold/40'
-                }`}
-              >
-                <Gem className="w-3.5 h-3.5" />
-                <span>Internal & Cockpit</span>
+                <span>Thar Roxx</span>
               </button>
             </div>
 
@@ -242,11 +233,11 @@ export const ProductsCatalogPage = ({
             {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
               <div
                 key={n}
-                className="glass-maharaja-card rounded-2xl h-84 animate-pulse border border-gold/20 flex flex-col justify-between p-5"
+                className="glass-maharaja-card rounded h-84 animate-pulse border border-gold/20 flex flex-col justify-between p-5"
               >
-                <div className="w-full h-48 bg-maharaja-900/60 rounded-xl mb-4"></div>
-                <div className="h-4 bg-gold/20 rounded w-3/4 mb-2"></div>
-                <div className="h-3 bg-gold/10 rounded w-1/2"></div>
+                <div className="w-full h-48 bg-maharaja-900/60 rounded-sm mb-4"></div>
+                <div className="h-4 bg-gold/20 rounded-sm w-3/4 mb-2"></div>
+                <div className="h-3 bg-gold/10 rounded-sm w-1/2"></div>
               </div>
             ))}
           </div>
@@ -264,7 +255,7 @@ export const ProductsCatalogPage = ({
             </p>
             <button
               onClick={handleResetFilters}
-              className="px-6 py-2.5 rounded-xl bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow-gold-sm"
+              className="px-6 py-2.5 rounded bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow-gold-sm"
             >
               Reset Filters
             </button>
@@ -284,7 +275,7 @@ export const ProductsCatalogPage = ({
                 <div
                   key={item.id}
                   onClick={() => onOpenProduct(item)}
-                  className="glass-maharaja-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-gold-glow border border-gold/25"
+                  className="glass-maharaja-card rounded overflow-hidden flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-gold-glow border border-gold/25"
                 >
                   {/* Item Image */}
                   <div className="relative h-56 sm:h-52 overflow-hidden bg-maharaja-950">
@@ -298,9 +289,15 @@ export const ProductsCatalogPage = ({
 
                     {/* Badge */}
                     <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
-                      <span className="text-[10px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-maharaja-900/90 text-gold-bright border border-gold/40 shadow">
-                        {item.badge || 'DRANGO BESPOKE'}
-                      </span>
+                      {item.badge && item.badge.toLowerCase().includes('new') ? (
+                        <span className="text-[10px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-green-500 text-black border border-green-400 shadow">
+                          {item.badge}
+                        </span>
+                      ) : (
+                        <span className="text-[10px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-maharaja-900/90 text-gold-bright border border-gold/40 shadow">
+                          {item.badge || 'DRANGO BESPOKE'}
+                        </span>
+                      )}
                       {discountPercent > 0 && (
                         <span className="text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-emerald-600 text-white shadow w-fit">
                           {discountPercent}% OFF
@@ -312,18 +309,6 @@ export const ProductsCatalogPage = ({
                   {/* Item Details */}
                   <div className="p-5 flex-1 flex flex-col justify-between">
                     <div>
-                      {/* Rating & Compatibility */}
-                      <div className="flex items-center justify-between text-xs mb-2">
-                        <div className="flex items-center gap-1 text-gold-bright font-semibold">
-                          <Star className="w-3.5 h-3.5 fill-current text-gold" />
-                          <span>{item.rating || 4.9}</span>
-                          <span className="text-amber-200/50">({item.reviewsCount || 42})</span>
-                        </div>
-                        <span className="text-[10px] text-amber-200/70 truncate max-w-[130px]">
-                          {item.compatibility}
-                        </span>
-                      </div>
-
                       {/* Title */}
                       <h3 className="font-royal text-base font-bold text-amber-50 group-hover:text-gold-bright transition-colors line-clamp-2 mb-2">
                         {item.name}
@@ -369,11 +354,11 @@ export const ProductsCatalogPage = ({
                     {/* Price and Action Buttons */}
                     <div>
                       <div className="flex items-baseline gap-2 mb-3">
-                        <span className="font-royal text-lg font-black text-gold-gradient">
+                        <span className="font-royal text-base sm:text-lg font-light text-gold-gradient opacity-80">
                           {formatPrice(item.price)}
                         </span>
                         {item.originalPrice && item.originalPrice > item.price && (
-                          <span className="text-xs text-amber-200/40 line-through">
+                          <span className="text-xs text-amber-200/40 line-through font-light">
                             {formatPrice(item.originalPrice)}
                           </span>
                         )}
@@ -385,14 +370,14 @@ export const ProductsCatalogPage = ({
                             e.stopPropagation();
                             onOpenProduct(item);
                           }}
-                          className="py-2.5 px-2 rounded-xl text-[11px] font-bold uppercase tracking-wider border border-gold/50 text-gold hover:border-gold hover:bg-gold hover:text-maharaja-950 transition-all text-center"
+                          className="py-2.5 px-2 rounded text-[11px] font-bold uppercase tracking-wider border border-gold/50 text-gold hover:border-gold hover:bg-gold hover:text-maharaja-950 transition-all text-center"
                         >
                           Details
                         </button>
 
                         <button
                           onClick={(e) => handleQuickAdd(item, e)}
-                          className={`py-2.5 px-2 rounded-xl text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-1 transition-all ${
+                          className={`py-2.5 px-2 rounded text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-1 transition-all ${
                             isItemAdded
                               ? 'bg-emerald-600 text-white'
                               : 'bg-gold-gradient text-maharaja-950 hover:shadow-gold-sm hover:brightness-110'
@@ -406,7 +391,7 @@ export const ProductsCatalogPage = ({
                           ) : (
                             <>
                               <ShoppingBag className="w-3.5 h-3.5" />
-                              <span>Add</span>
+                              <span>Add to Cart</span>
                             </>
                           )}
                         </button>

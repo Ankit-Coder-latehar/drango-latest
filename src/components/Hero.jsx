@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { ShieldCheck, Award, Wrench, Volume2, VolumeX, Play, Pause, ChevronDown, Phone, Truck, Headphones } from 'lucide-react';
+import { ShieldCheck, Award, Wrench, Volume2, VolumeX, Play, Pause, ChevronDown, Phone, Truck, PhoneCall } from 'lucide-react';
 
 export const Hero = ({ onNavigateProducts }) => {
   const heroRef = useRef(null);
@@ -24,17 +24,17 @@ export const Hero = ({ onNavigateProducts }) => {
           duration: 1.1,
           delay: 0.2
         })
-        .from(ctaRef.current, {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-        }, '-=0.4')
-        .from('.hero-stat-card', {
-          y: 30,
-          opacity: 0,
-          stagger: 0.15,
-          duration: 0.8,
-        }, '-=0.4');
+          .from(ctaRef.current, {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+          }, '-=0.4')
+          .from('.hero-stat-card', {
+            y: 30,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.8,
+          }, '-=0.4');
 
       }, heroRef);
     } catch (e) {
@@ -68,7 +68,7 @@ export const Hero = ({ onNavigateProducts }) => {
         videoRef.current.pause();
         setIsPlaying(false);
       } else {
-        videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+        videoRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
       }
     }
   };
@@ -82,7 +82,7 @@ export const Hero = ({ onNavigateProducts }) => {
 
   return (
     <section id="home" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16">
-      
+
       {/* Background Video & Fallback Poster */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         <video
@@ -124,7 +124,7 @@ export const Hero = ({ onNavigateProducts }) => {
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left flex flex-col items-start w-full">
-        
+
 
         {/* Exact Requested Heading - Left Aligned */}
         <h1
@@ -132,10 +132,10 @@ export const Hero = ({ onNavigateProducts }) => {
           className="font-royal text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.1] mb-8 sm:mb-10 text-left drop-shadow-2xl"
         >
           <span className="block text-gold-bright uppercase tracking-wider">
-            Drango :
+            Drango
           </span>
           <span className="block text-gold-gradient font-serif italic text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-2 sm:mt-3 tracking-normal capitalize font-bold">
-            The ultimate modification of the cars
+            Your Car’s Ultimate Glow-Up Buddy
           </span>
         </h1>
 
@@ -166,7 +166,7 @@ export const Hero = ({ onNavigateProducts }) => {
 
         {/* Trust Badges / Stats Bar */}
         <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
-          
+
           <div className="hero-stat-card glass-maharaja p-3 sm:p-4 rounded-2xl flex items-center gap-3 text-left">
             <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/40 flex items-center justify-center text-gold-bright shrink-0">
               <Award className="w-5 h-5" />
@@ -176,7 +176,7 @@ export const Hero = ({ onNavigateProducts }) => {
                 Handicraft in Chandigarh
               </div>
               <div className="text-[10px] sm:text-xs text-amber-200/70 uppercase tracking-wider">
-                Precision Craft
+
               </div>
             </div>
           </div>
@@ -187,10 +187,10 @@ export const Hero = ({ onNavigateProducts }) => {
             </div>
             <div>
               <div className="text-xs sm:text-sm md:text-base font-bold text-gold-bright leading-snug">
-                Fast & Free Shipping
+                Pan India Delivery
               </div>
               <div className="text-[10px] sm:text-xs text-amber-200/70 tracking-wide">
-                Orders Over ₹20,000
+
               </div>
             </div>
           </div>
@@ -204,21 +204,21 @@ export const Hero = ({ onNavigateProducts }) => {
                 Quality Checked
               </div>
               <div className="text-[10px] sm:text-xs text-amber-200/70 uppercase tracking-wider">
-                Before Dispatch
+
               </div>
             </div>
           </div>
 
           <div className="hero-stat-card glass-maharaja p-3 sm:p-4 rounded-2xl flex items-center gap-3 text-left">
             <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/40 flex items-center justify-center text-gold-bright shrink-0">
-              <Headphones className="w-5 h-5" />
+              <PhoneCall className="w-5 h-5" />
             </div>
             <div>
               <div className="text-xs sm:text-sm md:text-base font-bold text-gold-bright leading-snug">
                 Customer Support
               </div>
               <div className="text-[10px] sm:text-xs text-amber-200/70 uppercase tracking-wider">
-                Dedicated Care
+
               </div>
             </div>
           </div>

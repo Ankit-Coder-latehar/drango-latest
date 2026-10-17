@@ -8,7 +8,7 @@ export const CategorySection = ({ selectedCarId, onSelectCar }) => {
 
   return (
     <section id="categories" className="py-10 sm:py-16 bg-gradient-to-b from-maharaja-950 via-maharaja-900/90 to-maharaja-950 relative overflow-hidden">
-      
+
       {/* Subtle Royal Ambient Background Lights */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gold/5 blur-[140px] pointer-events-none rounded-full"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(110,17,32,0.18)_0%,transparent_70%)] pointer-events-none"></div>
@@ -16,7 +16,7 @@ export const CategorySection = ({ selectedCarId, onSelectCar }) => {
       {/* Section Title */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-8 sm:mb-12 text-center relative z-10">
         <h2 className="font-royal text-2xl sm:text-3xl md:text-4xl font-extrabold text-gold-bright tracking-wider uppercase drop-shadow-md">
-          Choose Category
+          Choose Vehicle
         </h2>
         <div className="w-16 sm:w-20 h-0.5 bg-gold-gradient mx-auto mt-3 rounded-full shadow-gold-sm"></div>
       </div>
@@ -26,6 +26,7 @@ export const CategorySection = ({ selectedCarId, onSelectCar }) => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 md:gap-10">
           {displayedCars.map((car) => {
             const isSelected = selectedCarId === car.id;
+            const isDimmed = Boolean(selectedCarId) && !isSelected;
             return (
               <div
                 key={car.id}
@@ -36,18 +37,26 @@ export const CategorySection = ({ selectedCarId, onSelectCar }) => {
                     productsEl.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="group cursor-pointer flex flex-col items-center justify-center transition-all duration-300 relative select-none"
+                className={`group cursor-pointer flex flex-col items-center justify-center transition-all duration-300 relative select-none ${
+                  isSelected
+                    ? 'opacity-100 scale-105 z-20'
+                    : isDimmed
+                      ? 'opacity-45 hover:opacity-95 hover:scale-100'
+                      : 'opacity-100'
+                }`}
                 title={car.name}
               >
                 {/* 3D Car Visual Container - Strictly NO borders */}
                 <div className="relative w-full aspect-[4/3] flex items-center justify-center overflow-visible">
-                  
+
                   {/* Subtle Background Glow behind car on hover / selected */}
                   <div
                     className={`absolute inset-0 pointer-events-none rounded-full transition-all duration-500 blur-2xl ${
                       isSelected
-                        ? 'bg-gold/25 scale-100 opacity-100'
-                        : 'bg-gold/10 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-105'
+                        ? 'bg-gold/30 scale-100 opacity-100'
+                        : isDimmed
+                          ? 'opacity-0'
+                          : 'bg-gold/10 scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-105'
                     }`}
                   ></div>
 
@@ -59,11 +68,22 @@ export const CategorySection = ({ selectedCarId, onSelectCar }) => {
                     </div>
                   )}
 
+                  {/* White Dim Overlay for unselected cars */}
+                  {isDimmed && (
+                    <div className="absolute inset-0 bg-white/20 rounded-3xl pointer-events-none z-20 [mask-image:radial-gradient(ellipse_at_center,black_65%,transparent_98%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_65%,transparent_98%)] transition-opacity duration-300 group-hover:bg-white/5"></div>
+                  )}
+
                   {/* 3D Car Image with radial edge feathering (Zero box borders or edges) */}
                   <img
                     src={car.image}
                     alt={car.name}
-                    className="w-full h-full object-contain object-center transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-105 relative z-10 [mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_98%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_98%)]"
+                    className={`w-full h-full object-contain object-center transition-all duration-500 ease-out relative z-10 [mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_98%)] [-webkit-mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_98%)] ${
+                      isSelected
+                        ? 'drop-shadow-[0_10px_25px_rgba(212,175,55,0.35)]'
+                        : isDimmed
+                          ? 'brightness-110 contrast-90 group-hover:-translate-y-1'
+                          : 'group-hover:-translate-y-2 group-hover:scale-105'
+                    }`}
                     loading="lazy"
                   />
                 </div>
@@ -74,12 +94,14 @@ export const CategorySection = ({ selectedCarId, onSelectCar }) => {
                     className={`font-royal font-bold text-sm sm:text-base md:text-lg tracking-wide transition-colors duration-300 ${
                       isSelected
                         ? 'text-gold-bright drop-shadow-sm font-extrabold'
-                        : 'text-gray-200 group-hover:text-gold-bright'
+                        : isDimmed
+                          ? 'text-white/60 group-hover:text-white'
+                          : 'text-gray-200 group-hover:text-gold-bright'
                     }`}
                   >
                     {car.name}
                   </h3>
-                  
+
                   {/* Active Gold Indicator Dash */}
                   <div
                     className={`h-0.5 mx-auto mt-1.5 rounded-full transition-all duration-300 ${

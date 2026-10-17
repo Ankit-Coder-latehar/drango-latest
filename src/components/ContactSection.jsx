@@ -15,7 +15,7 @@ export const ContactSection = () => {
 
     // Prepare WhatsApp URL
     const message = `👑 *DRANGO CUSTOM BUILD INQUIRY*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Special Notes:* ${formData.notes || 'Please contact me with quotation'}`;
-    const whatsappUrl = `https://wa.me/919876543210?text=${message}`;
+    const whatsappUrl = `https://wa.me/919779443821?text=${message}`;
 
     // Open WhatsApp in new tab
     setTimeout(() => {
@@ -29,15 +29,12 @@ export const ContactSection = () => {
 
         {/* Header */}
         <div className="text-center mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1 rounded-full border border-gold/40 bg-maharaja-900/80 text-gold text-xs font-bold tracking-widest uppercase mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-gold-bright" />
-            <span>BESPOKE APPOINTMENT & CONSULTATION</span>
-          </div>
+
           <h2 className="font-royal text-2xl sm:text-4xl md:text-5xl font-black text-gold-bright tracking-tight mb-3 sm:mb-4 capitalize">
             contact for custom build
           </h2>
           <p className="text-amber-200/80 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-light">
-            Book a one-on-one consultation with our Master Automotive Stylists at our Jaipur Haveli or Delhi NCR Studios.
+            Book a one-on-one consultation with our Master Automotive Stylists at our Chandigarh Studio.
           </p>
         </div>
 
@@ -47,7 +44,7 @@ export const ContactSection = () => {
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
             <div className="space-y-6">
 
-              {/* Studio Jaipur */}
+              {/* Factory Location Chandigarh */}
               <div className="glass-maharaja-card p-6 rounded-2xl flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/40 flex items-center justify-center text-gold-bright shrink-0 mt-1">
                   <MapPin className="w-6 h-6" />
@@ -57,24 +54,8 @@ export const ContactSection = () => {
                   <h4 className="font-royal text-lg font-bold text-amber-50 mb-1">
                     Chandigarh
                   </h4>
-                  <p className="text-xs text-amber-200/70 leading-relaxed">
-                    Sector 21 , Chandigarh
-                  </p>
-                </div>
-              </div>
-
-              {/* Studio Delhi */}
-              <div className="glass-maharaja-card p-6 rounded-2xl flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/40 flex items-center justify-center text-gold-bright shrink-0 mt-1">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="text-[10px] text-gold font-bold tracking-widest uppercase">NCR MOD HUB</span>
-                  <h4 className="font-royal text-lg font-bold text-amber-50 mb-1">
-                    Delhi NCR Experience Center
-                  </h4>
-                  <p className="text-xs text-amber-200/70 leading-relaxed">
-                    Sector 29, Golf Course Road Corridor, Gurugram, Delhi NCR - 122002
+                  <p className="text-xs text-amber-200/80 leading-relaxed">
+                    DRANGO, Manufacture of Premium Custom Auto Parts, Plot No. 458, Industrial Area Phase-2, Chandigarh, 160002
                   </p>
                 </div>
               </div>
@@ -87,7 +68,9 @@ export const ContactSection = () => {
                 <div>
                   <span className="text-[10px] text-gold font-bold tracking-widest uppercase">DIRECT CONTACT</span>
                   <h4 className="font-royal text-lg font-bold text-amber-50 mb-1">
-                    +91 98765 43210 / +91 91234 56789
+                    <a href="tel:+919779443821" className="hover:text-gold transition-colors">
+                      +91 97794 43821
+                    </a>
                   </h4>
                   <p className="text-xs text-amber-200/70">
                     Email: dango@gmail.com • Mon - Sat: 10:00 AM - 8:30 PM
@@ -98,12 +81,7 @@ export const ContactSection = () => {
             </div>
 
             {/* Quick Feature Badge */}
-            <div className="p-4 rounded-xl border border-gold/30 bg-maharaja-900/60 flex items-center gap-3">
-              <span className="text-2xl">🛡️</span>
-              <p className="text-xs text-amber-100">
-                Doorstep pickup and insured carrier transport available across 180+ Indian cities.
-              </p>
-            </div>
+
           </div>
 
           {/* Booking Form Column */}
@@ -158,7 +136,7 @@ export const ContactSection = () => {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="e.g. +91 98765 43210"
+                        placeholder="e.g. +91 97794 43821"
                         className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
                       />
                     </div>
@@ -182,7 +160,7 @@ export const ContactSection = () => {
                     className="w-full py-4 rounded-xl bg-gold-gradient text-maharaja-950 font-black text-sm tracking-widest uppercase hover:shadow-gold-glow transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Send Commission Request via WhatsApp</span>
+                    <span>Send </span>
                   </button>
                 </form>
               )}

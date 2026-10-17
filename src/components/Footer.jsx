@@ -1,5 +1,126 @@
-import React from 'react';
-import { ShieldCheck, Award, Heart, Phone, Mail, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Phone, MapPin, ExternalLink, Navigation, X } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
+
+const POLICIES_CONTENT = {
+  privacy: {
+    title: 'Privacy Policy',
+    badge: 'Customer Data Protection',
+    content: [
+      {
+        heading: 'Information We Collect',
+        body: 'When you contact Drango Automotive Customs for custom builds, bespoke inquiries, or purchases, we collect details such as your name, contact phone/WhatsApp number, delivery address, and vehicle specification notes.',
+      },
+      {
+        heading: 'How We Use Your Information',
+        body: 'Your information is used strictly to fulfill bespoke parts fabrication, organize insured transit, communicate order updates, and coordinate with our styling team in Chandigarh. We never sell, rent, or trade your personal details with third-party advertisers.',
+      },
+      {
+        heading: 'WhatsApp & Hotline Communication',
+        body: 'Inquiries routed through WhatsApp and direct phone hotlines are encrypted in transit. Vehicle modification photographs shared for consultations are stored securely within our design studio.',
+      },
+      {
+        heading: 'Your Rights & Contact',
+        body: 'You may request data access, correction, or deletion at any time by contacting our coordinator at dango@gmail.com or calling +91 97794 43821.',
+      },
+    ],
+  },
+  terms: {
+    title: 'Terms and Conditions',
+    badge: 'Legal Agreement & Terms of Service',
+    content: [
+      {
+        heading: 'Welcome to Drango Customs',
+        body: 'Welcome to Drango Customs. By accessing our website and placing orders, you agree to these terms:',
+      },
+      {
+        heading: 'Intellectual Property',
+        body: 'All designs and content are owned by Drango Customs. No reproduction or resale is allowed without permission.',
+      },
+      {
+        heading: 'Orders & Payments',
+        body: 'Orders start production after full payment. You’ll receive confirmation via email.',
+      },
+      {
+        heading: 'Shipping & Delivery',
+        body: 'We provide estimated timelines, but delays can occur. Risk transfers to you upon delivery.',
+      },
+      {
+        heading: 'Returns & Refunds',
+        body: 'Custom products are non-refundable unless defective. Contact us directly via the phone number on our website for any issues.',
+      },
+      {
+        heading: 'User Conduct',
+        body: 'Users agree not to misuse the site or engage in illegal activities.',
+      },
+      {
+        heading: 'Limitation of Liability',
+        body: 'We are not liable for delays, errors, or losses beyond our control.',
+      },
+      {
+        heading: 'Governing Law',
+        body: 'These terms are governed by the laws of Chandigarh.',
+      },
+      {
+        heading: 'Changes',
+        body: 'We may update these terms, and continued use means acceptance of any updates.',
+      },
+    ],
+  },
+  shipping: {
+    title: 'Shipping Policy',
+    badge: 'Shipping Information & Guidelines',
+    content: [
+      {
+        heading: 'Shipping Policy Overview',
+        body: "A Shipping Policy comes with a number of benefits for both you and your customers. Some benefits are that people will be more likely to shop with you if you have a clear Shipping Policy in place since there won't be any questions about your shipping timeframes or processes.",
+      },
+      {
+        heading: 'In general, what should you cover in your Shipping Policy?',
+        body: '• Order processing times.\n• Shipping costs.\n• Domestic and international shipping options.\n• Potential service interruptions.',
+      },
+      {
+        heading: 'Legal Disclaimer',
+        body: 'The explanations and information provided herein are only general explanations, information and samples. You should not rely on this article as legal advice or as recommendations regarding what you should actually do. We recommend that you seek legal advice to help you understand and to assist you in the creation of your shipping policy.',
+      },
+    ],
+  },
+  refund: {
+    title: 'Return & Refund Policy',
+    badge: 'Satisfaction & Quality Guarantee',
+    content: [
+      {
+        heading: 'Returns Eligibility',
+        body: 'We accept returns only if the product arrives damaged due to manufacturing defects or damage in shipping. You must contact us within 7 days of delivery.',
+      },
+      {
+        heading: 'Custom Products',
+        body: 'Due to the personalized nature, custom-made products are non-refundable, except in cases of damage or defect.',
+      },
+      {
+        heading: 'Refund Process',
+        body: 'If eligible, contact our support team with your order number and photos of the issue. Approved returns may be resolved with a replacement or store credit—no cash refunds on custom items.',
+      },
+      {
+        heading: 'Contact Us',
+        body: 'For any issues, reach out to us and we’ll guide you through the steps!',
+      },
+    ],
+  },
+};
+
+const locations = [
+  {
+    id: 'chd',
+    city: 'Chandigarh (HQ)',
+    name: 'Drango Coachbuilding & Factory Studio',
+    tag: 'Main Build Facility',
+    address: 'Plot No. 458, Industrial Area Phase-2, Chandigarh, 160002',
+    hours: 'Mon – Sat: 10:00 AM – 8:30 PM',
+    mapUrl: 'https://maps.google.com/?q=Plot+No.+458+Industrial+Area+Phase-2+Chandigarh+160002',
+    embedUrl: 'https://maps.google.com/maps?q=Plot%20No.%20458%2C%20Industrial%20Area%20Phase-2%2C%20Chandigarh%2C%20160002&t=&z=14&ie=UTF8&iwloc=&output=embed',
+  },
+];
 
 const InstagramIcon = ({ className = "w-4 h-4" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -17,6 +138,11 @@ const YoutubeIcon = ({ className = "w-4 h-4" }) => (
 );
 
 export const Footer = () => {
+  const [selectedLocation, setSelectedLocation] = useState(0);
+  const [activePolicy, setActivePolicy] = useState(null);
+  const activeLoc = locations[selectedLocation];
+  const policyData = activePolicy ? POLICIES_CONTENT[activePolicy] : null;
+
   return (
     <footer className="bg-maharaja-950 text-amber-100 border-t-2 border-gold/40 relative overflow-hidden">
       
@@ -24,22 +150,14 @@ export const Footer = () => {
       <div className="h-1 bg-gold-gradient"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
           
           {/* Brand Info */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full border border-gold/60 flex items-center justify-center bg-maharaja-800 shadow-gold-sm">
-                <span className="text-xl">👑</span>
-              </div>
-              <div>
-                <span className="font-royal text-2xl font-black text-gold-gradient tracking-widest block uppercase">
-                  DRANGO
-                </span>
-                <span className="text-[10px] tracking-[0.25em] text-gold/80 uppercase block -mt-1 font-semibold">
-                  Maharaja Automotive Customs
-                </span>
-              </div>
+          <div className="sm:col-span-2 lg:col-span-3 space-y-4">
+            <div>
+              <span className="font-royal text-2xl font-black text-gold-gradient tracking-widest block uppercase">
+                DRANGO
+              </span>
             </div>
 
             <p className="text-xs sm:text-sm text-amber-200/70 font-light leading-relaxed max-w-sm">
@@ -64,62 +182,183 @@ export const Footer = () => {
                 <YoutubeIcon className="w-4 h-4" />
               </a>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919779443821"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border border-gold/40 bg-maharaja-900 flex items-center justify-center text-gold hover:border-gold hover:bg-maharaja-800 transition-all"
+                title="Chat on WhatsApp"
               >
-                <Phone className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="sm:col-span-1 lg:col-span-2">
             <h4 className="font-royal text-sm font-bold text-gold-bright uppercase tracking-wider mb-4">
               Explore Collections
             </h4>
-            <ul className="space-y-2 text-xs text-amber-200/80">
-              <li><a href="#categories" className="hover:text-gold transition-colors">Thar ROXX 5-Door</a></li>
-              <li><a href="#categories" className="hover:text-gold transition-colors">Thar (3-Door) Beast</a></li>
-              <li><a href="#categories" className="hover:text-gold transition-colors">Mahindra Scorpio-N</a></li>
-              <li><a href="#categories" className="hover:text-gold transition-colors">Suzuki Jimny G-Kit</a></li>
-              <li><a href="#featured" className="hover:text-gold transition-colors">Our Latest Products</a></li>
+            <ul className="space-y-2.5 text-xs text-amber-200/80">
+              <li>
+                <a
+                  href="#products"
+                  className="hover:text-gold transition-colors flex items-center gap-1.5 group"
+                >
+                  <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
+                  <span>Product</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#reviews"
+                  className="hover:text-gold transition-colors flex items-center gap-1.5 group"
+                >
+                  <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
+                  <span>Reviews</span>
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Categories */}
-          <div>
+          {/* Policies & Legal */}
+          <div className="sm:col-span-1 lg:col-span-2">
             <h4 className="font-royal text-sm font-bold text-gold-bright uppercase tracking-wider mb-4">
-              Modification Parts
+              Policies & Legal
             </h4>
-            <ul className="space-y-2 text-xs text-amber-200/80">
-              <li><a href="#products" className="hover:text-gold transition-colors">Signature Gold Grilles</a></li>
-              <li><a href="#products" className="hover:text-gold transition-colors">Starlight Ceilings</a></li>
-              <li><a href="#products" className="hover:text-gold transition-colors">Nappa Leather Cabins</a></li>
-              <li><a href="#products" className="hover:text-gold transition-colors">20" Forged Wheels</a></li>
-              <li><a href="#products" className="hover:text-gold transition-colors">Matrix Bi-LED Headlights</a></li>
+            <ul className="space-y-2.5 text-xs text-amber-200/80">
+              <li>
+                <button
+                  type="button"
+                  onClick={() => setActivePolicy('privacy')}
+                  className="hover:text-gold transition-colors text-left flex items-center gap-1.5 group"
+                >
+                  <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
+                  <span>Privacy Policy</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => setActivePolicy('terms')}
+                  className="hover:text-gold transition-colors text-left flex items-center gap-1.5 group"
+                >
+                  <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
+                  <span>Terms & Conditions</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => setActivePolicy('shipping')}
+                  className="hover:text-gold transition-colors text-left flex items-center gap-1.5 group"
+                >
+                  <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
+                  <span>Shipping Policy</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => setActivePolicy('refund')}
+                  className="hover:text-gold transition-colors text-left flex items-center gap-1.5 group"
+                >
+                  <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors" />
+                  <span>Return & Refund Policy</span>
+                </button>
+              </li>
             </ul>
           </div>
 
-          {/* Support & Warranty */}
-          <div>
-            <h4 className="font-royal text-sm font-bold text-gold-bright uppercase tracking-wider mb-4">
-              Royal Assurance
-            </h4>
-            <ul className="space-y-2 text-xs text-amber-200/80">
-              <li className="flex items-center gap-1.5 text-gold-bright font-medium">
-                <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-                <span>3-Year Warranty</span>
-              </li>
-              <li className="flex items-center gap-1.5 text-gold-bright font-medium">
-                <Award className="w-3.5 h-3.5 shrink-0" />
-                <span>100% OEM Fit Guarantee</span>
-              </li>
-              <li><span className="text-amber-200/60">Pan-India Courier Service</span></li>
-              <li><span className="text-amber-200/60">Direct Video Fitment Support</span></li>
-              <li><a href="#contact" className="hover:text-gold transition-colors">Book Jaipur Studio</a></li>
-            </ul>
+          {/* Locations & Interactive Map (Replaced Royal Assurance) */}
+          <div className="sm:col-span-2 lg:col-span-5 space-y-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="font-royal text-sm font-bold text-gold-bright uppercase tracking-wider flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-gold" />
+                  Our Factory & Studio
+                </h4>
+                <p className="text-[11px] text-amber-200/60 mt-0.5">
+                  Visit our bespoke build studio & experience center in Chandigarh
+                </p>
+              </div>
+            </div>
+
+            {/* Location Selector Tabs (shown if multiple locations) */}
+            {locations.length > 1 && (
+              <div className="flex items-center gap-2 pt-1">
+                {locations.map((loc, idx) => (
+                  <button
+                    key={loc.id}
+                    type="button"
+                    onClick={() => setSelectedLocation(idx)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-200 flex items-center gap-1.5 ${
+                      selectedLocation === idx
+                        ? 'bg-gold text-maharaja-950 font-bold shadow-gold-sm border border-gold'
+                        : 'bg-maharaja-900/80 text-amber-200/70 border border-gold/25 hover:border-gold/60 hover:text-gold'
+                    }`}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full ${selectedLocation === idx ? 'bg-maharaja-950' : 'bg-gold/60'}`} />
+                    {loc.city}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Map Frame Card */}
+            <div className="rounded-xl overflow-hidden border border-gold/30 bg-maharaja-900/70 shadow-lg relative group">
+              <div className="relative w-full h-36 sm:h-40 bg-maharaja-950 overflow-hidden">
+                <iframe
+                  title={`Map location for ${activeLoc.name}`}
+                  src={activeLoc.embedUrl}
+                  className="w-full h-full border-0 filter contrast-105 opacity-90 group-hover:opacity-100 transition-opacity"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                
+                {/* Badge Overlay */}
+                <div className="absolute top-2 left-2 pointer-events-none">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-maharaja-950/85 backdrop-blur-sm border border-gold/40 text-[10px] font-bold text-gold-bright uppercase tracking-wider shadow-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    {activeLoc.tag}
+                  </span>
+                </div>
+              </div>
+
+              {/* Location Details Footer */}
+              <div className="p-3 bg-gradient-to-b from-maharaja-900/95 to-maharaja-950 border-t border-gold/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                <div className="min-w-0">
+                  <h5 className="text-xs font-bold text-amber-50 truncate flex items-center gap-1.5">
+                    <span>{activeLoc.name}</span>
+                  </h5>
+                  <p className="text-[11px] text-amber-200/70 truncate flex items-center gap-1 mt-0.5">
+                    <MapPin className="w-3 h-3 text-gold shrink-0" />
+                    <span>{activeLoc.address}</span>
+                  </p>
+                  <p className="text-[10px] text-amber-200/50 mt-0.5 pl-4">
+                    {activeLoc.hours}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <a
+                    href={activeLoc.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-gold/15 hover:bg-gold hover:text-maharaja-950 text-gold-bright border border-gold/40 text-[11px] font-semibold transition-all shadow-sm"
+                  >
+                    <Navigation className="w-3 h-3" />
+                    <span>Directions</span>
+                    <ExternalLink className="w-2.5 h-2.5 ml-0.5 opacity-70" />
+                  </a>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-maharaja-800 hover:bg-maharaja-750 text-amber-100 border border-gold/25 hover:border-gold/50 text-[11px] font-medium transition-all"
+                  >
+                    <span>Visit</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -130,12 +369,71 @@ export const Footer = () => {
             © {new Date().getFullYear()} DRANGO AUTOMOTIVE CUSTOMS. All Rights Reserved.
           </div>
           <div className="flex items-center gap-1 text-gold">
-            <span>Crafted with Royal Pride for Thar Enthusiasts</span>
-            <span className="text-sm">👑</span>
+            <span>Crafted with Pride for Thar Enthusiasts</span>
           </div>
         </div>
 
       </div>
+
+      {/* Policy Modal */}
+      {policyData && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+          onClick={() => setActivePolicy(null)}
+        >
+          <div
+            className="relative w-full max-w-2xl glass-maharaja rounded-3xl border-2 border-gold/50 shadow-royal overflow-hidden max-h-[85vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="p-5 sm:p-6 border-b border-gold/25 flex items-center justify-between bg-maharaja-900/90">
+              <div>
+                <span className="text-[10px] font-bold text-gold uppercase tracking-widest block mb-1">
+                  {policyData.badge}
+                </span>
+                <h3 className="font-royal text-xl sm:text-2xl font-bold text-gold-bright">
+                  {policyData.title}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActivePolicy(null)}
+                className="p-2 rounded-full bg-maharaja-900/80 hover:bg-maharaja-800 text-gold-bright border border-gold/40 transition-all"
+                aria-label="Close policy modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-5 sm:p-6 overflow-y-auto space-y-5 text-xs sm:text-sm text-amber-100/90 leading-relaxed">
+              {policyData.content.map((item, idx) => (
+                <div key={idx} className="p-4 rounded-xl bg-maharaja-900/50 border border-gold/15">
+                  <h4 className="font-royal text-sm font-bold text-amber-50 mb-1.5 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                    <span>{item.heading}</span>
+                  </h4>
+                  <p className="text-amber-200/80 font-light text-xs sm:text-[13px] leading-relaxed whitespace-pre-line">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 bg-maharaja-950 border-t border-gold/20 flex items-center justify-between text-xs text-amber-200/60">
+              <span>Drango Automotive Customs • Chandigarh HQ</span>
+              <button
+                type="button"
+                onClick={() => setActivePolicy(null)}
+                className="px-4 py-1.5 rounded-lg bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase hover:brightness-110 transition-all shadow-sm"
+              >
+                Understood
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };

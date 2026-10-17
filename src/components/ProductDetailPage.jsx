@@ -6,21 +6,20 @@ import {
   Star,
   ShieldCheck,
   Truck,
-  Phone,
   Sparkles,
   Gem,
-  CheckCircle2,
   PackageCheck,
   Share2,
+  ChevronLeft,
   ChevronRight,
   Layers,
-  Car,
 } from 'lucide-react';
 
 export const ProductDetailPage = ({
   product,
   productsList = [],
   onAddToCart,
+  onBuyNow,
   onSelectProduct,
   onBackToProducts,
   onBackToHome,
@@ -31,10 +30,38 @@ export const ProductDetailPage = ({
       ? product.images
       : [product?.image || ''];
 
-  const [selectedImage, setSelectedImage] = useState(product?.image || galleryImages[0]);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
+
+  // Carousel handlers
+  const handlePrevImage = (e) => {
+    if (e) e.stopPropagation();
+    setActiveImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = (e) => {
+    if (e) e.stopPropagation();
+    setActiveImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 45) {
+      handleNextImage();
+    } else if (diff < -45) {
+      handlePrevImage();
+    }
+    setTouchStartX(null);
+  };
 
   // Color selection state
   const availableColors = product?.colors && product.colors.length > 0
@@ -62,8 +89,7 @@ export const ProductDetailPage = ({
   // Reset local state when product changes
   useEffect(() => {
     if (!product) return;
-    const defaultImg = product.image || (product.images && product.images[0]) || '';
-    setSelectedImage(defaultImg);
+    setActiveImageIndex(0);
     setQuantity(1);
     setIsAdded(false);
     if (product.colors && product.colors.length > 0) {
@@ -126,14 +152,20 @@ export const ProductDetailPage = ({
   const handleColorSelect = (colorObj) => {
     setSelectedColor(colorObj.name);
     if (colorObj.image) {
-      setSelectedImage(colorObj.image);
+      const idx = galleryImages.indexOf(colorObj.image);
+      if (idx !== -1) {
+        setActiveImageIndex(idx);
+      }
     }
   };
 
   const handleVersionSelect = (verObj) => {
     setSelectedVersion(verObj.name);
     if (verObj.image) {
-      setSelectedImage(verObj.image);
+      const idx = galleryImages.indexOf(verObj.image);
+      if (idx !== -1) {
+        setActiveImageIndex(idx);
+      }
     }
   };
 
@@ -151,6 +183,22 @@ export const ProductDetailPage = ({
     setTimeout(() => setIsAdded(false), 2200);
   };
 
+  const handleBuyNow = () => {
+    const itemToAdd = {
+      ...product,
+      selectedColor,
+      selectedVersion: selectedVersion || undefined,
+      selectedCarType: selectedCarType || undefined,
+    };
+    if (onBuyNow) {
+      onBuyNow(itemToAdd, quantity);
+    } else {
+      for (let i = 0; i < quantity; i++) {
+        onAddToCart(itemToAdd);
+      }
+    }
+  };
+
   const handleShare = () => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(window.location.href);
@@ -158,20 +206,6 @@ export const ProductDetailPage = ({
       setTimeout(() => setCopiedLink(false), 2000);
     }
   };
-
-  // WhatsApp pre-filled text
-  const waDetails = [
-    `Product: ${product.name}`,
-    selectedColor ? `Color: ${selectedColor}` : null,
-    selectedVersion ? `Design: ${selectedVersion}` : null,
-    selectedCarType ? `Fitment: ${selectedCarType}` : null,
-    `Quantity: ${quantity}`,
-    `Total Price: ${formatPrice(product.price * quantity)}`,
-  ]
-    .filter(Boolean)
-    .join('%0A• ');
-
-  const whatsappUrl = `https://wa.me/919779443821?text=Hello%20Drango!%20I%20would%20like%20to%20order:%0A•%20${waDetails}`;
 
   // Related products
   const relatedProducts = productsList
@@ -230,21 +264,70 @@ export const ProductDetailPage = ({
             {/* ----------------- LEFT: IMAGE GALLERY ----------------- */}
             <div className="lg:col-span-6 flex flex-col gap-3 sm:gap-4">
               
-              {/* Main Active Image Showcase */}
-              <div className="relative rounded-2xl overflow-hidden bg-maharaja-900 border border-gold/40 aspect-[4/3] sm:aspect-square max-h-[380px] sm:max-h-none flex items-center justify-center group shadow-2xl">
-                <img
-                  src={selectedImage || product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
+              {/* Main Active Image Showcase with Sliding Carousel */}
+              <div 
+                className="relative rounded-2xl overflow-hidden bg-maharaja-900 border border-gold/40 aspect-[4/3] sm:aspect-square max-h-[380px] sm:max-h-none flex items-center justify-center group shadow-2xl select-none"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
+                {/* Horizontal Sliding Track */}
+                <div 
+                  className="flex w-full h-full transition-transform duration-500 ease-out will-change-transform"
+                  style={{ transform: `translateX(-${activeImageIndex * 100}%)` }}
+                >
+                  {galleryImages.map((img, idx) => (
+                    <div 
+                      key={idx} 
+                      className="min-w-full w-full h-full shrink-0 relative flex items-center justify-center bg-maharaja-950"
+                    >
+                      <img
+                        src={img}
+                        alt={`${product.name} - slide ${idx + 1}`}
+                        className="w-full h-full object-cover object-center select-none"
+                        loading={idx === 0 ? "eager" : "lazy"}
+                      />
+                    </div>
+                  ))}
+                </div>
+
                 <div className="absolute inset-0 bg-gradient-to-t from-maharaja-950/70 via-transparent to-transparent pointer-events-none"></div>
 
+                {/* Left Carousel Arrow Button */}
+                {galleryImages.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={handlePrevImage}
+                    aria-label="Previous image"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full glass-maharaja border border-gold/40 text-gold hover:text-maharaja-950 hover:bg-gold-gradient flex items-center justify-center shadow-royal transition-all duration-300 hover:scale-110 active:scale-95 group/btn cursor-pointer"
+                  >
+                    <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover/btn:-translate-x-0.5" />
+                  </button>
+                )}
+
+                {/* Right Carousel Arrow Button */}
+                {galleryImages.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={handleNextImage}
+                    aria-label="Next image"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full glass-maharaja border border-gold/40 text-gold hover:text-maharaja-950 hover:bg-gold-gradient flex items-center justify-center shadow-royal transition-all duration-300 hover:scale-110 active:scale-95 group/btn cursor-pointer"
+                  >
+                    <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover/btn:translate-x-0.5" />
+                  </button>
+                )}
+
                 {/* Badges on Main Image */}
-                <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
-                  <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 shadow-md flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-maharaja-950" />
-                    <span>{product.badge || 'OFFICIAL DRANGO'}</span>
-                  </span>
+                <div className="absolute top-4 left-4 z-10 flex flex-col gap-2 pointer-events-none">
+                  {product.badge && product.badge.toLowerCase().includes('new') ? (
+                    <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-green-500 text-black shadow-md flex items-center justify-center">
+                      <span>{product.badge}</span>
+                    </span>
+                  ) : (
+                    <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 shadow-md flex items-center gap-1.5">
+                      <Sparkles className="w-3 h-3 text-maharaja-950" />
+                      <span>{product.badge || 'OFFICIAL DRANGO'}</span>
+                    </span>
+                  )}
                   {discountPercent > 0 && (
                     <span className="text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-emerald-600 text-white shadow w-fit">
                       {discountPercent}% OFF
@@ -254,9 +337,10 @@ export const ProductDetailPage = ({
 
                 {/* Quick Share Button */}
                 <button
+                  type="button"
                   onClick={handleShare}
                   title="Share product"
-                  className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full glass-maharaja border border-gold/30 flex items-center justify-center text-amber-200 hover:text-gold hover:border-gold transition-all"
+                  className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full glass-maharaja border border-gold/30 flex items-center justify-center text-amber-200 hover:text-gold hover:border-gold transition-all cursor-pointer"
                 >
                   {copiedLink ? (
                     <Check className="w-4 h-4 text-emerald-400" />
@@ -264,19 +348,31 @@ export const ProductDetailPage = ({
                     <Share2 className="w-4 h-4" />
                   )}
                 </button>
+
+                {/* Slide Counter on Image */}
+                {galleryImages.length > 1 && (
+                  <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded-full glass-maharaja border border-gold/30 text-[11px] font-mono text-amber-200/90 shadow">
+                    {activeImageIndex + 1} / {galleryImages.length}
+                  </div>
+                )}
               </div>
 
-              {/* Thumbnails Row */}
+              {/* Thumbnail Carousel Track */}
               {galleryImages.length > 1 && (
-                <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
+                <div 
+                  className="flex items-center gap-2 sm:gap-3 overflow-x-auto py-1 px-1 scrollbar-none justify-center"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
                   {galleryImages.map((img, idx) => (
                     <button
                       key={idx}
-                      onClick={() => setSelectedImage(img)}
-                      className={`w-20 h-20 rounded-xl overflow-hidden border-2 shrink-0 transition-all ${
-                        selectedImage === img
-                          ? 'border-gold-bright shadow-gold-glow scale-105'
-                          : 'border-gold/20 hover:border-gold/60 opacity-70 hover:opacity-100'
+                      type="button"
+                      onClick={() => setActiveImageIndex(idx)}
+                      aria-label={`Go to image ${idx + 1}`}
+                      className={`relative rounded-xl overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
+                        activeImageIndex === idx
+                          ? 'w-14 h-14 sm:w-16 sm:h-16 border-gold-bright shadow-gold-glow scale-105 opacity-100 ring-2 ring-gold/50'
+                          : 'w-11 h-11 sm:w-14 sm:h-14 border-gold/20 hover:border-gold/60 opacity-60 hover:opacity-100'
                       }`}
                     >
                       <img
@@ -294,25 +390,6 @@ export const ProductDetailPage = ({
             <div className="lg:col-span-6 flex flex-col justify-between">
               <div>
                 
-                {/* Rating & Compatibility Badges */}
-                <div className="flex items-center gap-3 text-xs mb-3 flex-wrap">
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-maharaja-800/80 border border-gold/30 text-gold-bright font-bold">
-                    <Star className="w-3.5 h-3.5 fill-current text-gold" />
-                    <span>{product.rating || 4.9}</span>
-                    <span className="text-amber-200/50 font-normal">
-                      ({product.reviewsCount || 48} Reviews)
-                    </span>
-                  </div>
-
-                  <span className="px-3 py-1 rounded-full bg-maharaja-850/80 border border-gold/20 text-amber-200/80 text-[11px] font-semibold flex items-center gap-1.5">
-                    <Car className="w-3.5 h-3.5 text-gold" />
-                    <span>{product.compatibility || 'Drango Custom Fitment'}</span>
-                  </span>
-
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-[10px] font-semibold uppercase">
-                    In Stock • Ready to Dispatch
-                  </span>
-                </div>
 
                 {/* Product Title */}
                 <h1 className="font-royal text-2xl sm:text-3xl lg:text-4xl font-extrabold text-amber-50 mb-4 leading-tight">
@@ -321,15 +398,15 @@ export const ProductDetailPage = ({
 
                 {/* Price Display */}
                 <div className="flex items-baseline gap-3 mb-6 p-4 rounded-2xl bg-maharaja-900/90 border border-gold/25 shadow-inner">
-                  <span className="font-royal text-3xl sm:text-4xl font-black text-gold-gradient">
+                  <span className="font-royal text-xl sm:text-2xl font-light text-gold-gradient opacity-75 tracking-normal">
                     {formatPrice(product.price)}
                   </span>
                   {product.originalPrice && product.originalPrice > product.price && (
-                    <span className="text-base text-amber-200/40 line-through">
+                    <span className="text-sm text-amber-200/40 line-through font-light">
                       {formatPrice(product.originalPrice)}
                     </span>
                   )}
-                  <span className="text-[11px] text-amber-200/70 ml-auto self-center">
+                  <span className="text-[11px] text-amber-200/70 ml-auto self-center font-light">
                     All Taxes Included • Express Shipping
                   </span>
                 </div>
@@ -415,40 +492,46 @@ export const ProductDetailPage = ({
                 )}
 
                 {/* ======================================================== */}
-                {/* 3. FITMENT / CAR TYPE (If available) */}
+                {/* 3. QUANTITY SELECTION */}
                 {/* ======================================================== */}
-                {availableCarTypes.length > 0 && (
-                  <div className="mb-6 p-4 rounded-2xl bg-maharaja-900/50 border border-gold/15">
-                    <div className="flex items-center justify-between mb-2.5">
-                      <label className="text-xs font-bold uppercase tracking-wider text-gold-bright flex items-center gap-2">
-                        <Car className="w-3.5 h-3.5" />
-                        <span>Vehicle Fitment Model:</span>
-                      </label>
-                      <span className="text-xs font-bold text-amber-100">
-                        {selectedCarType}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2 flex-wrap">
-                      {availableCarTypes.map((carT, idx) => {
-                        const isSelected = selectedCarType === carT;
-                        return (
-                          <button
-                            key={idx}
-                            onClick={() => setSelectedCarType(carT)}
-                            className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
-                              isSelected
-                                ? 'border-gold-bright bg-maharaja-800 text-gold-bright font-bold'
-                                : 'border-gold/20 bg-maharaja-900/80 text-amber-200/70 hover:border-gold/50'
-                            }`}
-                          >
-                            {carT}
-                          </button>
-                        );
-                      })}
-                    </div>
+                <div className="mb-6 p-4 rounded-2xl bg-maharaja-900/50 border border-gold/15">
+                  <div className="flex items-center justify-between mb-2.5">
+                    <label className="text-xs font-bold uppercase tracking-wider text-gold-bright flex items-center gap-2">
+                      <ShoppingBag className="w-3.5 h-3.5" />
+                      <span>Select Quantity:</span>
+                    </label>
+                    <span className="text-xs font-bold text-amber-100">
+                      {quantity} {quantity === 1 ? 'Unit' : 'Units'}
+                    </span>
                   </div>
-                )}
+
+                  <div className="flex items-center gap-4">
+                    <div className="inline-flex items-center border border-gold/40 rounded-xl bg-maharaja-900/90 px-3 py-1.5 shadow-inner">
+                      <button
+                        type="button"
+                        onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                        className="text-gold-bright text-lg font-bold px-3 py-0.5 hover:text-white transition-colors"
+                        aria-label="Decrease quantity"
+                      >
+                        -
+                      </button>
+                      <span className="px-4 text-sm font-bold text-amber-50 min-w-[2.5rem] text-center">
+                        {quantity}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setQuantity((q) => q + 1)}
+                        className="text-gold-bright text-lg font-bold px-3 py-0.5 hover:text-white transition-colors"
+                        aria-label="Increase quantity"
+                      >
+                        +
+                      </button>
+                    </div>
+                    <span className="text-xs text-amber-200/70">
+                      Total: <span className="text-gold-bright font-semibold">{formatPrice(product.price * quantity)}</span>
+                    </span>
+                  </div>
+                </div>
 
                 {/* Full Description */}
                 <div className="mb-6">
@@ -460,109 +543,43 @@ export const ProductDetailPage = ({
                   </p>
                 </div>
 
-                {/* Specifications Bullets */}
-                {product.specs && product.specs.length > 0 && (
-                  <div className="mb-8">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-gold-bright mb-3">
-                      Key Highlights & Fitment
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                      {product.specs.map((spec, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start gap-2 text-xs text-amber-100/85 p-2.5 rounded-xl bg-maharaja-900/60 border border-gold/10"
-                        >
-                          <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                          <span>{spec}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+
               </div>
 
               {/* Purchase Actions */}
               <div className="pt-6 border-t border-gold/20 space-y-4">
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-                  {/* Quantity Counter */}
-                  <div className="flex items-center justify-between sm:justify-start border border-gold/40 rounded-xl bg-maharaja-900/90 px-3 py-2 sm:py-1.5 shrink-0">
-                    <span className="sm:hidden text-xs text-amber-200/60 uppercase font-semibold">Quantity:</span>
-                    <div className="flex items-center">
-                      <button
-                        onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                        className="text-gold-bright text-lg font-bold px-2.5 py-0.5 hover:text-white transition-colors"
-                      >
-                        -
-                      </button>
-                      <span className="px-3 text-sm font-bold text-amber-50">
-                        {quantity}
-                      </span>
-                      <button
-                        onClick={() => setQuantity((q) => q + 1)}
-                        className="text-gold-bright text-lg font-bold px-2.5 py-0.5 hover:text-white transition-colors"
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Add to Cart Button */}
-                  <button
-                    onClick={handleAddToCart}
-                    className={`flex-1 py-3.5 px-5 sm:px-6 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
-                      isAdded
-                        ? 'bg-emerald-600 text-white'
-                        : 'bg-gold-gradient text-maharaja-950 hover:shadow-gold-glow hover:brightness-110'
-                    }`}
-                  >
-                    {isAdded ? (
-                      <>
-                        <Check className="w-4 h-4" />
-                        <span>Added ({quantity} items) to Cart!</span>
-                      </>
-                    ) : (
-                      <>
-                        <ShoppingBag className="w-4 h-4" />
-                        <span>
-                          Add to Cart • {formatPrice(product.price * quantity)}
-                        </span>
-                      </>
-                    )}
-                  </button>
-                </div>
-
-                {/* Instant WhatsApp Order CTA */}
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider border border-gold/50 text-gold hover:bg-gold hover:text-maharaja-950 transition-all flex items-center justify-center gap-2 shadow-sm text-center"
+                {/* Add to Cart Button */}
+                <button
+                  onClick={handleAddToCart}
+                  className={`w-full py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
+                    isAdded
+                      ? 'bg-emerald-600 text-white'
+                      : 'bg-gold-gradient text-maharaja-950 hover:shadow-gold-glow hover:brightness-110'
+                  }`}
                 >
-                  <Phone className="w-4 h-4" />
-                  <span>Order Directly on WhatsApp</span>
-                </a>
+                  {isAdded ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      <span>Added ({quantity} {quantity === 1 ? 'item' : 'items'}) to Cart!</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag className="w-4 h-4" />
+                      <span>
+                        Add to Cart • {formatPrice(product.price * quantity)}
+                      </span>
+                    </>
+                  )}
+                </button>
 
-                {/* Assurance Trust Badges */}
-                <div className="grid grid-cols-3 gap-1.5 sm:gap-2 pt-4 text-center">
-                  <div className="p-2.5 rounded-xl bg-maharaja-900/60 border border-gold/15">
-                    <ShieldCheck className="w-4 h-4 text-gold mx-auto mb-1" />
-                    <span className="text-[10px] text-amber-200/80 font-medium block">
-                      100% OEM Fitment
-                    </span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-maharaja-900/60 border border-gold/15">
-                    <Truck className="w-4 h-4 text-gold mx-auto mb-1" />
-                    <span className="text-[10px] text-amber-200/80 font-medium block">
-                      Express Shipping
-                    </span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-maharaja-900/60 border border-gold/15">
-                    <PackageCheck className="w-4 h-4 text-gold mx-auto mb-1" />
-                    <span className="text-[10px] text-amber-200/80 font-medium block">
-                      Royal Standards
-                    </span>
-                  </div>
-                </div>
+                {/* Buy Now Button */}
+                <button
+                  type="button"
+                  onClick={handleBuyNow}
+                  className="w-full py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center transition-all duration-300 border-2 border-gold text-gold-bright bg-maharaja-900/80 hover:bg-gold hover:text-maharaja-950 shadow-royal hover:shadow-gold-glow transform hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  Buy Now
+                </button>
               </div>
 
             </div>
@@ -612,23 +629,13 @@ export const ProductDetailPage = ({
 
                   <div className="p-4 flex-1 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center justify-between text-xs mb-1.5">
-                        <div className="flex items-center gap-1 text-gold-bright font-semibold">
-                          <Star className="w-3 h-3 fill-current text-gold" />
-                          <span>{relItem.rating || 4.9}</span>
-                        </div>
-                        <span className="text-[10px] text-amber-200/60 truncate max-w-[120px]">
-                          {relItem.compatibility}
-                        </span>
-                      </div>
-
                       <h4 className="font-royal text-sm font-bold text-amber-50 group-hover:text-gold-bright transition-colors line-clamp-2 mb-2">
                         {relItem.name}
                       </h4>
                     </div>
 
                     <div className="flex items-center justify-between pt-2 border-t border-gold/15 mt-2">
-                      <span className="font-royal text-base font-black text-gold-gradient">
+                      <span className="font-royal text-sm sm:text-base font-light text-gold-gradient opacity-80">
                         {formatPrice(relItem.price)}
                       </span>
                       <span className="text-[10px] font-bold uppercase tracking-wider text-gold group-hover:underline">

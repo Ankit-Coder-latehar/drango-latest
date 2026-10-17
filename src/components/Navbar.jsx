@@ -73,19 +73,11 @@ export const Navbar = ({
               e.preventDefault();
               if (onNavigateHome) onNavigateHome();
             }}
-            className="flex items-center gap-3 group"
+            className="flex items-center group"
           >
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold/60 flex items-center justify-center bg-gradient-to-br from-maharaja-800 to-maharaja-950 shadow-gold-sm group-hover:border-gold transition-all duration-300">
-              <span className="text-xl sm:text-2xl filter drop-shadow">👑</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-royal text-2xl sm:text-3xl font-extrabold tracking-widest text-gold-gradient uppercase drop-shadow">
-                DRANGO
-              </span>
-              <span className="text-[10px] tracking-[0.25em] text-gold/80 font-semibold uppercase -mt-1">
-                Maharaja Customs
-              </span>
-            </div>
+            <span className="font-royal text-2xl sm:text-3xl font-extrabold tracking-widest text-gold-gradient uppercase drop-shadow">
+              DRANGO
+            </span>
           </a>
 
           {/* Desktop Navigation */}
@@ -125,7 +117,7 @@ export const Navbar = ({
 
             {/* Direct WhatsApp Call/CTA */}
             <a
-              href="https://wa.me/919876543210?text=Hello%20Drango%20Team!%20I%20am%20interested%20in%20customizing%20my%20vehicle"
+              href="https://wa.me/919779443821?text=Hello%20Drango%20Team!%20I%20am%20interested%20in%20customizing%20my%20vehicle"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-gradient text-maharaja-950 font-bold text-xs tracking-wider uppercase hover:shadow-gold-glow transition-all duration-300 transform hover:-translate-y-0.5"
@@ -166,7 +158,7 @@ export const Navbar = ({
             ))}
             <div className="pt-2 flex flex-col gap-3">
               <a
-                href="https://wa.me/919876543210?text=Hello%20Drango%20Team!%20I%20am%20interested%20in%20customizing%20my%20vehicle"
+                href="https://wa.me/919779443821?text=Hello%20Drango%20Team!%20I%20am%20interested%20in%20customizing%20my%20vehicle"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 py-3 rounded-xl bg-gold-gradient text-maharaja-950 font-bold text-sm tracking-wider uppercase shadow-gold-sm"
