@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Phone, MapPin, Clock, Send, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    carModel: '',
+    city: '',
     notes: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -13,8 +15,19 @@ export const ContactSection = () => {
     e.preventDefault();
     setSubmitted(true);
 
-    // Prepare WhatsApp URL
-    const message = `👑 *DRANGO CUSTOM BUILD INQUIRY*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Special Notes:* ${formData.notes || 'Please contact me with quotation'}`;
+    // Prepare WhatsApp message
+    const messageParts = [
+      '*DRANGO CUSTOM BUILD INQUIRY*',
+      '',
+      `*Name:* ${formData.name}`,
+      `*Mobile Number:* ${formData.phone}`,
+      `*Car Make & Model:* ${formData.carModel}`,
+      `*City:* ${formData.city}`,
+    ];
+    if (formData.notes) {
+      messageParts.push(`*Special Notes:* ${formData.notes}`);
+    }
+    const message = encodeURIComponent(messageParts.join('\n'));
     const whatsappUrl = `https://wa.me/919779443821?text=${message}`;
 
     // Open WhatsApp in new tab
@@ -73,7 +86,7 @@ export const ContactSection = () => {
                     </a>
                   </h4>
                   <p className="text-xs text-amber-200/70">
-                    Email: dango@gmail.com • Mon - Sat: 10:00 AM - 8:30 PM
+                    Mon - Sat: 10:00 AM - 8:30 PM
                   </p>
                 </div>
               </div>
@@ -100,7 +113,10 @@ export const ContactSection = () => {
                     WhatsApp has opened with your selected specifications. Our master modification coordinator will respond within 15 minutes.
                   </p>
                   <button
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({ name: '', phone: '', carModel: '', city: '', notes: '' });
+                    }}
                     className="px-6 py-2 rounded-full border border-gold text-gold hover:bg-maharaja-800 text-xs uppercase tracking-wider font-semibold"
                   >
                     Send Another Inquiry
@@ -115,7 +131,7 @@ export const ContactSection = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs font-semibold text-gold mb-1.5 uppercase tracking-wider">
-                        Your Full Name *
+                        Full Name *
                       </label>
                       <input
                         type="text"
@@ -129,7 +145,7 @@ export const ContactSection = () => {
 
                     <div>
                       <label className="block text-xs font-semibold text-gold mb-1.5 uppercase tracking-wider">
-                        Phone / WhatsApp *
+                        Mobile Number *
                       </label>
                       <input
                         type="tel"
@@ -140,17 +156,45 @@ export const ContactSection = () => {
                         className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
                       />
                     </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-gold mb-1.5 uppercase tracking-wider">
+                        Car Make and Model *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.carModel}
+                        onChange={(e) => setFormData({ ...formData, carModel: e.target.value })}
+                        placeholder="e.g. Mahindra Thar Roxx / Scorpio-N"
+                        className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-gold mb-1.5 uppercase tracking-wider">
+                        City *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.city}
+                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                        placeholder="e.g. Chandigarh, Delhi, Mumbai"
+                        className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
+                      />
+                    </div>
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-gold mb-1.5 uppercase tracking-wider">
-                      Special Modification Notes
+                      Special Modification Notes (Optional)
                     </label>
                     <textarea
                       rows={3}
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      placeholder="Tell us about your colour preference, delivery city, or specific custom requests..."
+                      placeholder="Tell us about your colour preference or specific custom requests..."
                       className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all resize-none"
                     />
                   </div>
@@ -160,7 +204,7 @@ export const ContactSection = () => {
                     className="w-full py-4 rounded-xl bg-gold-gradient text-maharaja-950 font-black text-sm tracking-widest uppercase hover:shadow-gold-glow transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Send </span>
+                    <span>Send Inquiry</span>
                   </button>
                 </form>
               )}

@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import {
-  Sparkles,
-  Crown,
-  Eye,
-} from 'lucide-react';
+import { Eye } from 'lucide-react';
 
 export const ProductFilterSection = ({
   selectedCarId,
@@ -53,8 +49,8 @@ export const ProductFilterSection = ({
   };
 
   const filterOptions = [
-    { id: 'all', label: 'All Products', icon: Sparkles },
-    { id: 'limited', label: 'Our Limited Products', icon: Crown },
+    { id: 'all', label: 'All Products' },
+    { id: 'limited', label: 'Our Limited Products' },
   ];
 
   return (
@@ -64,20 +60,18 @@ export const ProductFilterSection = ({
         {/* All Products and Our Limited Products Filter */}
         <div className="flex items-center justify-center gap-2 sm:gap-4 mb-8 sm:mb-10 flex-wrap">
           {filterOptions.map((opt) => {
-            const Icon = opt.icon;
             const isActive = activeCategory === opt.id;
 
             return (
               <button
                 key={opt.id}
                 onClick={() => setActiveCategory(opt.id)}
-                className={`px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 flex items-center gap-2 ${
+                className={`px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center ${
                   isActive
                     ? 'bg-gold-gradient text-maharaja-950 font-black shadow-gold-glow scale-105'
                     : 'glass-maharaja text-amber-100/80 hover:text-gold-bright hover:border-gold/50'
                 }`}
               >
-                <Icon className="w-4 h-4" />
                 <span>{opt.label}</span>
               </button>
             );

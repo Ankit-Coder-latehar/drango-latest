@@ -131,10 +131,16 @@ export const Hero = ({ onNavigateProducts }) => {
           ref={titleRef}
           className="font-royal text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.1] mb-8 sm:mb-10 text-left drop-shadow-2xl"
         >
-          <span className="block text-gold-bright uppercase tracking-wider">
-            Drango
-          </span>
-          <span className="block text-gold-gradient font-serif italic text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-2 sm:mt-3 tracking-normal capitalize font-bold">
+          {/* Backlit Illuminated DRANGO Sign Logo */}
+          <div className="relative block w-full max-w-[290px] xs:max-w-[340px] sm:max-w-[440px] md:max-w-[540px] lg:max-w-[640px] xl:max-w-[720px] -ml-1 sm:-ml-2 mb-2 sm:mb-3">
+            <img
+              src="/images/drango_sign_hero.png"
+              alt="DRANGO"
+              className="w-full h-auto object-contain mix-blend-screen filter brightness-110 contrast-115 drop-shadow-[0_0_18px_rgba(245,206,98,0.6)] drop-shadow-[0_0_36px_rgba(212,175,55,0.35)] select-none"
+            />
+            <span className="sr-only">DRANGO</span>
+          </div>
+          <span className="block text-gold-gradient font-serif italic text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-1 sm:mt-2 tracking-normal capitalize font-bold">
             Your Car’s Ultimate Glow-Up Buddy
           </span>
         </h1>
@@ -173,7 +179,7 @@ export const Hero = ({ onNavigateProducts }) => {
             </div>
             <div>
               <div className="text-xs sm:text-sm md:text-base font-bold text-gold-bright leading-snug">
-                Handicraft in Chandigarh
+                Designed by Automobile Designer
               </div>
               <div className="text-[10px] sm:text-xs text-amber-200/70 uppercase tracking-wider">
 

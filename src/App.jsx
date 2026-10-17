@@ -14,9 +14,10 @@ import { CartDrawer } from './components/CartDrawer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { ProductsCatalogPage } from './components/ProductsCatalogPage';
 import { ProductDetailPage } from './components/ProductDetailPage';
+import { LoaderScreen } from './components/LoaderScreen';
 
 export function App() {
-  const [selectedCarId, setSelectedCarId] = useState('thar-roxx');
+  const [selectedCarId, setSelectedCarId] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
@@ -81,7 +82,7 @@ export function App() {
   }, [productsList]);
 
   // Selected car object
-  const selectedCar = CARS_DATA.find((c) => c.id === selectedCarId) || CARS_DATA[0];
+  const selectedCar = selectedCarId ? CARS_DATA.find((c) => c.id === selectedCarId) : null;
 
   // Navigation handlers
   const handleOpenProductDetail = (product) => {
@@ -163,7 +164,7 @@ export function App() {
   };
 
   const handleSelectCar = (carId) => {
-    setSelectedCarId(carId);
+    setSelectedCarId((prev) => (prev === carId ? null : carId));
     if (currentView !== 'home') {
       setCurrentView('home');
     }
@@ -269,6 +270,9 @@ export function App() {
         onUpdateQuantity={handleUpdateQuantity}
         onRemoveItem={handleRemoveItem}
       />
+
+      {/* Royal Initial Brand Loader Screen */}
+      <LoaderScreen />
 
     </div>
   );

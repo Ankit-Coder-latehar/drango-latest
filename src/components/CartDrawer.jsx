@@ -26,7 +26,7 @@ export const CartDrawer = ({
   const handleWhatsAppCheckout = () => {
     if (items.length === 0) return;
 
-    let message = '👑 *NEW ORDER COMMISSION - DRANGO CUSTOMS*%0A%0A';
+    let message = '*NEW ORDER COMMISSION - DRANGO CUSTOMS*%0A%0A';
     items.forEach((item, index) => {
       const colorText = item.product.selectedColor ? ` | Color: ${item.product.selectedColor}` : '';
       const versionText = item.product.selectedVersion ? ` | Design: ${item.product.selectedVersion}` : '';
@@ -77,7 +77,7 @@ export const CartDrawer = ({
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
             {items.length === 0 ? (
               <div className="text-center py-20">
-                <span className="text-5xl">👑</span>
+                <ShoppingBag className="w-12 h-12 text-gold/40 mx-auto" />
                 <h4 className="font-royal text-xl font-bold text-gold-bright mt-4 mb-2">
                   Your Royal Cart is Empty
                 </h4>

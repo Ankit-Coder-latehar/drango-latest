@@ -15,7 +15,7 @@ export const TestimonialsSection = () => {
       {/* Decorative Gold Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <h2 className="font-royal text-3xl sm:text-5xl font-black text-gold-bright tracking-tight mb-4">
-          Reviews Section
+          Customer Testimonials
         </h2>
         <p className="text-amber-200/80 text-sm sm:text-base max-w-2xl mx-auto font-light">
           Real reviews and verified experiences from proud owners who transformed their vehicles with Drango.

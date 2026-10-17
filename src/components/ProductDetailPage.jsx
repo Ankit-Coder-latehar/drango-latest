@@ -344,20 +344,6 @@ export const ProductDetailPage = ({
                   )}
                 </div>
 
-                {/* Quick Share Button */}
-                <button
-                  type="button"
-                  onClick={handleShare}
-                  title="Share product"
-                  className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full glass-maharaja border border-gold/30 flex items-center justify-center text-amber-200 hover:text-gold hover:border-gold transition-all cursor-pointer"
-                >
-                  {copiedLink ? (
-                    <Check className="w-4 h-4 text-emerald-400" />
-                  ) : (
-                    <Share2 className="w-4 h-4" />
-                  )}
-                </button>
-
                 {/* Slide Counter on Image */}
                 {galleryImages.length > 1 && (
                   <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded-full glass-maharaja border border-gold/30 text-[11px] font-mono text-amber-200/90 shadow">
@@ -398,12 +384,27 @@ export const ProductDetailPage = ({
             {/* ----------------- RIGHT: PRODUCT SPECS & PURCHASE ----------------- */}
             <div className="lg:col-span-6 flex flex-col justify-between">
               <div>
-                
+                {/* Product Title and Share Button */}
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <h1 className="font-royal text-2xl sm:text-3xl lg:text-4xl font-extrabold text-amber-50 leading-tight">
+                    {product.name}
+                  </h1>
 
-                {/* Product Title */}
-                <h1 className="font-royal text-2xl sm:text-3xl lg:text-4xl font-extrabold text-amber-50 mb-4 leading-tight">
-                  {product.name}
-                </h1>
+                  {/* Share Button */}
+                  <button
+                    type="button"
+                    onClick={handleShare}
+                    title={copiedLink ? "Link copied!" : "Share product"}
+                    aria-label="Share product"
+                    className="shrink-0 w-10 h-10 rounded-full glass-maharaja border border-gold/30 hover:border-gold flex items-center justify-center text-amber-200 hover:text-gold transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer shadow-md mt-0.5"
+                  >
+                    {copiedLink ? (
+                      <Check className="w-4 h-4 text-emerald-400" />
+                    ) : (
+                      <Share2 className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
 
                 {/* Price Display */}
                 <div className="flex items-baseline gap-3 mb-6 p-4 rounded-2xl bg-maharaja-900/90 border border-gold/25 shadow-inner">
@@ -442,14 +443,14 @@ export const ProductDetailPage = ({
                           <button
                             key={idx}
                             onClick={() => handleColorSelect(col)}
-                            className={`group relative flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+                            className={`group relative flex items-center gap-2 px-3 py-1.5 rounded-md border text-xs font-semibold transition-all ${
                               isSelected
                                 ? 'border-gold-bright bg-maharaja-800 text-gold-bright shadow-gold-sm scale-105'
                                 : 'border-gold/20 bg-maharaja-900/80 text-amber-200/70 hover:border-gold/50'
                             }`}
                           >
                             <span
-                              className="w-4 h-4 rounded-full border border-gold/40 shadow-sm shrink-0 flex items-center justify-center"
+                              className="w-4 h-4 rounded border border-gold/40 shadow-sm shrink-0 flex items-center justify-center"
                               style={{ backgroundColor: col.hex }}
                             >
                               {isSelected && (
@@ -486,7 +487,7 @@ export const ProductDetailPage = ({
                           <button
                             key={idx}
                             onClick={() => handleVersionSelect(ver)}
-                            className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
+                            className={`px-3 py-1.5 rounded-md border text-xs font-semibold transition-all ${
                               isSelected
                                 ? 'border-gold-bright bg-gold-gradient text-maharaja-950 font-bold shadow-gold-sm'
                                 : 'border-gold/20 bg-maharaja-900/80 text-amber-200/70 hover:border-gold/50'

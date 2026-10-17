@@ -42,7 +42,7 @@ export const CategorySection = ({ selectedCarId, onSelectCar }) => {
                     ? 'opacity-100 scale-105 z-20'
                     : isDimmed
                       ? 'opacity-45 hover:opacity-95 hover:scale-100'
-                      : 'opacity-100'
+                      : 'opacity-100 hover:scale-105'
                 }`}
                 title={car.name}
               >
