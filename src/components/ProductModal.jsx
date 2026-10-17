@@ -73,12 +73,18 @@ export const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
                   {galleryImages.map((imgUrl, idx) => (
                     <div 
                       key={idx} 
-                      className="min-w-full w-full h-full shrink-0 relative flex items-center justify-center bg-maharaja-950"
+                      className="min-w-full w-full h-full shrink-0 relative flex items-center justify-center bg-maharaja-950 overflow-hidden"
                     >
                       <img
                         src={imgUrl}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 w-full h-full object-cover blur-xl opacity-30 scale-125 pointer-events-none"
+                      />
+                      <img
+                        src={imgUrl}
                         alt={`${product.name} slide ${idx + 1}`}
-                        className="w-full h-full object-cover object-center select-none"
+                        className="relative z-10 w-full h-full object-contain object-center p-2 select-none"
                       />
                     </div>
                   ))}

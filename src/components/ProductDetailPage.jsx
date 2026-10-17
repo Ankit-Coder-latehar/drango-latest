@@ -266,7 +266,7 @@ export const ProductDetailPage = ({
               
               {/* Main Active Image Showcase with Sliding Carousel */}
               <div 
-                className="relative rounded-2xl overflow-hidden bg-maharaja-900 border border-gold/40 aspect-[4/3] sm:aspect-square max-h-[380px] sm:max-h-none flex items-center justify-center group shadow-2xl select-none"
+                className="relative rounded-2xl overflow-hidden bg-maharaja-900 border border-gold/40 aspect-square w-full flex items-center justify-center group shadow-2xl select-none"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
@@ -278,12 +278,21 @@ export const ProductDetailPage = ({
                   {galleryImages.map((img, idx) => (
                     <div 
                       key={idx} 
-                      className="min-w-full w-full h-full shrink-0 relative flex items-center justify-center bg-maharaja-950"
+                      className="min-w-full w-full h-full shrink-0 relative flex items-center justify-center bg-maharaja-950 overflow-hidden"
                     >
+                      {/* Ambient Blurred Background so wide/tall photos fill gracefully without cropping */}
+                      <img
+                        src={img}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 scale-125 pointer-events-none"
+                      />
+
+                      {/* Main Full Uncut Product Image */}
                       <img
                         src={img}
                         alt={`${product.name} - slide ${idx + 1}`}
-                        className="w-full h-full object-cover object-center select-none"
+                        className="relative z-10 w-full h-full object-contain object-center p-2 sm:p-4 select-none drop-shadow-xl"
                         loading={idx === 0 ? "eager" : "lazy"}
                       />
                     </div>
@@ -369,16 +378,16 @@ export const ProductDetailPage = ({
                       type="button"
                       onClick={() => setActiveImageIndex(idx)}
                       aria-label={`Go to image ${idx + 1}`}
-                      className={`relative rounded-xl overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
+                      className={`relative w-16 h-16 sm:w-18 sm:h-18 aspect-square rounded-xl overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
                         activeImageIndex === idx
-                          ? 'w-14 h-14 sm:w-16 sm:h-16 border-gold-bright shadow-gold-glow scale-105 opacity-100 ring-2 ring-gold/50'
-                          : 'w-11 h-11 sm:w-14 sm:h-14 border-gold/20 hover:border-gold/60 opacity-60 hover:opacity-100'
+                          ? 'border-gold-bright shadow-gold-glow opacity-100 ring-2 ring-gold/50'
+                          : 'border-gold/20 hover:border-gold/60 opacity-60 hover:opacity-100'
                       }`}
                     >
                       <img
                         src={img}
                         alt={`Thumbnail ${idx + 1}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain p-1 bg-maharaja-950"
                       />
                     </button>
                   ))}
@@ -618,13 +627,19 @@ export const ProductDetailPage = ({
                   onClick={() => onSelectProduct(relItem)}
                   className="glass-maharaja-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer border border-gold/25 hover:border-gold transition-all duration-300 hover:-translate-y-1 hover:shadow-gold-glow"
                 >
-                  <div className="relative h-44 overflow-hidden bg-maharaja-950">
+                  <div className="relative h-44 overflow-hidden bg-maharaja-950 flex items-center justify-center">
+                    <img
+                      src={relItem.image}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute inset-0 w-full h-full object-cover blur-xl opacity-25 scale-125 pointer-events-none"
+                    />
                     <img
                       src={relItem.image}
                       alt={relItem.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="relative z-10 w-full h-full object-contain p-2 select-none group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-maharaja-950/80 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-maharaja-950/80 via-transparent to-transparent pointer-events-none"></div>
                   </div>
 
                   <div className="p-4 flex-1 flex flex-col justify-between">
