@@ -36,7 +36,11 @@ export function App() {
         setIsWixLoading(true);
         const { products: liveWixProducts, fromLiveWix } = await fetchWixProducts();
         if (isMounted && fromLiveWix && liveWixProducts.length > 0) {
-          setProductsList(liveWixProducts);
+          const sanitizedProducts = liveWixProducts.map((prod) => ({
+            ...prod,
+            badge: prod.badge && prod.badge.toLowerCase().includes('wix') ? null : prod.badge,
+          }));
+          setProductsList(sanitizedProducts);
           setWixConnected(true);
         }
       } catch (err) {

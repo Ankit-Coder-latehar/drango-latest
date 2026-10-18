@@ -43,11 +43,11 @@ export const DrangoTextLogo = ({ className = "w-full max-w-[280px] xs:max-w-[340
           {/* LETTER D - Refined with balanced stencil cut and center block */}
           <path d="M 24 10 H 76 A 28 28 0 0 1 104 38 V 62 A 28 28 0 0 1 76 90 H 24 A 14 14 0 0 1 10 76 V 65 H 24 V 72 A 4 4 0 0 0 28 76 H 72 A 16 16 0 0 0 88 60 V 40 A 16 16 0 0 0 72 24 H 28 A 4 4 0 0 0 24 28 V 35 H 10 V 24 A 14 14 0 0 1 24 10 Z M 10 43 H 24 V 57 H 10 Z" />
 
-          {/* LETTER R */}
-          <path d="M 120 10 H 178 L 202 34 V 48 A 8 8 0 0 1 194 56 H 176 L 212 90 H 192 L 158 56 H 136 V 90 H 120 Z M 136 24 H 172 L 186 38 V 42 H 136 Z" />
+          {/* LETTER R - Refined automotive stencil with signature top-left chamfer, smooth squircle loop, and planted diagonal leg */}
+          <path d="M 120 90 V 28 L 138 10 H 178 C 194 10 206 20 206 34 C 206 48 194 56 178 56 H 166 L 206 90 H 184 L 148 56 H 138 V 90 H 120 Z M 138 26 H 172 C 180 26 186 30 186 34 C 186 38 180 42 172 42 H 138 Z" />
 
-          {/* LETTER A - Refined sleek open-crossbar chevron with uniform leg width */}
-          <path d="M 276 10 H 284 L 334 90 H 312 L 280 24 L 248 90 H 226 Z" />
+          {/* LETTER A - Premium automotive geometric typography with bold apex, inner triangle and sleek crossbar */}
+          <path d="M 268 10 H 286 L 324 90 H 302 L 292 66 H 262 L 252 90 H 230 Z M 266 52 H 288 L 277 28 Z" />
 
           {/* LETTER N */}
           <path d="M 348 10 H 370 L 418 68 V 10 H 434 V 90 H 412 L 364 32 V 90 H 348 Z" />

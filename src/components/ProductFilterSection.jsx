@@ -19,26 +19,11 @@ export const ProductFilterSection = ({
     return Array.isArray(productsList) ? productsList : [];
   }, [productsList]);
 
-  // Filter products by active category: all products or our limited products (merging external & internal)
+  // Display all products
   const filteredProducts = useMemo(() => {
     if (!allAvailableProducts || allAvailableProducts.length === 0) return [];
-
-    if (activeCategory === 'all') {
-      return allAvailableProducts;
-    }
-
-    if (activeCategory === 'limited') {
-      return allAvailableProducts.filter(
-        (product) =>
-          product.category === 'external' ||
-          product.category === 'internal' ||
-          product.category === 'limited' ||
-          product.isFeatured
-      );
-    }
-
-    return allAvailableProducts.filter((product) => product.category === activeCategory);
-  }, [allAvailableProducts, activeCategory]);
+    return allAvailableProducts;
+  }, [allAvailableProducts]);
 
   const formatPrice = (val) => {
     return new Intl.NumberFormat('en-IN', {
@@ -50,7 +35,6 @@ export const ProductFilterSection = ({
 
   const filterOptions = [
     { id: 'all', label: 'All Products' },
-    { id: 'limited', label: 'Our Limited Products' },
   ];
 
   return (
@@ -117,7 +101,7 @@ export const ProductFilterSection = ({
                     <div className="absolute inset-0 bg-gradient-to-t from-maharaja-950/80 via-transparent to-transparent"></div>
 
                     {/* Badge */}
-                    {product.badge && (
+                    {product.badge && !product.badge.toLowerCase().includes('wix') && (
                       <div className="absolute top-3 left-3 z-10">
                         {product.badge.toLowerCase().includes('new') ? (
                           <span className="text-[10px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-green-500 text-black shadow-md">

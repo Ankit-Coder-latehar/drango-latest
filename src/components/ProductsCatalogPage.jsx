@@ -107,7 +107,7 @@ export const ProductsCatalogPage = ({
         <div className="flex items-center justify-between gap-4 mb-6">
           <button
             onClick={onBackToHome}
-            className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl glass-maharaja text-amber-100 hover:text-gold-bright hover:border-gold transition-all text-xs font-semibold uppercase tracking-wider"
+            className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl border-none bg-maharaja-900/80 text-amber-100 hover:text-gold-bright hover:bg-maharaja-800 transition-all text-xs font-semibold uppercase tracking-wider"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
@@ -198,25 +198,23 @@ export const ProductsCatalogPage = ({
             <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
               <button
                 onClick={() => setActiveCategory('all')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 shrink-0 ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center shrink-0 ${
                   activeCategory === 'all'
                     ? 'bg-gold-gradient text-maharaja-950 shadow-gold-sm font-black'
                     : 'glass-maharaja text-amber-100/70 hover:text-gold-bright hover:border-gold/40'
                 }`}
               >
-                <Sparkles className="w-3.5 h-3.5" />
                 <span>All Products ({allAvailableProducts.length})</span>
               </button>
 
               <button
                 onClick={() => setActiveCategory('thar-roxx')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 shrink-0 ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center shrink-0 ${
                   activeCategory === 'thar-roxx'
                     ? 'bg-gold-gradient text-maharaja-950 shadow-gold-sm font-black'
                     : 'glass-maharaja text-amber-100/70 hover:text-gold-bright hover:border-gold/40'
                 }`}
               >
-                <Shield className="w-3.5 h-3.5" />
                 <span>Thar Roxx</span>
               </button>
             </div>
@@ -289,14 +287,16 @@ export const ProductsCatalogPage = ({
 
                     {/* Badge */}
                     <div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
-                      {item.badge && item.badge.toLowerCase().includes('new') ? (
-                        <span className="text-[10px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-green-500 text-black border border-green-400 shadow">
-                          {item.badge}
-                        </span>
-                      ) : (
-                        <span className="text-[10px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-maharaja-900/90 text-gold-bright border border-gold/40 shadow">
-                          {item.badge || 'DRANGO BESPOKE'}
-                        </span>
+                      {item.badge && !item.badge.toLowerCase().includes('wix') && (
+                        item.badge.toLowerCase().includes('new') ? (
+                          <span className="text-[10px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-green-500 text-black border border-green-400 shadow">
+                            {item.badge}
+                          </span>
+                        ) : (
+                          <span className="text-[10px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-maharaja-900/90 text-gold-bright border border-gold/40 shadow">
+                            {item.badge}
+                          </span>
+                        )
                       )}
                       {discountPercent > 0 && (
                         <span className="text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-emerald-600 text-white shadow w-fit">

@@ -114,17 +114,19 @@ export const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
                   </button>
                 )}
 
-                <div className="absolute top-3 left-3 pointer-events-none">
-                  {product.badge && product.badge.toLowerCase().includes('new') ? (
-                    <span className="px-3 py-1 rounded-full bg-green-500 text-black font-black text-xs uppercase shadow">
-                      {product.badge}
-                    </span>
-                  ) : (
-                    <span className="px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow">
-                      {product.badge}
-                    </span>
-                  )}
-                </div>
+                {product.badge && !product.badge.toLowerCase().includes('wix') && (
+                  <div className="absolute top-3 left-3 pointer-events-none">
+                    {product.badge.toLowerCase().includes('new') ? (
+                      <span className="px-3 py-1 rounded-full bg-green-500 text-black font-black text-xs uppercase shadow">
+                        {product.badge}
+                      </span>
+                    ) : (
+                      <span className="px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow">
+                        {product.badge}
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 {galleryImages.length > 1 && (
                   <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full glass-maharaja border border-gold/30 text-[10px] font-mono text-amber-200 shadow">
@@ -220,9 +222,11 @@ export const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
                     >
                       -
                     </button>
-                    <span className="px-4 py-1 text-xs font-bold text-amber-50">
+                    <span className="w-px h-4 bg-gold/40" />
+                    <span className="px-3.5 py-1 text-xs font-bold text-amber-50 min-w-[1.75rem] text-center">
                       {quantity}
                     </span>
+                    <span className="w-px h-4 bg-gold/40" />
                     <button
                       onClick={() => setQuantity((q) => q + 1)}
                       className="px-3 py-1 text-gold hover:bg-maharaja-800 text-sm font-bold"

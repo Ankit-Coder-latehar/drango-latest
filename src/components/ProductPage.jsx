@@ -187,7 +187,7 @@ export const ProductPage = ({
         <div className="flex items-center justify-between gap-4 mb-8">
           <button
             onClick={onBackToHome}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-maharaja text-amber-100 hover:text-gold-bright hover:border-gold transition-all text-xs font-semibold uppercase tracking-wider"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border-none bg-maharaja-900/80 text-amber-100 hover:text-gold-bright hover:bg-maharaja-800 transition-all text-xs font-semibold uppercase tracking-wider"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
@@ -280,14 +280,16 @@ export const ProductPage = ({
 
                 {/* Badge Overlay */}
                 <div className="absolute top-4 left-4 z-10 flex flex-col gap-1.5 pointer-events-none">
-                  {currentProduct.badge && currentProduct.badge.toLowerCase().includes('new') ? (
-                    <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-green-500 text-black shadow-md">
-                      {currentProduct.badge}
-                    </span>
-                  ) : (
-                    <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 shadow-md">
-                      {currentProduct.badge || 'OFFICIAL DRANGO'}
-                    </span>
+                  {currentProduct.badge && !currentProduct.badge.toLowerCase().includes('wix') && (
+                    currentProduct.badge.toLowerCase().includes('new') ? (
+                      <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-green-500 text-black shadow-md">
+                        {currentProduct.badge}
+                      </span>
+                    ) : (
+                      <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 shadow-md">
+                        {currentProduct.badge}
+                      </span>
+                    )
                   )}
                   {discountPercent > 0 && (
                     <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-emerald-700 text-white shadow w-fit">
@@ -370,19 +372,21 @@ export const ProductPage = ({
               <div className="pt-6 border-t border-gold/20 space-y-4">
                 <div className="flex items-center gap-4">
                   {/* Quantity Counter */}
-                  <div className="flex items-center border border-gold/40 rounded-xl bg-maharaja-900/90 px-3 py-1.5 shrink-0">
+                  <div className="flex items-center border border-gold/40 rounded-xl bg-maharaja-900/90 px-2 py-1.5 shrink-0">
                     <button
                       onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                      className="text-gold-bright text-lg font-bold px-2 hover:text-white transition-colors"
+                      className="text-gold-bright text-lg font-bold px-2.5 hover:text-white transition-colors"
                     >
                       -
                     </button>
-                    <span className="px-3 text-sm font-bold text-amber-50">
+                    <span className="w-px h-5 bg-gold/40" />
+                    <span className="px-3.5 text-sm font-bold text-amber-50 min-w-[2rem] text-center">
                       {quantity}
                     </span>
+                    <span className="w-px h-5 bg-gold/40" />
                     <button
                       onClick={() => setQuantity((q) => q + 1)}
-                      className="text-gold-bright text-lg font-bold px-2 hover:text-white transition-colors"
+                      className="text-gold-bright text-lg font-bold px-2.5 hover:text-white transition-colors"
                     >
                       +
                     </button>
@@ -477,25 +481,23 @@ export const ProductPage = ({
             <div className="flex items-center gap-2 pt-2 border-t border-gold/15 overflow-x-auto pb-1 scrollbar-none">
               <button
                 onClick={() => setActiveCategory('all')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 shrink-0 ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center shrink-0 ${
                   activeCategory === 'all'
-                    ? 'bg-gold-gradient text-maharaja-950 shadow-gold-sm'
+                    ? 'bg-gold-gradient text-maharaja-950 shadow-gold-sm font-black'
                     : 'glass-maharaja text-amber-100/70 hover:text-gold-bright hover:border-gold/40'
                 }`}
               >
-                <Sparkles className="w-3.5 h-3.5" />
                 <span>All Products ({allAvailableProducts.length})</span>
               </button>
 
               <button
                 onClick={() => setActiveCategory('thar-roxx')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center gap-2 shrink-0 ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center shrink-0 ${
                   activeCategory === 'thar-roxx'
                     ? 'bg-gold-gradient text-maharaja-950 shadow-gold-sm font-black'
                     : 'glass-maharaja text-amber-100/70 hover:text-gold-bright hover:border-gold/40'
                 }`}
               >
-                <Shield className="w-3.5 h-3.5" />
                 <span>Thar Roxx</span>
               </button>
             </div>

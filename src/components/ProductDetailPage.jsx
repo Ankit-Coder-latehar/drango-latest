@@ -66,25 +66,17 @@ export const ProductDetailPage = ({
   // Color selection state
   const availableColors = product?.colors && product.colors.length > 0
     ? product.colors
-    : [
-        { name: 'Maharaja Gold', hex: '#D4AF37' },
-        { name: 'Piano Glossy Black', hex: '#111111' },
-        { name: 'Silver Chrome', hex: '#C0C0C0' },
-      ];
+    : [];
 
-  const [selectedColor, setSelectedColor] = useState(availableColors[0]?.name || 'Standard');
+  const [selectedColor, setSelectedColor] = useState('');
 
   // Version / variant selection state
   const availableVersions = product?.versions || [];
-  const [selectedVersion, setSelectedVersion] = useState(
-    availableVersions[0]?.name || ''
-  );
+  const [selectedVersion, setSelectedVersion] = useState('');
 
   // Car type selection state
   const availableCarTypes = product?.carTypes || [];
-  const [selectedCarType, setSelectedCarType] = useState(
-    availableCarTypes[0] || ''
-  );
+  const [selectedCarType, setSelectedCarType] = useState('');
 
   // Reset local state when product changes
   useEffect(() => {
@@ -92,21 +84,9 @@ export const ProductDetailPage = ({
     setActiveImageIndex(0);
     setQuantity(1);
     setIsAdded(false);
-    if (product.colors && product.colors.length > 0) {
-      setSelectedColor(product.colors[0].name);
-    } else {
-      setSelectedColor('Maharaja Gold');
-    }
-    if (product.versions && product.versions.length > 0) {
-      setSelectedVersion(product.versions[0].name);
-    } else {
-      setSelectedVersion('');
-    }
-    if (product.carTypes && product.carTypes.length > 0) {
-      setSelectedCarType(product.carTypes[0]);
-    } else {
-      setSelectedCarType('');
-    }
+    setSelectedColor('');
+    setSelectedVersion('');
+    setSelectedCarType('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [product?.id]);
 
@@ -221,7 +201,7 @@ export const ProductDetailPage = ({
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={onBackToProducts}
-              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl glass-maharaja text-amber-100 hover:text-gold-bright hover:border-gold transition-all text-xs font-semibold uppercase tracking-wider"
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl border-none bg-maharaja-900/80 text-amber-100 hover:text-gold-bright hover:bg-maharaja-800 transition-all text-xs font-semibold uppercase tracking-wider"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Products</span>
@@ -327,15 +307,17 @@ export const ProductDetailPage = ({
 
                 {/* Badges on Main Image */}
                 <div className="absolute top-4 left-4 z-10 flex flex-col gap-2 pointer-events-none">
-                  {product.badge && product.badge.toLowerCase().includes('new') ? (
-                    <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-green-500 text-black shadow-md flex items-center justify-center">
-                      <span>{product.badge}</span>
-                    </span>
-                  ) : (
-                    <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 shadow-md flex items-center gap-1.5">
-                      <Sparkles className="w-3 h-3 text-maharaja-950" />
-                      <span>{product.badge || 'OFFICIAL DRANGO'}</span>
-                    </span>
+                  {product.badge && !product.badge.toLowerCase().includes('wix') && (
+                    product.badge.toLowerCase().includes('new') ? (
+                      <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-green-500 text-black shadow-md flex items-center justify-center">
+                        <span>{product.badge}</span>
+                      </span>
+                    ) : (
+                      <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 shadow-md flex items-center gap-1.5">
+                        <Sparkles className="w-3 h-3 text-maharaja-950" />
+                        <span>{product.badge}</span>
+                      </span>
+                    )
                   )}
                   {discountPercent > 0 && (
                     <span className="text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-emerald-600 text-white shadow w-fit">
@@ -431,9 +413,11 @@ export const ProductDetailPage = ({
                         <Gem className="w-3.5 h-3.5" />
                         <span>Select Color / Finish:</span>
                       </label>
-                      <span className="text-xs font-bold text-amber-100 uppercase tracking-wide">
-                        {selectedColor}
-                      </span>
+                      {selectedColor && (
+                        <span className="text-xs font-bold text-amber-100 uppercase tracking-wide">
+                          {selectedColor}
+                        </span>
+                      )}
                     </div>
 
                     <div className="flex items-center gap-3 flex-wrap">
@@ -446,15 +430,21 @@ export const ProductDetailPage = ({
                             className={`group relative flex items-center gap-2 px-3 py-1.5 rounded-md border text-xs font-semibold transition-all ${
                               isSelected
                                 ? 'border-gold-bright bg-maharaja-800 text-gold-bright shadow-gold-sm scale-105'
-                                : 'border-gold/20 bg-maharaja-900/80 text-amber-200/70 hover:border-gold/50'
+                                : 'border-transparent bg-maharaja-900/80 text-amber-200/70 hover:text-gold-bright'
                             }`}
                           >
                             <span
-                              className="w-4 h-4 rounded border border-gold/40 shadow-sm shrink-0 flex items-center justify-center"
+                              className="w-4 h-4 rounded shadow-sm shrink-0 flex items-center justify-center"
                               style={{ backgroundColor: col.hex }}
                             >
                               {isSelected && (
-                                <Check className="w-2.5 h-2.5 text-maharaja-950 font-bold" />
+                                <Check
+                                  className={`w-2.5 h-2.5 font-bold ${
+                                    col.name.toLowerCase() === 'beige' || col.name.toLowerCase() === 'white'
+                                      ? 'text-maharaja-950'
+                                      : 'text-white'
+                                  }`}
+                                />
                               )}
                             </span>
                             <span className="capitalize">{col.name}</span>
@@ -475,9 +465,11 @@ export const ProductDetailPage = ({
                         <Layers className="w-3.5 h-3.5" />
                         <span>Select Design Variant:</span>
                       </label>
-                      <span className="text-xs font-bold text-amber-100 uppercase tracking-wide">
-                        {selectedVersion}
-                      </span>
+                      {selectedVersion && (
+                        <span className="text-xs font-bold text-amber-100 uppercase tracking-wide">
+                          {selectedVersion}
+                        </span>
+                      )}
                     </div>
 
                     <div className="flex items-center gap-2 flex-wrap">
@@ -490,7 +482,7 @@ export const ProductDetailPage = ({
                             className={`px-3 py-1.5 rounded-md border text-xs font-semibold transition-all ${
                               isSelected
                                 ? 'border-gold-bright bg-gold-gradient text-maharaja-950 font-bold shadow-gold-sm'
-                                : 'border-gold/20 bg-maharaja-900/80 text-amber-200/70 hover:border-gold/50'
+                                : 'border-transparent bg-maharaja-900/80 text-amber-200/70 hover:text-gold-bright'
                             }`}
                           >
                             {ver.name}
@@ -516,7 +508,7 @@ export const ProductDetailPage = ({
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="inline-flex items-center border border-gold/40 rounded-xl bg-maharaja-900/90 px-3 py-1.5 shadow-inner">
+                    <div className="inline-flex items-center border border-gold/40 rounded-xl bg-maharaja-900/90 px-2 py-1.5 shadow-inner">
                       <button
                         type="button"
                         onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -525,9 +517,11 @@ export const ProductDetailPage = ({
                       >
                         -
                       </button>
+                      <span className="w-px h-5 bg-gold/40" />
                       <span className="px-4 text-sm font-bold text-amber-50 min-w-[2.5rem] text-center">
                         {quantity}
                       </span>
+                      <span className="w-px h-5 bg-gold/40" />
                       <button
                         type="button"
                         onClick={() => setQuantity((q) => q + 1)}

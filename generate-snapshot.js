@@ -168,13 +168,20 @@ function transform(p) {
   const gallery = mediaItems.map((item) => item.image?.url).filter(Boolean);
   const mainImage = p.media?.mainMedia?.image?.url || gallery[0] || '/images/grille_roxx_gold.jpg';
 
-  let badge = 'LIVE WIX STORE';
+  let badge = null;
   if (hasDiscount) {
     badge = `SAVE ₹${discountAmount.toLocaleString('en-IN')}`;
   } else if (p.ribbons && p.ribbons.length > 0) {
-    badge = p.ribbons[0].text;
+    const ribbonText = p.ribbons[0].text;
+    if (ribbonText && !ribbonText.toLowerCase().includes('wix')) {
+      badge = ribbonText;
+    }
   } else if (p.name.toLowerCase().includes('kit')) {
     badge = 'MAHARAJA PACK';
+  }
+
+  if (badge && badge.toLowerCase().includes('wix')) {
+    badge = null;
   }
 
   const lowerText = (p.name + ' ' + cleanDesc).toLowerCase();
