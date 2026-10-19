@@ -65,11 +65,11 @@ export const LoaderScreen = ({ onFinished }) => {
       `}</style>
 
       {/* Ambient center radial glow behind text */}
-      <div className="absolute w-80 h-80 sm:w-[480px] sm:h-[480px] rounded-full bg-gold/15 blur-[100px] pointer-events-none transition-opacity duration-700" />
+      <div className="absolute w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-gold/15 blur-[60px] pointer-events-none transition-opacity duration-700" />
 
-      {/* Brand Logo - Exact same brand typography used in the header */}
+      {/* Brand Logo - Compact, understated luxury brandmark */}
       <div className="relative z-10 animate-instant-glow text-center px-4">
-        <span className="font-royal text-4xl xs:text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-widest text-gold-gradient uppercase select-none">
+        <span className="font-royal text-lg xs:text-xl sm:text-2xl md:text-3xl font-extrabold tracking-widest text-gold-gradient uppercase select-none">
           DRANGO
         </span>
       </div>

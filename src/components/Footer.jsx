@@ -113,12 +113,12 @@ const locations = [
   {
     id: 'chd',
     city: 'Chandigarh (HQ)',
-    name: 'Drango Coachbuilding & Factory Studio',
-    tag: 'Main Build Facility',
+    name: 'DRANGO',
+    subtitle: 'Manufacture of Premium Custom Auto Parts',
     address: 'Plot No. 458, Industrial Area Phase-2, Chandigarh, 160002',
     hours: 'Mon – Sat: 10:00 AM – 8:30 PM',
-    mapUrl: 'https://maps.google.com/?q=Plot+No.+458+Industrial+Area+Phase-2+Chandigarh+160002',
-    embedUrl: 'https://maps.google.com/maps?q=Plot%20No.%20458%2C%20Industrial%20Area%20Phase-2%2C%20Chandigarh%2C%20160002&t=&z=14&ie=UTF8&iwloc=&output=embed',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=DRANGO%2C+Manufacture+of+Premium+Custom+Auto+Parts%2C+Plot+No.+458%2C+Industrial+Area+Phase-2%2C+Chandigarh%2C+160002',
+    embedUrl: 'https://maps.google.com/maps?q=30.696781,76.781686+(DRANGO+-+Plot+No.+458,+Industrial+Area+Phase-2,+Chandigarh)&t=&z=16&ie=UTF8&iwloc=B&output=embed',
   },
 ];
 
@@ -161,7 +161,7 @@ export const Footer = () => {
             </div>
 
             <p className="text-xs sm:text-sm text-amber-200/70 font-light leading-relaxed max-w-sm">
-              Every product is designed to elevate your riding experience and make your vehicle a true reflection of you. Whether you want to add a bold look, or make every ride feel special, Drango has you covered.
+              Drango brings you everything you need to make your ride stand out with the pride, style, and personality you deserve.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -275,11 +275,9 @@ export const Footer = () => {
               <div>
                 <h4 className="font-royal text-sm font-bold text-gold-bright uppercase tracking-wider flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-gold" />
-                  Our Factory & Studio
+                  Our Factory Location
                 </h4>
-                <p className="text-[11px] text-amber-200/60 mt-0.5">
-                  Visit our bespoke build studio & experience center in Chandigarh
-                </p>
+
               </div>
             </div>
 
@@ -292,8 +290,8 @@ export const Footer = () => {
                     type="button"
                     onClick={() => setSelectedLocation(idx)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-200 flex items-center gap-1.5 ${selectedLocation === idx
-                        ? 'bg-gold text-maharaja-950 font-bold shadow-gold-sm border border-gold'
-                        : 'bg-maharaja-900/80 text-amber-200/70 border border-gold/25 hover:border-gold/60 hover:text-gold'
+                      ? 'bg-gold text-maharaja-950 font-bold shadow-gold-sm border border-gold'
+                      : 'bg-maharaja-900/80 text-amber-200/70 border border-gold/25 hover:border-gold/60 hover:text-gold'
                       }`}
                   >
                     <span className={`w-1.5 h-1.5 rounded-full ${selectedLocation === idx ? 'bg-maharaja-950' : 'bg-gold/60'}`} />
@@ -313,23 +311,20 @@ export const Footer = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-
-                {/* Badge Overlay */}
-                <div className="absolute top-2 left-2 pointer-events-none">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-maharaja-950/85 backdrop-blur-sm border border-gold/40 text-[10px] font-bold text-gold-bright uppercase tracking-wider shadow-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    {activeLoc.tag}
-                  </span>
-                </div>
               </div>
 
               {/* Location Details Footer */}
               <div className="p-3 bg-gradient-to-b from-maharaja-900/95 to-maharaja-950 border-t border-gold/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <div className="min-w-0">
-                  <h5 className="text-xs font-bold text-amber-50 truncate flex items-center gap-1.5">
+                  <h5 className="text-xs font-bold text-amber-50 flex items-center gap-1.5 flex-wrap">
                     <span>{activeLoc.name}</span>
+                    {activeLoc.subtitle && (
+                      <span className="text-[10px] text-gold/80 font-normal">
+                        • {activeLoc.subtitle}
+                      </span>
+                    )}
                   </h5>
-                  <p className="text-[11px] text-amber-200/70 truncate flex items-center gap-1 mt-0.5">
+                  <p className="text-[11px] text-amber-200/70 flex items-center gap-1 mt-0.5">
                     <MapPin className="w-3 h-3 text-gold shrink-0" />
                     <span>{activeLoc.address}</span>
                   </p>
@@ -365,11 +360,9 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-maharaja-850 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-amber-200/60">
           <div>
-            © {new Date().getFullYear()} DRANGO AUTOMOTIVE CUSTOMS. All Rights Reserved.
+            @2026 Drango
           </div>
-          <div className="flex items-center gap-1 text-gold">
-            <span>Crafted with Pride for Thar Enthusiasts</span>
-          </div>
+
         </div>
 
       </div>

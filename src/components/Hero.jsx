@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ShieldCheck, Award, Wrench, Volume2, VolumeX, Play, Pause, ChevronDown, Phone, Truck, PhoneCall } from 'lucide-react';
-import { DrangoTextLogo } from './DrangoTextLogo';
 
 export const Hero = ({ onNavigateProducts }) => {
   const heroRef = useRef(null);
@@ -132,8 +131,9 @@ export const Hero = ({ onNavigateProducts }) => {
           ref={titleRef}
           className="font-royal text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.1] mb-8 sm:mb-10 text-left drop-shadow-2xl"
         >
-          {/* Custom Automotive DRANGO Vector Typography - No Background */}
-          <DrangoTextLogo className="block w-full max-w-[280px] xs:max-w-[340px] sm:max-w-[440px] md:max-w-[540px] lg:max-w-[620px] xl:max-w-[700px] mb-2 sm:mb-3" />
+          <span className="block text-gold-gradient tracking-tight mb-2 sm:mb-3">
+            Welcome to Drango
+          </span>
           <span className="block text-gold-gradient font-serif italic text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-1 sm:mt-2 tracking-normal capitalize font-bold">
             Your Car’s Ultimate Glow-Up Buddy
           </span>

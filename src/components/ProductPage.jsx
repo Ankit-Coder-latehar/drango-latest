@@ -94,10 +94,10 @@ export const ProductPage = ({
           activeCategory === 'all' ||
           (activeCategory === 'thar-roxx'
             ? p.carId === 'thar-roxx' ||
-              p.carId === 'all' ||
-              p.compatibility?.toLowerCase().includes('roxx') ||
-              p.name?.toLowerCase().includes('roxx') ||
-              p.slug?.toLowerCase().includes('roxx')
+            p.carId === 'all' ||
+            p.compatibility?.toLowerCase().includes('roxx') ||
+            p.name?.toLowerCase().includes('roxx') ||
+            p.slug?.toLowerCase().includes('roxx')
             : p.category === activeCategory);
 
         // Vehicle filter
@@ -173,16 +173,16 @@ export const ProductPage = ({
   const discountPercent =
     currentProduct.originalPrice && currentProduct.originalPrice > currentProduct.price
       ? Math.round(
-          ((currentProduct.originalPrice - currentProduct.price) /
-            currentProduct.originalPrice) *
-            100
-        )
+        ((currentProduct.originalPrice - currentProduct.price) /
+          currentProduct.originalPrice) *
+        100
+      )
       : 0;
 
   return (
     <div className="bg-maharaja-950 text-amber-50 min-h-screen pt-24 sm:pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Navigation Breadcrumb & Back Button */}
         <div className="flex items-center justify-between gap-4 mb-8">
           <button
@@ -212,25 +212,25 @@ export const ProductPage = ({
         {/* ======================================================== */}
         {/* 1. FOCUSED PRODUCT DETAILS SHOWCASE */}
         {/* ======================================================== */}
-        <div className="glass-maharaja rounded-3xl border border-gold/30 p-6 sm:p-10 mb-20 shadow-royal">
+        <div className="mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-            
+
             {/* Left: Gallery Column */}
             <div className="lg:col-span-6 flex flex-col gap-4">
               {/* Main Image Showcase with Sliding Carousel */}
-              <div 
-                className="relative rounded-2xl overflow-hidden bg-maharaja-900 border border-gold/40 aspect-square w-full flex items-center justify-center group select-none shadow-2xl"
+              <div
+                className="relative rounded-lg overflow-hidden bg-maharaja-900 border border-gold/40 aspect-square w-full flex items-center justify-center group select-none shadow-2xl"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
                 {/* Horizontal Sliding Track */}
-                <div 
+                <div
                   className="flex w-full h-full transition-transform duration-500 ease-out will-change-transform"
                   style={{ transform: `translateX(-${activeImageIndex * 100}%)` }}
                 >
                   {galleryImages.map((img, idx) => (
-                    <div 
-                      key={idx} 
+                    <div
+                      key={idx}
                       className="min-w-full w-full h-full shrink-0 relative flex items-center justify-center bg-maharaja-950 overflow-hidden"
                     >
                       {/* Ambient Blurred Background */}
@@ -308,7 +308,7 @@ export const ProductPage = ({
 
               {/* Thumbnail Carousel Track */}
               {galleryImages.length > 1 && (
-                <div 
+                <div
                   className="flex items-center gap-2 sm:gap-3 overflow-x-auto py-1 px-1 scrollbar-none justify-center"
                   style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
@@ -318,11 +318,10 @@ export const ProductPage = ({
                       type="button"
                       onClick={() => setActiveImageIndex(idx)}
                       aria-label={`Go to image ${idx + 1}`}
-                      className={`relative w-16 h-16 sm:w-18 sm:h-18 aspect-square rounded-xl overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
-                        activeImageIndex === idx
+                      className={`relative w-16 h-16 sm:w-18 sm:h-18 aspect-square rounded-lg overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${activeImageIndex === idx
                           ? 'border-gold-bright shadow-gold-glow opacity-100 ring-2 ring-gold/50'
                           : 'border-gold/20 hover:border-gold/60 opacity-60 hover:opacity-100'
-                      }`}
+                        }`}
                     >
                       <img
                         src={img}
@@ -345,7 +344,7 @@ export const ProductPage = ({
                 </h1>
 
                 {/* Price Display */}
-                <div className="flex items-baseline gap-3 mb-6 p-4 rounded-2xl bg-maharaja-900/80 border border-gold/20">
+                <div className="flex items-baseline gap-3 mb-6 p-4 rounded-lg bg-maharaja-900/80 border border-gold/20">
                   <span className="font-royal text-xl sm:text-2xl font-light text-gold-gradient opacity-75">
                     {formatPrice(currentProduct.price)}
                   </span>
@@ -372,7 +371,7 @@ export const ProductPage = ({
               <div className="pt-6 border-t border-gold/20 space-y-4">
                 <div className="flex items-center gap-4">
                   {/* Quantity Counter */}
-                  <div className="flex items-center border border-gold/40 rounded-xl bg-maharaja-900/90 px-2 py-1.5 shrink-0">
+                  <div className="flex items-center border border-gold/40 rounded-lg bg-maharaja-900/90 px-2 py-1.5 shrink-0">
                     <button
                       onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                       className="text-gold-bright text-lg font-bold px-2.5 hover:text-white transition-colors"
@@ -395,11 +394,10 @@ export const ProductPage = ({
                   {/* Add to Cart Button */}
                   <button
                     onClick={handleAddMainProduct}
-                    className={`flex-1 py-3.5 px-6 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
-                      isAdded
+                    className={`flex-1 py-3.5 px-6 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${isAdded
                         ? 'bg-emerald-600 text-white'
                         : 'bg-gold-gradient text-maharaja-950 hover:shadow-gold-glow hover:brightness-110'
-                    }`}
+                      }`}
                   >
                     {isAdded ? (
                       <>
@@ -430,14 +428,14 @@ export const ProductPage = ({
               Our Products
             </h2>
             <p className="text-amber-200/70 text-xs sm:text-sm max-w-xl mx-auto font-light">
-              Explore every handcrafted modification and custom accessory available for your SUV.
+              Every product is designed to elevate your riding experience and make your vehicle a true reflection of you. Whether you want to add a bold look, or make every ride feel special, Drango has you covered.
             </p>
           </div>
 
           {/* Search Bar & Filter Controls Bar */}
-          <div className="glass-maharaja rounded-2xl border border-gold/30 p-4 sm:p-6 mb-10 space-y-4 shadow-md">
+          <div className="mb-10 space-y-4">
             <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
-              
+
               {/* Real-time Search Input */}
               <div className="relative flex-1">
                 <Search className="w-4 h-4 text-gold/70 absolute left-4 top-1/2 -translate-y-1/2" />
@@ -481,22 +479,20 @@ export const ProductPage = ({
             <div className="flex items-center gap-2 pt-2 border-t border-gold/15 overflow-x-auto pb-1 scrollbar-none">
               <button
                 onClick={() => setActiveCategory('all')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center shrink-0 ${
-                  activeCategory === 'all'
+                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center shrink-0 ${activeCategory === 'all'
                     ? 'bg-gold-gradient text-maharaja-950 shadow-gold-sm font-black'
                     : 'glass-maharaja text-amber-100/70 hover:text-gold-bright hover:border-gold/40'
-                }`}
+                  }`}
               >
                 <span>All Products ({allAvailableProducts.length})</span>
               </button>
 
               <button
                 onClick={() => setActiveCategory('thar-roxx')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center shrink-0 ${
-                  activeCategory === 'thar-roxx'
+                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all flex items-center justify-center shrink-0 ${activeCategory === 'thar-roxx'
                     ? 'bg-gold-gradient text-maharaja-950 shadow-gold-sm font-black'
                     : 'glass-maharaja text-amber-100/70 hover:text-gold-bright hover:border-gold/40'
-                }`}
+                  }`}
               >
                 <span>Thar Roxx</span>
               </button>
@@ -530,11 +526,10 @@ export const ProductPage = ({
                   <div
                     key={item.id}
                     onClick={() => onSelectProduct(item)}
-                    className={`glass-maharaja-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-1 ${
-                      isCurrentActive
+                    className={`glass-maharaja-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-1 ${isCurrentActive
                         ? 'border-2 border-gold-bright shadow-gold-glow'
                         : 'hover:border-gold'
-                    }`}
+                      }`}
                   >
                     {/* Item Image */}
                     <div className="relative h-52 overflow-hidden bg-maharaja-950">
@@ -595,11 +590,10 @@ export const ProductPage = ({
 
                           <button
                             onClick={(e) => handleAddCatalogItem(item, e)}
-                            className={`py-2.5 px-2 rounded-xl text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-1 transition-all ${
-                              isItemAdded
+                            className={`py-2.5 px-2 rounded-xl text-[10px] sm:text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-1 transition-all ${isItemAdded
                                 ? 'bg-emerald-600 text-white'
                                 : 'bg-gold-gradient text-maharaja-950 hover:shadow-gold-sm'
-                            }`}
+                              }`}
                           >
                             {isItemAdded ? (
                               <>

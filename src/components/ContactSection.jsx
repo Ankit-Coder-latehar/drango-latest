@@ -99,7 +99,7 @@ export const ContactSection = () => {
 
           {/* Booking Form Column */}
           <div className="lg:col-span-7">
-            <div className="glass-maharaja p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border-2 border-gold/40 shadow-royal relative">
+            <div className="bg-transparent relative">
 
               {submitted ? (
                 <div className="text-center py-12 animate-fadeIn">

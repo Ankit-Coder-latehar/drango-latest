@@ -238,7 +238,7 @@ export const ProductDetailPage = ({
         {/* ======================================================== */}
         {/* MAIN PRODUCT DETAIL CONTAINER */}
         {/* ======================================================== */}
-        <div className="glass-maharaja rounded-2xl sm:rounded-3xl border border-gold/30 p-4 sm:p-7 lg:p-10 mb-12 sm:mb-20 shadow-royal">
+        <div className="mb-12 sm:mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-14">
             
             {/* ----------------- LEFT: IMAGE GALLERY ----------------- */}
@@ -246,7 +246,7 @@ export const ProductDetailPage = ({
               
               {/* Main Active Image Showcase with Sliding Carousel */}
               <div 
-                className="relative rounded-2xl overflow-hidden bg-maharaja-900 border border-gold/40 aspect-square w-full flex items-center justify-center group shadow-2xl select-none"
+                className="relative rounded-lg overflow-hidden bg-maharaja-900 border border-gold/40 aspect-square w-full flex items-center justify-center group shadow-2xl select-none"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
@@ -346,7 +346,7 @@ export const ProductDetailPage = ({
                       type="button"
                       onClick={() => setActiveImageIndex(idx)}
                       aria-label={`Go to image ${idx + 1}`}
-                      className={`relative w-16 h-16 sm:w-18 sm:h-18 aspect-square rounded-xl overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
+                      className={`relative w-16 h-16 sm:w-18 sm:h-18 aspect-square rounded-lg overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
                         activeImageIndex === idx
                           ? 'border-gold-bright shadow-gold-glow opacity-100 ring-2 ring-gold/50'
                           : 'border-gold/20 hover:border-gold/60 opacity-60 hover:opacity-100'
@@ -389,7 +389,7 @@ export const ProductDetailPage = ({
                 </div>
 
                 {/* Price Display */}
-                <div className="flex items-baseline gap-3 mb-6 p-4 rounded-2xl bg-maharaja-900/90 border border-gold/25 shadow-inner">
+                <div className="flex items-baseline gap-3 mb-6 p-4 rounded-lg bg-maharaja-900/90 border border-gold/25 shadow-inner">
                   <span className="font-royal text-xl sm:text-2xl font-light text-gold-gradient opacity-75 tracking-normal">
                     {formatPrice(product.price)}
                   </span>
@@ -407,7 +407,7 @@ export const ProductDetailPage = ({
                 {/* 1. COLOR SELECTION (Required by user) */}
                 {/* ======================================================== */}
                 {availableColors.length > 0 && (
-                  <div className="mb-6 p-4 rounded-2xl bg-maharaja-900/50 border border-gold/15">
+                  <div className="mb-6 p-4 rounded-lg bg-maharaja-900/50 border border-gold/15">
                     <div className="flex items-center justify-between mb-2.5">
                       <label className="text-xs font-bold uppercase tracking-wider text-gold-bright flex items-center gap-2">
                         <Gem className="w-3.5 h-3.5" />
@@ -459,7 +459,7 @@ export const ProductDetailPage = ({
                 {/* 2. DESIGN VERSION / THEME (If available) */}
                 {/* ======================================================== */}
                 {availableVersions.length > 0 && (
-                  <div className="mb-6 p-4 rounded-2xl bg-maharaja-900/50 border border-gold/15">
+                  <div className="mb-6 p-4 rounded-lg bg-maharaja-900/50 border border-gold/15">
                     <div className="flex items-center justify-between mb-2.5">
                       <label className="text-xs font-bold uppercase tracking-wider text-gold-bright flex items-center gap-2">
                         <Layers className="w-3.5 h-3.5" />
@@ -496,7 +496,7 @@ export const ProductDetailPage = ({
                 {/* ======================================================== */}
                 {/* 3. QUANTITY SELECTION */}
                 {/* ======================================================== */}
-                <div className="mb-6 p-4 rounded-2xl bg-maharaja-900/50 border border-gold/15">
+                <div className="mb-6 p-4 rounded-lg bg-maharaja-900/50 border border-gold/15">
                   <div className="flex items-center justify-between mb-2.5">
                     <label className="text-xs font-bold uppercase tracking-wider text-gold-bright flex items-center gap-2">
                       <ShoppingBag className="w-3.5 h-3.5" />
@@ -508,7 +508,7 @@ export const ProductDetailPage = ({
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="inline-flex items-center border border-gold/40 rounded-xl bg-maharaja-900/90 px-2 py-1.5 shadow-inner">
+                    <div className="inline-flex items-center border border-gold/40 rounded-lg bg-maharaja-900/90 px-2 py-1.5 shadow-inner">
                       <button
                         type="button"
                         onClick={() => setQuantity((q) => Math.max(1, q - 1))}

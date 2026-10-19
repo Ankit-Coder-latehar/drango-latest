@@ -10,20 +10,66 @@ export const ProductFilterSection = ({
 }) => {
   const [activeCategory, setActiveCategory] = useState('all');
 
-  // On clicking any category car, reset filter to 'all' so all products are reflected
+  // When a category car is selected, switch to 'vehicle' so products for that vehicle are shown
   useEffect(() => {
-    setActiveCategory('all');
+    if (selectedCarId) {
+      setActiveCategory('vehicle');
+    } else {
+      setActiveCategory('all');
+    }
   }, [selectedCarId]);
 
   const allAvailableProducts = useMemo(() => {
     return Array.isArray(productsList) ? productsList : [];
   }, [productsList]);
 
-  // Display all products
+  // Filter products: either All Products or Product for your vehicle
   const filteredProducts = useMemo(() => {
     if (!allAvailableProducts || allAvailableProducts.length === 0) return [];
+
+    if (activeCategory === 'vehicle' && selectedCarId) {
+      const filtered = allAvailableProducts.filter((product) => {
+        if (product.carId === 'all') return true;
+        if (product.carId === selectedCarId) return true;
+
+        const combined = `${product.name || ''} ${product.description || ''} ${product.compatibility || ''} ${product.slug || ''}`.toLowerCase();
+
+        if (selectedCarId === 'thar-roxx') {
+          return combined.includes('roxx') || combined.includes('thar');
+        }
+        if (selectedCarId === 'thar-3d') {
+          return combined.includes('3 door') || combined.includes('3door') || combined.includes('thar');
+        }
+        if (selectedCarId === 'jimny') {
+          return combined.includes('jimny');
+        }
+        if (selectedCarId === 'hilux') {
+          return combined.includes('hilux');
+        }
+        if (selectedCarId === 'fortuner') {
+          return combined.includes('fortuner');
+        }
+        if (selectedCarId === 'scorpio-n') {
+          return combined.includes('scorpio');
+        }
+        if (selectedCarId === 'dmax') {
+          return combined.includes('d-max') || combined.includes('dmax');
+        }
+        if (selectedCarId === 'wrangler') {
+          return combined.includes('wrangler');
+        }
+        if (selectedCarId === 'thar-crde') {
+          return combined.includes('crde');
+        }
+
+        return false;
+      });
+
+      return filtered;
+    }
+
     return allAvailableProducts;
-  }, [allAvailableProducts]);
+  }, [allAvailableProducts, activeCategory, selectedCarId]);
 
   const formatPrice = (val) => {
     return new Intl.NumberFormat('en-IN', {
@@ -33,9 +79,13 @@ export const ProductFilterSection = ({
     }).format(val);
   };
 
-  const filterOptions = [
-    { id: 'all', label: 'All Products' },
-  ];
+  const filterOptions = useMemo(() => {
+    const opts = [{ id: 'all', label: 'All Products' }];
+    if (selectedCarId) {
+      opts.push({ id: 'vehicle', label: 'Product for your vehicle' });
+    }
+    return opts;
+  }, [selectedCarId]);
 
   return (
     <section id="products" className="py-8 sm:py-12 bg-maharaja-950 relative border-t border-gold/20">
@@ -79,7 +129,13 @@ export const ProductFilterSection = ({
           </div>
         ) : filteredProducts.length === 0 ? (
           <div className="text-center py-12 glass-maharaja rounded border border-gold/20 p-8 max-w-md mx-auto">
-            <p className="text-sm text-amber-200/70">No products found in this category.</p>
+            <p className="text-sm text-amber-200/70 mb-3">No specific products found for this vehicle.</p>
+            <button
+              onClick={() => setActiveCategory('all')}
+              className="px-4 py-2 rounded-lg bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow-gold-sm hover:brightness-110 transition-all"
+            >
+              Show All Products
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

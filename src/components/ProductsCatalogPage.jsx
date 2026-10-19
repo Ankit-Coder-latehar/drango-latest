@@ -131,12 +131,12 @@ export const ProductsCatalogPage = ({
             Drango Royal Collection
           </h1>
           <p className="text-amber-200/80 text-xs sm:text-sm max-w-2xl mx-auto font-light leading-relaxed">
-            Every modification is precision crafted to elevate your SUV with unmistakable road presence, luxury detailing, and OEM-spec fitment.
+            Every product is designed to elevate your riding experience and make your vehicle a true reflection of you. Whether you want to add a bold look, or make every ride feel special, Drango has you covered.
           </p>
         </div>
 
         {/* Search & Filter Controls Bar */}
-        <div className="glass-maharaja rounded-2xl border border-gold/30 p-4 sm:p-6 mb-10 space-y-4 shadow-royal">
+        <div className="mb-10 space-y-4">
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
             
             {/* Real-time Search Input */}
