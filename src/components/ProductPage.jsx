@@ -219,7 +219,7 @@ export const ProductPage = ({
             <div className="lg:col-span-6 flex flex-col gap-4">
               {/* Main Image Showcase with Sliding Carousel */}
               <div
-                className="relative rounded-lg overflow-hidden bg-maharaja-900 border border-gold/40 aspect-square w-full flex items-center justify-center group select-none shadow-2xl"
+                className="relative rounded overflow-hidden bg-maharaja-900 border border-gold/40 aspect-square w-full flex items-center justify-center group select-none shadow-2xl"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
@@ -282,17 +282,17 @@ export const ProductPage = ({
                 <div className="absolute top-4 left-4 z-10 flex flex-col gap-1.5 pointer-events-none">
                   {currentProduct.badge && !currentProduct.badge.toLowerCase().includes('wix') && (
                     currentProduct.badge.toLowerCase().includes('new') ? (
-                      <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-green-500 text-black shadow-md">
+                      <span className="text-xs font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-green-500 text-black shadow-md">
                         {currentProduct.badge}
                       </span>
                     ) : (
-                      <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 shadow-md">
+                      <span className="text-xs font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-gold-gradient text-maharaja-950 shadow-md">
                         {currentProduct.badge}
                       </span>
                     )
                   )}
                   {discountPercent > 0 && (
-                    <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-emerald-700 text-white shadow w-fit">
+                    <span className="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-emerald-700 text-white shadow w-fit">
                       {discountPercent}% OFF
                     </span>
                   )}
@@ -300,7 +300,7 @@ export const ProductPage = ({
 
                 {/* Slide Counter on Image */}
                 {galleryImages.length > 1 && (
-                  <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded-full glass-maharaja border border-gold/30 text-[11px] font-mono text-amber-200/90 shadow">
+                  <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded glass-maharaja border border-gold/30 text-[11px] font-mono text-amber-200/90 shadow">
                     {activeImageIndex + 1} / {galleryImages.length}
                   </div>
                 )}
@@ -318,7 +318,7 @@ export const ProductPage = ({
                       type="button"
                       onClick={() => setActiveImageIndex(idx)}
                       aria-label={`Go to image ${idx + 1}`}
-                      className={`relative w-16 h-16 sm:w-18 sm:h-18 aspect-square rounded-lg overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${activeImageIndex === idx
+                      className={`relative w-16 h-16 sm:w-18 sm:h-18 aspect-square rounded overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${activeImageIndex === idx
                           ? 'border-gold-bright shadow-gold-glow opacity-100 ring-2 ring-gold/50'
                           : 'border-gold/20 hover:border-gold/60 opacity-60 hover:opacity-100'
                         }`}

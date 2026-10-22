@@ -246,7 +246,7 @@ export const ProductDetailPage = ({
               
               {/* Main Active Image Showcase with Sliding Carousel */}
               <div 
-                className="relative rounded-lg overflow-hidden bg-maharaja-900 border border-gold/40 aspect-square w-full flex items-center justify-center group shadow-2xl select-none"
+                className="relative rounded overflow-hidden bg-maharaja-900 border border-gold/40 aspect-square w-full flex items-center justify-center group shadow-2xl select-none"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
@@ -309,18 +309,18 @@ export const ProductDetailPage = ({
                 <div className="absolute top-4 left-4 z-10 flex flex-col gap-2 pointer-events-none">
                   {product.badge && !product.badge.toLowerCase().includes('wix') && (
                     product.badge.toLowerCase().includes('new') ? (
-                      <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-green-500 text-black shadow-md flex items-center justify-center">
+                      <span className="text-xs font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-green-500 text-black border border-green-400 shadow flex items-center justify-center">
                         <span>{product.badge}</span>
                       </span>
                     ) : (
-                      <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-gold-gradient text-maharaja-950 shadow-md flex items-center gap-1.5">
-                        <Sparkles className="w-3 h-3 text-maharaja-950" />
+                      <span className="text-xs font-black tracking-wider uppercase px-2.5 py-0.5 rounded bg-maharaja-900/90 text-gold-bright border border-gold/40 shadow flex items-center gap-1.5">
+                        <Sparkles className="w-3 h-3 text-gold" />
                         <span>{product.badge}</span>
                       </span>
                     )
                   )}
                   {discountPercent > 0 && (
-                    <span className="text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-emerald-600 text-white shadow w-fit">
+                    <span className="text-[11px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-emerald-600 text-white shadow w-fit">
                       {discountPercent}% OFF
                     </span>
                   )}
@@ -328,7 +328,7 @@ export const ProductDetailPage = ({
 
                 {/* Slide Counter on Image */}
                 {galleryImages.length > 1 && (
-                  <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded-full glass-maharaja border border-gold/30 text-[11px] font-mono text-amber-200/90 shadow">
+                  <div className="absolute bottom-3 right-3 z-10 px-2.5 py-1 rounded glass-maharaja border border-gold/30 text-[11px] font-mono text-amber-200/90 shadow">
                     {activeImageIndex + 1} / {galleryImages.length}
                   </div>
                 )}
@@ -346,7 +346,7 @@ export const ProductDetailPage = ({
                       type="button"
                       onClick={() => setActiveImageIndex(idx)}
                       aria-label={`Go to image ${idx + 1}`}
-                      className={`relative w-16 h-16 sm:w-18 sm:h-18 aspect-square rounded-lg overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
+                      className={`relative w-16 h-16 sm:w-18 sm:h-18 aspect-square rounded overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
                         activeImageIndex === idx
                           ? 'border-gold-bright shadow-gold-glow opacity-100 ring-2 ring-gold/50'
                           : 'border-gold/20 hover:border-gold/60 opacity-60 hover:opacity-100'
@@ -389,7 +389,7 @@ export const ProductDetailPage = ({
                 </div>
 
                 {/* Price Display */}
-                <div className="flex items-baseline gap-3 mb-6 p-4 rounded-lg bg-maharaja-900/90 border border-gold/25 shadow-inner">
+                <div className="flex items-baseline gap-3 mb-6 p-4 rounded bg-maharaja-900/90 border border-gold/25 shadow-inner">
                   <span className="font-royal text-xl sm:text-2xl font-light text-gold-gradient opacity-75 tracking-normal">
                     {formatPrice(product.price)}
                   </span>
@@ -407,7 +407,7 @@ export const ProductDetailPage = ({
                 {/* 1. COLOR SELECTION (Required by user) */}
                 {/* ======================================================== */}
                 {availableColors.length > 0 && (
-                  <div className="mb-6 p-4 rounded-lg bg-maharaja-900/50 border border-gold/15">
+                  <div className="mb-6 p-4 rounded bg-maharaja-900/50 border border-gold/15">
                     <div className="flex items-center justify-between mb-2.5">
                       <label className="text-xs font-bold uppercase tracking-wider text-gold-bright flex items-center gap-2">
                         <Gem className="w-3.5 h-3.5" />
@@ -427,7 +427,7 @@ export const ProductDetailPage = ({
                           <button
                             key={idx}
                             onClick={() => handleColorSelect(col)}
-                            className={`group relative flex items-center gap-2 px-3 py-1.5 rounded-md border text-xs font-semibold transition-all ${
+                            className={`group relative flex items-center gap-2 px-3 py-1.5 rounded border text-xs font-semibold transition-all ${
                               isSelected
                                 ? 'border-gold-bright bg-maharaja-800 text-gold-bright shadow-gold-sm scale-105'
                                 : 'border-transparent bg-maharaja-900/80 text-amber-200/70 hover:text-gold-bright'
@@ -459,7 +459,7 @@ export const ProductDetailPage = ({
                 {/* 2. DESIGN VERSION / THEME (If available) */}
                 {/* ======================================================== */}
                 {availableVersions.length > 0 && (
-                  <div className="mb-6 p-4 rounded-lg bg-maharaja-900/50 border border-gold/15">
+                  <div className="mb-6 p-4 rounded bg-maharaja-900/50 border border-gold/15">
                     <div className="flex items-center justify-between mb-2.5">
                       <label className="text-xs font-bold uppercase tracking-wider text-gold-bright flex items-center gap-2">
                         <Layers className="w-3.5 h-3.5" />
@@ -479,7 +479,7 @@ export const ProductDetailPage = ({
                           <button
                             key={idx}
                             onClick={() => handleVersionSelect(ver)}
-                            className={`px-3 py-1.5 rounded-md border text-xs font-semibold transition-all ${
+                            className={`px-3 py-1.5 rounded border text-xs font-semibold transition-all ${
                               isSelected
                                 ? 'border-gold-bright bg-gold-gradient text-maharaja-950 font-bold shadow-gold-sm'
                                 : 'border-transparent bg-maharaja-900/80 text-amber-200/70 hover:text-gold-bright'
@@ -496,7 +496,7 @@ export const ProductDetailPage = ({
                 {/* ======================================================== */}
                 {/* 3. QUANTITY SELECTION */}
                 {/* ======================================================== */}
-                <div className="mb-6 p-4 rounded-lg bg-maharaja-900/50 border border-gold/15">
+                <div className="mb-6 p-4 rounded bg-maharaja-900/50 border border-gold/15">
                   <div className="flex items-center justify-between mb-2.5">
                     <label className="text-xs font-bold uppercase tracking-wider text-gold-bright flex items-center gap-2">
                       <ShoppingBag className="w-3.5 h-3.5" />
@@ -508,7 +508,7 @@ export const ProductDetailPage = ({
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="inline-flex items-center border border-gold/40 rounded-lg bg-maharaja-900/90 px-2 py-1.5 shadow-inner">
+                    <div className="inline-flex items-center border border-gold/40 rounded bg-maharaja-900/90 px-2 py-1.5 shadow-inner">
                       <button
                         type="button"
                         onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -555,7 +555,7 @@ export const ProductDetailPage = ({
                 {/* Add to Cart Button */}
                 <button
                   onClick={handleAddToCart}
-                  className={`w-full py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
+                  className={`w-full py-4 px-6 rounded font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
                     isAdded
                       ? 'bg-emerald-600 text-white'
                       : 'bg-gold-gradient text-maharaja-950 hover:shadow-gold-glow hover:brightness-110'
@@ -580,7 +580,7 @@ export const ProductDetailPage = ({
                 <button
                   type="button"
                   onClick={handleBuyNow}
-                  className="w-full py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center transition-all duration-300 border-2 border-gold text-gold-bright bg-maharaja-900/80 hover:bg-gold hover:text-maharaja-950 shadow-royal hover:shadow-gold-glow transform hover:-translate-y-0.5 active:translate-y-0"
+                  className="w-full py-4 px-6 rounded font-bold text-xs uppercase tracking-wider flex items-center justify-center transition-all duration-300 border-2 border-gold text-gold-bright bg-maharaja-900/80 hover:bg-gold hover:text-maharaja-950 shadow-royal hover:shadow-gold-glow transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   Buy Now
                 </button>
