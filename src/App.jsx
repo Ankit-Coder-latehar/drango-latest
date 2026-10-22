@@ -15,8 +15,10 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { ProductsCatalogPage } from './components/ProductsCatalogPage';
 import { ProductDetailPage } from './components/ProductDetailPage';
 import { LoaderScreen } from './components/LoaderScreen';
+import { BackgroundMusic } from './components/BackgroundMusic';
 
 export function App() {
+  const [isLoaderFinished, setIsLoaderFinished] = useState(false);
   const [selectedCarId, setSelectedCarId] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -276,7 +278,10 @@ export function App() {
       />
 
       {/* Royal Initial Brand Loader Screen */}
-      <LoaderScreen />
+      <LoaderScreen onFinished={() => setIsLoaderFinished(true)} />
+
+      {/* Background Theme Audio - Active on full site except loader screen */}
+      <BackgroundMusic isLoaderFinished={isLoaderFinished} />
 
     </div>
   );

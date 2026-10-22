@@ -116,8 +116,8 @@ const locations = [
     name: 'DRANGO',
     subtitle: 'Manufacture of Premium Custom Auto Parts',
     address: 'Plot No. 458, Industrial Area Phase-2, Chandigarh, 160002',
-    hours: 'Mon – Sat: 10:00 AM – 8:30 PM',
-    mapUrl: 'https://www.google.com/maps/search/?api=1&query=DRANGO%2C+Manufacture+of+Premium+Custom+Auto+Parts%2C+Plot+No.+458%2C+Industrial+Area+Phase-2%2C+Chandigarh%2C+160002',
+    hours: 'Mon – Sat: 10:00 AM – 6:00 PM',
+    mapUrl: 'https://maps.app.goo.gl/d6Vz4aaCRenPrdNV6?g_st=ic',
     embedUrl: 'https://maps.google.com/maps?q=30.696781,76.781686+(DRANGO+-+Plot+No.+458,+Industrial+Area+Phase-2,+Chandigarh)&t=&z=16&ie=UTF8&iwloc=B&output=embed',
   },
 ];
@@ -311,6 +311,17 @@ export const Footer = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
+                {/* Direct Google Maps badge */}
+                <a
+                  href={activeLoc.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-2 right-2 z-10 px-2 py-1 rounded-md bg-maharaja-950/90 backdrop-blur-md border border-gold/40 text-gold-bright text-[10px] font-bold flex items-center gap-1 hover:bg-gold-gradient hover:text-maharaja-950 transition-all shadow-md group-hover:scale-105"
+                >
+                  <Navigation className="w-3 h-3 text-gold" />
+                  <span>Open Maps</span>
+                  <ExternalLink className="w-2.5 h-2.5 opacity-70" />
+                </a>
               </div>
 
               {/* Location Details Footer */}
@@ -324,10 +335,15 @@ export const Footer = () => {
                       </span>
                     )}
                   </h5>
-                  <p className="text-[11px] text-amber-200/70 flex items-center gap-1 mt-0.5">
+                  <a
+                    href={activeLoc.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] text-amber-200/70 hover:text-gold flex items-center gap-1 mt-0.5 transition-colors"
+                  >
                     <MapPin className="w-3 h-3 text-gold shrink-0" />
                     <span>{activeLoc.address}</span>
-                  </p>
+                  </a>
                   <p className="text-[10px] text-amber-200/50 mt-0.5 pl-4">
                     {activeLoc.hours}
                   </p>
@@ -338,11 +354,11 @@ export const Footer = () => {
                     href={activeLoc.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-gold/15 hover:bg-gold hover:text-maharaja-950 text-gold-bright border border-gold/40 text-[11px] font-semibold transition-all shadow-sm"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gold-gradient text-maharaja-950 hover:brightness-110 text-[11px] font-bold transition-all shadow-sm"
                   >
                     <Navigation className="w-3 h-3" />
                     <span>Directions</span>
-                    <ExternalLink className="w-2.5 h-2.5 ml-0.5 opacity-70" />
+                    <ExternalLink className="w-2.5 h-2.5 ml-0.5 opacity-80" />
                   </a>
                   <a
                     href="#contact"

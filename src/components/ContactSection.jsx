@@ -58,20 +58,30 @@ export const ContactSection = () => {
             <div className="space-y-6">
 
               {/* Factory Location Chandigarh */}
-              <div className="glass-maharaja-card p-6 rounded-2xl flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/40 flex items-center justify-center text-gold-bright shrink-0 mt-1">
+              <a
+                href="https://maps.app.goo.gl/d6Vz4aaCRenPrdNV6?g_st=ic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-maharaja-card p-6 rounded-2xl flex items-start gap-4 group hover:border-gold/60 transition-all cursor-pointer block"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/40 flex items-center justify-center text-gold-bright shrink-0 mt-1 group-hover:bg-gold/20 transition-colors">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-gold font-bold tracking-widest uppercase">Factory Location</span>
-                  <h4 className="font-royal text-lg font-bold text-amber-50 mb-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[10px] text-gold font-bold tracking-widest uppercase">Factory Location</span>
+                    <span className="text-[10px] text-amber-200/60 group-hover:text-gold flex items-center gap-1 transition-colors">
+                      Open Maps ↗
+                    </span>
+                  </div>
+                  <h4 className="font-royal text-lg font-bold text-amber-50 mb-1 group-hover:text-gold-bright transition-colors">
                     Chandigarh
                   </h4>
                   <p className="text-xs text-amber-200/80 leading-relaxed">
                     DRANGO, Manufacture of Premium Custom Auto Parts, Plot No. 458, Industrial Area Phase-2, Chandigarh, 160002
                   </p>
                 </div>
-              </div>
+              </a>
 
               {/* Hotlines */}
               <div className="glass-maharaja-card p-6 rounded-2xl flex items-start gap-4">
@@ -86,7 +96,7 @@ export const ContactSection = () => {
                     </a>
                   </h4>
                   <p className="text-xs text-amber-200/70">
-                    Mon - Sat: 10:00 AM - 8:30 PM
+                    Mon - Sat: 10:00 AM - 6:00 PM
                   </p>
                 </div>
               </div>
