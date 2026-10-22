@@ -47,7 +47,7 @@ export const ContactSection = () => {
             contact for custom build
           </h2>
           <p className="text-amber-200/80 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-light">
-            Book a one-on-one consultation with our Master Automotive Stylists at our Chandigarh Studio.
+            Book a one-on-one consultation with our Automobile Designer
           </p>
         </div>
 
@@ -148,8 +148,7 @@ export const ContactSection = () => {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Kunwar Pratap Singh"
-                        className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
+                        className="w-full px-4 py-3 rounded bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
                       />
                     </div>
 
@@ -163,7 +162,7 @@ export const ContactSection = () => {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="e.g. +91 97794 43821"
-                        className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
+                        className="w-full px-4 py-3 rounded bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
                       />
                     </div>
 
@@ -177,7 +176,7 @@ export const ContactSection = () => {
                         value={formData.carModel}
                         onChange={(e) => setFormData({ ...formData, carModel: e.target.value })}
                         placeholder="e.g. Mahindra Thar Roxx / Scorpio-N"
-                        className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
+                        className="w-full px-4 py-3 rounded bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
                       />
                     </div>
 
@@ -191,7 +190,7 @@ export const ContactSection = () => {
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                         placeholder="e.g. Chandigarh, Delhi, Mumbai"
-                        className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
+                        className="w-full px-4 py-3 rounded bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
                       />
                     </div>
                   </div>
@@ -205,13 +204,13 @@ export const ContactSection = () => {
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                       placeholder="Tell us about your colour preference or specific custom requests..."
-                      className="w-full px-4 py-3 rounded-xl bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all resize-none"
+                      className="w-full px-4 py-3 rounded bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl bg-gold-gradient text-maharaja-950 font-black text-sm tracking-widest uppercase hover:shadow-gold-glow transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded bg-gold-gradient text-maharaja-950 font-black text-sm tracking-widest uppercase hover:shadow-gold-glow transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
                     <span>Send Inquiry</span>

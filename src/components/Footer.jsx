@@ -331,7 +331,7 @@ export const Footer = () => {
                     <span>{activeLoc.name}</span>
                     {activeLoc.subtitle && (
                       <span className="text-[10px] text-gold/80 font-normal">
-                        • {activeLoc.subtitle}
+                        {activeLoc.subtitle}
                       </span>
                     )}
                   </h5>

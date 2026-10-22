@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CARS_DATA } from './data/mockData';
 import { fetchWixProducts } from './services/wixService';
 import { Navbar } from './components/Navbar';
@@ -30,6 +30,30 @@ export function App() {
   // View state: 'home' | 'products' | 'product-detail'
   const [currentView, setCurrentView] = useState('home');
   const [activeProduct, setActiveProduct] = useState(null);
+
+  // Background audio state and reference
+  const audioRef = useRef(null);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
+  const handleToggleAudio = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isAudioPlaying && !audio.paused) {
+      audio.pause();
+      setIsAudioPlaying(false);
+    } else {
+      audio.volume = 0.35;
+      audio
+        .play()
+        .then(() => {
+          setIsAudioPlaying(true);
+        })
+        .catch((err) => {
+          console.warn('Playback error:', err);
+        });
+    }
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -196,6 +220,8 @@ export function App() {
         currentView={currentView}
         onNavigateHome={handleNavigateHome}
         onNavigateProducts={handleNavigateProducts}
+        isAudioPlaying={isAudioPlaying}
+        onToggleAudio={handleToggleAudio}
       />
 
       {/* Main Sections */}
@@ -281,7 +307,12 @@ export function App() {
       <LoaderScreen onFinished={() => setIsLoaderFinished(true)} />
 
       {/* Background Theme Audio - Active on full site except loader screen */}
-      <BackgroundMusic isLoaderFinished={isLoaderFinished} />
+      <BackgroundMusic
+        isLoaderFinished={isLoaderFinished}
+        isPlaying={isAudioPlaying}
+        setIsPlaying={setIsAudioPlaying}
+        audioRef={audioRef}
+      />
 
     </div>
   );

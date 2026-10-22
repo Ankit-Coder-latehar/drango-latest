@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, Phone, ShieldCheck, Sparkles, Car } from 'lucide-react';
+import { ShoppingBag, Menu, X, Phone, ShieldCheck, Sparkles, Car, Volume2, VolumeX } from 'lucide-react';
 
 export const Navbar = ({
   cartCount,
@@ -9,6 +9,8 @@ export const Navbar = ({
   currentView = 'home',
   onNavigateHome,
   onNavigateProducts,
+  isAudioPlaying = false,
+  onToggleAudio,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -99,7 +101,32 @@ export const Navbar = ({
           </nav>
 
           {/* Right Action Icons & CTAs */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center gap-2.5 sm:gap-4">
+
+            {/* Audio Toggle Speaker Option */}
+            <button
+              type="button"
+              onClick={onToggleAudio}
+              aria-label={isAudioPlaying ? 'Mute background theme' : 'Play background theme'}
+              title={isAudioPlaying ? 'Background Music: Playing (Click to mute)' : 'Background Music: Paused (Click to play)'}
+              className={`relative p-2.5 rounded-full border transition-all duration-300 shadow-gold-sm flex items-center justify-center ${
+                isAudioPlaying
+                  ? 'bg-maharaja-850/90 border-gold text-gold-bright hover:bg-maharaja-800 shadow-gold-glow'
+                  : 'bg-maharaja-950/80 border-gold/30 text-amber-200/50 hover:border-gold/60 hover:text-amber-100'
+              }`}
+            >
+              {isAudioPlaying ? (
+                <div className="relative flex items-center justify-center">
+                  <Volume2 className="w-5 h-5 text-gold-bright" />
+                  <span className="absolute -top-1 -right-1 flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+                  </span>
+                </div>
+              ) : (
+                <VolumeX className="w-5 h-5" />
+              )}
+            </button>
 
             {/* Cart Trigger */}
             <button
@@ -157,6 +184,20 @@ export const Navbar = ({
               </a>
             ))}
             <div className="pt-2 flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={onToggleAudio}
+                className="flex items-center justify-between px-4 py-2.5 rounded-xl border border-gold/30 bg-maharaja-900/80 text-amber-100 text-xs font-semibold tracking-wider uppercase hover:border-gold transition-colors"
+              >
+                <span className="flex items-center gap-2">
+                  {isAudioPlaying ? <Volume2 className="w-4 h-4 text-gold-bright" /> : <VolumeX className="w-4 h-4 text-amber-200/60" />}
+                  <span>Background Music</span>
+                </span>
+                <span className={`text-[11px] font-bold ${isAudioPlaying ? 'text-gold' : 'text-amber-200/50'}`}>
+                  {isAudioPlaying ? 'Playing' : 'Paused'}
+                </span>
+              </button>
+
               <a
                 href="https://wa.me/919779443821?text=Hello%20Drango%20Team!%20I%20am%20interested%20in%20customizing%20my%20vehicle"
                 target="_blank"
