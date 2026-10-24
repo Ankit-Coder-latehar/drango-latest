@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ShieldCheck, Award, Wrench, Volume2, VolumeX, Play, Pause, ChevronDown, Phone, Truck, PhoneCall } from 'lucide-react';
+import { ShieldCheck, Award, ChevronDown, Phone, Truck, PhoneCall } from 'lucide-react';
 
 export const Hero = ({ onNavigateProducts }) => {
   const heroRef = useRef(null);
@@ -8,9 +8,6 @@ export const Hero = ({ onNavigateProducts }) => {
   const ctaRef = useRef(null);
   const statsRef = useRef(null);
   const videoRef = useRef(null);
-
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     let ctx;
@@ -47,11 +44,9 @@ export const Hero = ({ onNavigateProducts }) => {
       videoRef.current.muted = true;
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
-        playPromise
-          .then(() => setIsPlaying(true))
-          .catch((err) => {
-            console.warn("Autoplay muted fallback:", err);
-          });
+        playPromise.catch((err) => {
+          console.warn("Autoplay muted fallback:", err);
+        });
       }
     }
 
@@ -61,24 +56,6 @@ export const Hero = ({ onNavigateProducts }) => {
       }
     };
   }, []);
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        videoRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
-      }
-    }
-  };
-
-  const toggleSound = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
 
   return (
     <section id="home" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16">
@@ -102,24 +79,6 @@ export const Hero = ({ onNavigateProducts }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-maharaja-950 via-maharaja-950/70 to-maharaja-950/85"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-maharaja-950/90 via-transparent to-maharaja-950/90"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(110,17,32,0.3)_0%,rgba(14,2,4,0.85)_100%)] pointer-events-none"></div>
-
-        {/* Video Control Buttons in Corner */}
-        <div className="absolute bottom-6 right-6 z-20 flex items-center gap-2">
-          <button
-            onClick={togglePlay}
-            className="p-2.5 rounded-full bg-maharaja-900/80 hover:bg-maharaja-800 border border-gold/40 text-gold-bright transition-all shadow-md backdrop-blur"
-            title={isPlaying ? "Pause Video" : "Play Video"}
-          >
-            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-          </button>
-          <button
-            onClick={toggleSound}
-            className="p-2.5 rounded-full bg-maharaja-900/80 hover:bg-maharaja-800 border border-gold/40 text-gold-bright transition-all shadow-md backdrop-blur"
-            title={isMuted ? "Unmute Sound" : "Mute Sound"}
-          >
-            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-          </button>
-        </div>
       </div>
 
       {/* Hero Content */}

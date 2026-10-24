@@ -147,6 +147,7 @@ export const ContactSection = () => {
                         type="text"
                         required
                         value={formData.name}
+                        placeholder='Enter your Name'
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-4 py-3 rounded bg-maharaja-900/90 border border-gold/30 text-amber-100 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-all"
                       />
