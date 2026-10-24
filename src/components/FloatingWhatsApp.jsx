@@ -15,10 +15,6 @@ export const FloatingWhatsApp = () => {
       </span>
       <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-[#128C7E] via-[#25D366] to-[#25D366] text-white flex items-center justify-center shadow-2xl border-2 border-gold-bright hover:scale-110 transition-all duration-300 relative">
         <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" />
-        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-gold-gradient text-maharaja-950 text-[8px] sm:text-[9px] font-black flex items-center justify-center animate-ping"></span>
-        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-gold-gradient text-maharaja-950 text-[8px] sm:text-[9px] font-black flex items-center justify-center">
-          👑
-        </span>
       </div>
     </a>
   );

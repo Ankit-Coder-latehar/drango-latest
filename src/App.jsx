@@ -240,6 +240,7 @@ export function App() {
             {/* 3. Product Filters (All Products, Our Limited Products) & Dynamic Products */}
             <ProductFilterSection
               selectedCarId={selectedCarId}
+              onClearSelectedCar={() => setSelectedCarId(null)}
               onAddToCart={handleAddToCart}
               onOpenQuickView={handleOpenProductDetail}
               productsList={productsList}

@@ -3,6 +3,7 @@ import { Eye, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 
 export const ProductFilterSection = ({
   selectedCarId,
+  onClearSelectedCar,
   onAddToCart,
   onOpenQuickView,
   productsList = [],
@@ -25,7 +26,7 @@ export const ProductFilterSection = ({
     return Array.isArray(productsList) ? productsList : [];
   }, [productsList]);
 
-  // Filter products: either All Products or Product for your vehicle
+  // Filter products: either All Products or Products for your vehicle
   const filteredProducts = useMemo(() => {
     if (!allAvailableProducts || allAvailableProducts.length === 0) return [];
 
@@ -126,7 +127,7 @@ export const ProductFilterSection = ({
   const filterOptions = useMemo(() => {
     const opts = [{ id: 'all', label: 'All Products' }];
     if (selectedCarId) {
-      opts.push({ id: 'vehicle', label: 'Product for your vehicle' });
+      opts.push({ id: 'vehicle', label: 'Products for your vehicle' });
     }
     return opts;
   }, [selectedCarId]);
@@ -143,7 +144,16 @@ export const ProductFilterSection = ({
             return (
               <button
                 key={opt.id}
-                onClick={() => setActiveCategory(opt.id)}
+                onClick={() => {
+                  if (opt.id === 'all') {
+                    setActiveCategory('all');
+                    if (onClearSelectedCar) {
+                      onClearSelectedCar();
+                    }
+                  } else {
+                    setActiveCategory(opt.id);
+                  }
+                }}
                 className={`px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center ${
                   isActive
                     ? 'bg-gold-gradient text-maharaja-950 font-black shadow-gold-glow scale-105'
@@ -217,7 +227,12 @@ export const ProductFilterSection = ({
           <div className="text-center py-12 glass-maharaja rounded border border-gold/20 p-8 max-w-md mx-auto">
             <p className="text-sm text-amber-200/70 mb-3">No specific products found for this vehicle.</p>
             <button
-              onClick={() => setActiveCategory('all')}
+              onClick={() => {
+                setActiveCategory('all');
+                if (onClearSelectedCar) {
+                  onClearSelectedCar();
+                }
+              }}
               className="px-4 py-2 rounded-lg bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow-gold-sm hover:brightness-110 transition-all"
             >
               Show All Products
