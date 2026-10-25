@@ -125,7 +125,7 @@ export const ProductFilterSection = ({
   };
 
   const filterOptions = useMemo(() => {
-    const opts = [{ id: 'all', label: 'All Products' }];
+    const opts = [{ id: 'all', label: 'Top Picks' }];
     if (selectedCarId) {
       opts.push({ id: 'vehicle', label: 'Products for your vehicle' });
     }
@@ -235,7 +235,7 @@ export const ProductFilterSection = ({
               }}
               className="px-4 py-2 rounded-lg bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow-gold-sm hover:brightness-110 transition-all"
             >
-              Show All Products
+              Show Top Picks
             </button>
           </div>
         ) : (

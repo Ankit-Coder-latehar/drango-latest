@@ -165,15 +165,15 @@ export const ProductsCatalogPage = ({
                 <select
                   value={activeVehicle}
                   onChange={(e) => setActiveVehicle(e.target.value)}
-                  className="w-full sm:w-auto px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl bg-maharaja-900/90 border border-gold/30 text-gold-bright font-medium focus:outline-none focus:border-gold cursor-pointer"
+                  className="w-full sm:w-auto px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl bg-maharaja-900/90 border border-gold/30 text-gold-bright font-medium focus:outline-none focus:border-gold cursor-pointer [&>option]:text-black [&>option]:bg-white"
                 >
-                  <option value="all">Vehicle: All Models</option>
-                  <option value="thar-roxx">Mahindra Thar ROXX</option>
-                  <option value="thar-3d">Mahindra Thar (3-Door)</option>
-                  <option value="scorpio-n">Mahindra Scorpio-N</option>
-                  <option value="jimny">Suzuki Jimny</option>
-                  <option value="hilux">Toyota Hilux</option>
-                  <option value="fortuner">Toyota Fortuner</option>
+                  <option value="all" className="text-black bg-white">Vehicle: All Models</option>
+                  <option value="thar-roxx" className="text-black bg-white">Mahindra Thar ROXX</option>
+                  <option value="thar-3d" className="text-black bg-white">Mahindra Thar (3-Door)</option>
+                  <option value="scorpio-n" className="text-black bg-white">Mahindra Scorpio-N</option>
+                  <option value="jimny" className="text-black bg-white">Suzuki Jimny</option>
+                  <option value="hilux" className="text-black bg-white">Toyota Hilux</option>
+                  <option value="fortuner" className="text-black bg-white">Toyota Fortuner</option>
                 </select>
               </div>
 
@@ -181,12 +181,12 @@ export const ProductsCatalogPage = ({
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full sm:w-auto px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl bg-maharaja-900/90 border border-gold/30 text-gold-bright font-medium focus:outline-none focus:border-gold cursor-pointer"
+                  className="w-full sm:w-auto px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm rounded-xl bg-maharaja-900/90 border border-gold/30 text-gold-bright font-medium focus:outline-none focus:border-gold cursor-pointer [&>option]:text-black [&>option]:bg-white"
                 >
-                  <option value="featured">Sort: Featured</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="rating">Highest Rated</option>
+                  <option value="featured" className="text-black bg-white">Sort: Featured</option>
+                  <option value="price-low" className="text-black bg-white">Price: Low to High</option>
+                  <option value="price-high" className="text-black bg-white">Price: High to Low</option>
+                  <option value="rating" className="text-black bg-white">Highest Rated</option>
                 </select>
               </div>
             </div>

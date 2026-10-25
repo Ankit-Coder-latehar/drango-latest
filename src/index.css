@@ -122,3 +122,11 @@
   background-size: 200% 100%;
   animation: shimmerGold 3s infinite linear;
 }
+
+/* Dropdown option menu styling - black text on white popup, while select trigger displays golden text */
+select option {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
