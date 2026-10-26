@@ -125,7 +125,7 @@ export const ProductFilterSection = ({
   };
 
   const filterOptions = useMemo(() => {
-    const opts = [{ id: 'all', label: 'Top Picks' }];
+    const opts = [{ id: 'all', label: 'All Products' }];
     if (selectedCarId) {
       opts.push({ id: 'vehicle', label: 'Products for your vehicle' });
     }
@@ -136,7 +136,15 @@ export const ProductFilterSection = ({
     <section id="products" className="py-8 sm:py-12 bg-maharaja-950 relative border-t border-gold/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* All Products and Our Limited Products Filter */}
+        {/* Section Heading */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-8 sm:mb-10 text-center relative z-10">
+          <h2 className="font-royal text-2xl sm:text-3xl md:text-4xl font-extrabold text-gold-bright tracking-wider uppercase drop-shadow-md">
+            Top Picks
+          </h2>
+          <div className="w-16 sm:w-20 h-0.5 bg-gold-gradient mx-auto mt-3 rounded-full shadow-gold-sm"></div>
+        </div>
+
+        {/* All Products and Vehicle Filter */}
         <div className="flex items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-10 flex-wrap">
           {filterOptions.map((opt) => {
             const isActive = activeCategory === opt.id;
@@ -235,7 +243,7 @@ export const ProductFilterSection = ({
               }}
               className="px-4 py-2 rounded-lg bg-gold-gradient text-maharaja-950 font-bold text-xs uppercase shadow-gold-sm hover:brightness-110 transition-all"
             >
-              Show Top Picks
+              Show All Products
             </button>
           </div>
         ) : (
